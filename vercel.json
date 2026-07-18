@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/frequence-01", "destination": "/frequence-01/index.html" },
+    { "source": "/frequence-02", "destination": "/frequence-02/index.html" }
+  ]
+}
