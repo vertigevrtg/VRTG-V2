@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070709" />
+  <meta name="description" content="FRÉQUENCE_02 — Le deuxième signal de VRTG. Plus dense, plus physique, plus près de l'os." />
+  <meta property="og:title" content="FRÉQUENCE_02 — VRTG" />
+  <meta property="og:description" content="La nuque est une antenne. Le corps reçoit avant les mots." />
+  <meta property="og:image" content="../assets/cover-frequence-02.webp" />
+  <title>FRÉQUENCE_02 — VRTG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../release.css" />
+</head>
+<body class="freq-02">
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot__top mono"><span>VRTG_RECEPTION</span><span>CORPS / 002</span></div>
+    <div class="boot__center">
+      <p class="mono">CALIBRATION DE L'ANTENNE</p>
+      <div class="boot__bar"><span id="bootBar"></span></div>
+      <strong id="bootCount">00</strong>
+    </div>
+  </div>
+
+  <canvas id="signalCanvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="topbar__brand magnetic" href="../" aria-label="VRTG, retour à l'accueil">VRTG</a>
+    <div class="topbar__status mono"><i></i> SIGNAL 002 / DENSE</div>
+    <div class="topbar__coords mono">NUQUE / RÉCEPTEUR</div>
+    <button class="menu-button magnetic" id="menuButton" type="button" aria-controls="menu" aria-expanded="false">MENU <span>+</span></button>
+  </header>
+
+  <nav class="menu" id="menu" aria-hidden="true">
+    <div class="menu__meta mono">INDEX DES TRANSMISSIONS</div>
+    <a href="../" data-index="00">ACCUEIL</a>
+    <a href="#ecouter" data-index="01">ÉCOUTER</a>
+    <a href="#scanner" data-index="02">SCANNER</a>
+    <a href="../frequence-01/" data-index="03">SIGNAL 01</a>
+    <div class="menu__foot mono">LE CORPS SAIT AVANT LES MOTS.</div>
+  </nav>
+
+  <main>
+    <section class="release-hero">
+      <div class="release-hero__media" aria-hidden="true"><img src="../assets/cover-frequence-02.webp" alt="" /></div>
+      <div class="signal-ring" aria-hidden="true"></div>
+      <div class="release-hero__meta mono reveal"><span>TRANSMISSION / 002</span><span>PRESSION INTÉRIEURE — PUISSANCE FROIDE</span></div>
+      <p class="release-hero__number" aria-hidden="true">02</p>
+      <div class="release-hero__copy">
+        <div class="release-hero__kicker mono reveal">LA NUQUE EST UNE ANTENNE</div>
+        <h1 class="reveal">FRÉQUENCE_<em>02</em></h1>
+        <p class="release-hero__line reveal">Le deuxième signal ne vient plus du ciel. Il traverse le corps, frappe l'os et laisse le temps se déformer autour de lui.</p>
+      </div>
+      <a class="release-hero__action magnetic" href="#ecouter">
+        <span class="release-hero__disc"><b>↘</b></span>
+        <span class="mono">LAISSER PASSER<br />LA FRÉQUENCE</span>
+      </a>
+      <div class="release-hero__footer mono"><span>SCROLL / POUR DESCENDRE DANS LA MATIÈRE</span><span>SIGNAL / 002</span></div>
+    </section>
+
+    <section class="player-section" id="ecouter">
+      <div class="player-grid">
+        <div class="player-intro">
+          <div class="section-index mono">[ 01 / IMPACT ]</div>
+          <h2>PLUS PRÈS<br />DE L'OS.</h2>
+          <p>FRÉQUENCE_02 doit être ressentie comme une pression qui monte. Le lecteur devient une console de réception : on n'appuie pas seulement sur lecture, on autorise le signal à entrer.</p>
+        </div>
+        <div class="signal-console">
+          <div class="console__head mono"><span>VRTG_PLAYER / 002</span><span>PRESSION / CROISSANTE</span></div>
+          <div class="console__screen">
+            <canvas class="console__wave" id="consoleWave" aria-hidden="true"></canvas>
+            <div class="console__title"><span class="mono">TRANSMISSION IDENTIFIÉE</span><strong>FRÉQUENCE_02</strong></div>
+          </div>
+          <iframe class="console__spotify" src="https://open.spotify.com/embed/track/1C9Vg9ocyrMYbzLWoFbl8R?utm_source=generator&theme=0" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Écouter FRÉQUENCE_02 sur Spotify"></iframe>
+          <div class="platforms mono"><a href="https://open.spotify.com/track/1C9Vg9ocyrMYbzLWoFbl8R" target="_blank" rel="noreferrer">SPOTIFY ↗</a></div>
+          <div class="console__foot mono"><span>SIGNAL / PHYSIQUE</span><span>CASQUE / RECOMMANDÉ</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter">
+      <div class="section-index mono">[ 02 / DESCENTE ]</div>
+      <div class="chapter__content">
+        <p class="chapter__overline">Après l'ouverture cosmique de FRÉQUENCE_01, le mouvement s'inverse.</p>
+        <h2>LE CIEL<br />ENTRE DANS<br />LA CHAIR.</h2>
+        <div class="chapter__body">
+          <p>La sagesse devient mirage. Le vertige devient torrent. La conscience cherche à distancer le temps.</p>
+          <p>Le morceau plonge plus profondément dans la matière : chair, os, peur, rituel et transmission. L'esthétique demeure cosmique, mais son point d'impact est désormais humain. Le signal n'est plus observé. Il est reçu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="interactive" id="scanner">
+      <div class="interactive__copy">
+        <div class="section-index mono">[ 03 / ANATOMIE DU SIGNAL ]</div>
+        <h2>OÙ EST-CE<br />QUE ÇA FRAPPE?</h2>
+        <p>Chaque zone transforme la même fréquence en sensation différente. Active les points de réception pour lire l'anatomie symbolique du morceau.</p>
+      </div>
+      <div class="interactive__stage">
+        <div class="anatomy" aria-label="Scanner interactif du corps récepteur">
+          <div class="anatomy__silhouette" aria-hidden="true"></div>
+          <div class="anatomy__axis" aria-hidden="true"></div>
+          <div class="anatomy__ring" aria-hidden="true"></div>
+          <button class="hotspot is-active" type="button" data-text="LE CRÂNE INTERPRÈTE. IL INVENTE UNE FORME POUR CE QUI N'EN A PAS."><span class="mono">01 / CRÂNE</span></button>
+          <button class="hotspot" type="button" data-text="LA NUQUE REÇOIT. C'EST LA FRONTIÈRE ENTRE L'INTUITION ET LE FRISSON."><span class="mono">02 / NUQUE</span></button>
+          <button class="hotspot" type="button" data-text="L'OS CONSERVE. LA FRÉQUENCE DEVIENT MÉMOIRE PHYSIQUE."><span class="mono">03 / OS</span></button>
+          <button class="hotspot" type="button" data-text="LE SOUFFLE TRANSMET. CE QUI ENTRE DOIT TROUVER UNE SORTIE."><span class="mono">04 / SOUFFLE</span></button>
+          <div class="anatomy__readout mono"><span>LECTURE / ACTIVE</span><strong id="anatomyText">LE CRÂNE INTERPRÈTE. IL INVENTE UNE FORME POUR CE QUI N'EN A PAS.</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fragments">
+      <div class="fragments__head">
+        <div><div class="section-index mono">[ 04 / FRAGMENT CENTRAL ]</div><h2>LE TEMPS<br />SE DÉFORME.</h2></div>
+        <p>Un seul fragment est volontairement répété, comme une pensée qui revient avec une intensité différente à chaque passage.</p>
+      </div>
+      <div class="fragment-track" aria-label="Extrait des paroles de FRÉQUENCE_02">
+        <article class="fragment-card" style="--r:-1deg"><small class="mono">MIRAGE / 01</small><blockquote>« Je vois au loin la sagesse du mirage. »</blockquote><span class="mono">VISION / DISTANCE</span></article>
+        <article class="fragment-card" style="--r:1.2deg"><small class="mono">VERTIGE / 02</small><blockquote>« Toi et moi, le torrent du vertige. »</blockquote><span class="mono">LIEN / CHUTE</span></article>
+        <article class="fragment-card" style="--r:-.6deg"><small class="mono">ÂGE / 03</small><blockquote>« Plus je comprends, plus je prends de l'âge. »</blockquote><span class="mono">LUCIDITÉ / POIDS</span></article>
+        <article class="fragment-card" style="--r:1deg"><small class="mono">TEMPS / 04</small><blockquote>« Conscience s'élève, au-delà l'espace, distance le temps. »</blockquote><span class="mono">ÉLÉVATION / RUPTURE</span></article>
+        <article class="fragment-card" style="--r:-1deg"><small class="mono">MIRAGE / 01</small><blockquote>« Je vois au loin la sagesse du mirage. »</blockquote><span class="mono">VISION / DISTANCE</span></article>
+        <article class="fragment-card" style="--r:1.2deg"><small class="mono">VERTIGE / 02</small><blockquote>« Toi et moi, le torrent du vertige. »</blockquote><span class="mono">LIEN / CHUTE</span></article>
+        <article class="fragment-card" style="--r:-.6deg"><small class="mono">ÂGE / 03</small><blockquote>« Plus je comprends, plus je prends de l'âge. »</blockquote><span class="mono">LUCIDITÉ / POIDS</span></article>
+        <article class="fragment-card" style="--r:1deg"><small class="mono">TEMPS / 04</small><blockquote>« Conscience s'élève, au-delà l'espace, distance le temps. »</blockquote><span class="mono">ÉLÉVATION / RUPTURE</span></article>
+      </div>
+    </section>
+
+    <section class="interactive">
+      <div class="interactive__copy">
+        <div class="section-index mono">[ 05 / PRESSION ]</div>
+        <h2>JUSQU'OÙ<br />LAISSER ENTRER?</h2>
+        <p>Fais monter la pression. L'interface ne change pas seulement de valeur : elle fait émerger la trajectoire émotionnelle du morceau.</p>
+      </div>
+      <div class="interactive__stage">
+        <div class="pressure-panel">
+          <div class="pressure-readout"><strong id="pressureValue">58</strong><span class="mono">NIVEAU DE RÉCEPTION / 100</span></div>
+          <label class="sr-only" for="pressure">Niveau de réception</label>
+          <input id="pressure" type="range" min="0" max="100" value="58" />
+          <div class="pressure-labels mono"><span>MIRAGE</span><span>OS</span><span>ÉLÉVATION</span></div>
+          <p class="pressure-phrase" id="pressurePhrase">LE CORPS COMMENCE À RECEVOIR.</p>
+          <div class="pressure-bars" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="next-signal next-signal--locked">
+      <span class="next-signal__index mono">[ TRANSMISSION SUIVANTE / 003 ]</span>
+      <a href="../#contact"><h2>LE PROCHAIN<br />SIGNAL EST<br />VERROUILLÉ. ⌁</h2></a>
+      <p>FRÉQUENCE_03 existe déjà quelque part derrière le bruit. Rejoins le canal pour être présent au moment où l'archive s'ouvrira.</p>
+      <div class="next-signal__giant" aria-hidden="true">03</div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <div><strong>VRTG</strong><span>FRÉQUENCE_02 / 2026</span></div>
+    <div class="footer__links"><a href="../">ACCUEIL</a><a href="../frequence-01/">FRÉQUENCE_01</a><a href="https://open.spotify.com/track/1C9Vg9ocyrMYbzLWoFbl8R" target="_blank" rel="noreferrer">SPOTIFY ↗</a></div>
+    <div>LA NUQUE REÇOIT.<br />LE CORPS CONSERVE.<br />LA VOIX RETRANSMET.</div>
+  </footer>
+
+  <script src="../release.js"></script>
+</body>
+</html>
