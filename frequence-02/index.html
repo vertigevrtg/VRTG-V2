@@ -7,12 +7,16 @@
   <meta name="description" content="FRÉQUENCE_02 — Le deuxième signal de VRTG. Plus dense, plus physique, plus près de l'os." />
   <meta property="og:title" content="FRÉQUENCE_02 — VRTG" />
   <meta property="og:description" content="La nuque est une antenne. Le corps reçoit avant les mots." />
-  <meta property="og:image" content="../assets/cover-frequence-02.webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.vrtgmusic.ca/frequence-02" />
+  <meta property="og:image" content="https://www.vrtgmusic.ca/assets/cover-frequence-02.webp" />
   <title>FRÉQUENCE_02 — VRTG</title>
+  <link rel="canonical" href="https://www.vrtgmusic.ca/frequence-02" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../release.css" />
+  <link rel="stylesheet" href="/release.css" />
 </head>
 <body class="freq-02">
   <div class="boot" id="boot" aria-hidden="true">
@@ -30,24 +34,31 @@
   <div class="cursor" id="cursor" aria-hidden="true"></div>
 
   <header class="topbar">
-    <a class="topbar__brand magnetic" href="../" aria-label="VRTG, retour à l'accueil">VRTG</a>
+    <a class="topbar__brand magnetic" href="/" aria-label="VRTG, retour à l'accueil">VRTG</a>
     <div class="topbar__status mono"><i></i> SIGNAL 002 / DENSE</div>
     <div class="topbar__coords mono">NUQUE / RÉCEPTEUR</div>
     <button class="menu-button magnetic" id="menuButton" type="button" aria-controls="menu" aria-expanded="false">MENU <span>+</span></button>
   </header>
 
   <nav class="menu" id="menu" aria-hidden="true">
-    <div class="menu__meta mono">INDEX DES TRANSMISSIONS</div>
-    <a href="../" data-index="00">ACCUEIL</a>
-    <a href="#ecouter" data-index="01">ÉCOUTER</a>
-    <a href="#scanner" data-index="02">SCANNER</a>
-    <a href="../frequence-01/" data-index="03">SIGNAL 01</a>
+    <div class="menu__meta mono">ARCHITECTURE DES TRANSMISSIONS</div>
+    <div class="menu__structure">
+      <a class="menu__top-link" href="/" data-index="00">ACCUEIL</a>
+      <div class="menu__chapter">
+        <a class="menu__top-link" href="/frequence" data-index="01">FRÉQUENCE</a>
+        <div class="menu__tracks" aria-label="Morceaux de Fréquence">
+          <a href="/frequence/01" data-index="01.01">FRÉQUENCE_01</a>
+          <a href="/frequence/02" data-index="01.02" aria-current="page">FRÉQUENCE_02</a>
+          <a href="/frequence/03" data-index="01.03">FRÉQUENCE_03 <span>À VENIR</span></a>
+        </div>
+      </div>
+    </div>
     <div class="menu__foot mono">LE CORPS SAIT AVANT LES MOTS.</div>
   </nav>
 
   <main>
     <section class="release-hero">
-      <div class="release-hero__media" aria-hidden="true"><img src="../assets/cover-frequence-02.webp" alt="" /></div>
+      <div class="release-hero__media" aria-hidden="true"><img src="/assets/cover-frequence-02.webp" alt="" /></div>
       <div class="signal-ring" aria-hidden="true"></div>
       <div class="release-hero__meta mono reveal"><span>TRANSMISSION / 002</span><span>PRESSION INTÉRIEURE — PUISSANCE FROIDE</span></div>
       <p class="release-hero__number" aria-hidden="true">02</p>
@@ -154,7 +165,7 @@
 
     <section class="next-signal next-signal--locked">
       <span class="next-signal__index mono">[ TRANSMISSION SUIVANTE / 003 ]</span>
-      <a href="../#contact"><h2>LE PROCHAIN<br />SIGNAL EST<br />VERROUILLÉ. ⌁</h2></a>
+      <a href="/frequence/03"><h2>LE PROCHAIN<br />SIGNAL EST<br />VERROUILLÉ. ⌁</h2></a>
       <p>FRÉQUENCE_03 existe déjà quelque part derrière le bruit. Rejoins le canal pour être présent au moment où l'archive s'ouvrira.</p>
       <div class="next-signal__giant" aria-hidden="true">03</div>
     </section>
@@ -162,10 +173,10 @@
 
   <footer class="footer mono">
     <div><strong>VRTG</strong><span>FRÉQUENCE_02 / 2026</span></div>
-    <div class="footer__links"><a href="../">ACCUEIL</a><a href="../frequence-01/">FRÉQUENCE_01</a><a href="https://open.spotify.com/track/1C9Vg9ocyrMYbzLWoFbl8R" target="_blank" rel="noreferrer">SPOTIFY ↗</a></div>
+    <div class="footer__links"><a href="/">ACCUEIL</a><a href="/frequence">FRÉQUENCE</a><a href="/frequence/01">FRÉQUENCE_01</a><a href="https://open.spotify.com/track/1C9Vg9ocyrMYbzLWoFbl8R" target="_blank" rel="noreferrer">SPOTIFY ↗</a></div>
     <div>LA NUQUE REÇOIT.<br />LE CORPS CONSERVE.<br />LA VOIX RETRANSMET.</div>
   </footer>
 
-  <script src="../release.js"></script>
+  <script src="/release.js"></script>
 </body>
 </html>
