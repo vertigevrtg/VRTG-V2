@@ -3,9 +3,5 @@
   "redirects": [
     { "source": "/frequence-01", "destination": "/frequence/01", "permanent": true },
     { "source": "/frequence-02", "destination": "/frequence/02", "permanent": true }
-  ],
-  "rewrites": [
-    { "source": "/frequence/01", "destination": "/frequence-01/index.html" },
-    { "source": "/frequence/02", "destination": "/frequence-02/index.html" }
   ]
 }
