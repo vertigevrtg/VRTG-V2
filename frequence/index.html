@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070709" />
+  <meta name="description" content="FRÉQUENCE — Le premier EP de VRTG. Trois transmissions, trois points d'entrée dans le signal." />
+  <meta property="og:title" content="FRÉQUENCE — VRTG" />
+  <meta property="og:description" content="Les transmissions du premier EP de VRTG." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.vrtgmusic.ca/frequence" />
+  <meta property="og:image" content="https://www.vrtgmusic.ca/assets/hero-vrtg.webp" />
+  <title>FRÉQUENCE — VRTG</title>
+  <link rel="canonical" href="https://www.vrtgmusic.ca/frequence" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/release.css" />
+</head>
+<body class="freq-index">
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot__top mono"><span>VRTG_ARCHIVE</span><span>EP / 001</span></div>
+    <div class="boot__center"><p class="mono">OUVERTURE DES TRANSMISSIONS</p><div class="boot__bar"><span id="bootBar"></span></div><strong id="bootCount">00</strong></div>
+  </div>
+
+  <canvas id="signalCanvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="topbar__brand magnetic" href="/" aria-label="VRTG, retour à l'accueil">VRTG</a>
+    <div class="topbar__status mono"><i></i> EP 001 / ACTIF</div>
+    <div class="topbar__coords mono">ARCHIVE / FRÉQUENCE</div>
+    <button class="menu-button magnetic" id="menuButton" type="button" aria-controls="menu" aria-expanded="false">MENU <span>+</span></button>
+  </header>
+
+  <nav class="menu" id="menu" aria-hidden="true">
+    <div class="menu__meta mono">ARCHITECTURE DES TRANSMISSIONS</div>
+    <div class="menu__structure">
+      <a class="menu__top-link" href="/" data-index="00">ACCUEIL</a>
+      <div class="menu__chapter">
+        <a class="menu__top-link" href="/frequence" data-index="01" aria-current="page">FRÉQUENCE</a>
+        <div class="menu__tracks" aria-label="Morceaux de Fréquence">
+          <a href="/frequence/01" data-index="01.01">FRÉQUENCE_01</a>
+          <a href="/frequence/02" data-index="01.02">FRÉQUENCE_02</a>
+          <a href="/frequence/03" data-index="01.03">FRÉQUENCE_03 <span>À VENIR</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="menu__foot mono">CHAQUE EP OUVRE SES PROPRES TRANSMISSIONS.</div>
+  </nav>
+
+  <main class="frequency-index">
+    <section class="frequency-index__hero">
+      <span class="frequency-index__eyebrow mono">[ EP 001 / ARCHIVES DISPONIBLES ]</span>
+      <h1>FRÉQUENCE</h1>
+      <p class="frequency-index__lede">Un premier ensemble de transmissions où le ciel entre dans le corps. Chaque morceau est une porte distincte vers le même signal.</p>
+      <a class="frequency-index__action magnetic mono" href="#morceaux"><b>↘</b> OUVRIR LES TRANSMISSIONS</a>
+    </section>
+
+    <section class="frequency-index__tracks" id="morceaux">
+      <div class="frequency-index__tracks-head">
+        <div><span class="section-index mono">[ MORCEAUX / EP 001 ]</span><h2>CHOISIS<br />TA FRÉQUENCE.</h2></div>
+        <p>Les morceaux peuvent s'écouter séparément. Ensemble, ils dessinent une trajectoire : du point zéro vers la matière.</p>
+      </div>
+      <div class="track-list">
+        <a href="/frequence/01"><span class="track-list__number mono">01</span><h3>FRÉQUENCE_01</h3><span class="track-list__status mono">OUVERTURE ↗</span></a>
+        <a href="/frequence/02"><span class="track-list__number mono">02</span><h3>FRÉQUENCE_02</h3><span class="track-list__status mono">SIGNAL DENSE ↗</span></a>
+        <a class="is-locked" href="/frequence/03"><span class="track-list__number mono">03</span><h3>FRÉQUENCE_03</h3><span class="track-list__status mono">À VENIR ↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <div><strong>VRTG</strong><span>FRÉQUENCE / EP 001</span></div>
+    <div class="footer__links"><a href="/">ACCUEIL</a><a href="/frequence/01">FRÉQUENCE_01</a><a href="/frequence/02">FRÉQUENCE_02</a><a href="/frequence/03">FRÉQUENCE_03</a></div>
+    <div>UNE ARCHIVE<br />NE S'ÉCOUTE JAMAIS<br />DEUX FOIS PAREIL.</div>
+  </footer>
+
+  <script src="/release.js"></script>
+</body>
+</html>
