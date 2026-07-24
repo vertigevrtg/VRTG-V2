@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070709" />
+  <meta name="description" content="FRÉQUENCE_03 arrive bientôt. Inscris-toi au signal VRTG pour être présent à l'ouverture de la prochaine transmission." />
+  <meta property="og:title" content="FRÉQUENCE_03 — Bientôt disponible | VRTG" />
+  <meta property="og:description" content="Le prochain signal est verrouillé, mais il approche." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.vrtgmusic.ca/frequence/03" />
+  <title>FRÉQUENCE_03 — Bientôt disponible | VRTG</title>
+  <link rel="canonical" href="https://www.vrtgmusic.ca/frequence/03" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/release.css" />
+</head>
+<body class="freq-index">
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot__top mono"><span>VRTG_RECEPTION</span><span>SIGNAL / 003</span></div>
+    <div class="boot__center"><p class="mono">LE SIGNAL APPROCHE</p><div class="boot__bar"><span id="bootBar"></span></div><strong id="bootCount">00</strong></div>
+  </div>
+
+  <canvas id="signalCanvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="topbar__brand magnetic" href="/" aria-label="VRTG, retour à l'accueil">VRTG</a>
+    <div class="topbar__status mono"><i></i> SIGNAL 003 / VERROUILLÉ</div>
+    <div class="topbar__coords mono">ARRIVÉE / INCONNUE</div>
+    <button class="menu-button magnetic" id="menuButton" type="button" aria-controls="menu" aria-expanded="false">MENU <span>+</span></button>
+  </header>
+
+  <nav class="menu" id="menu" aria-hidden="true">
+    <div class="menu__meta mono">ARCHITECTURE DES TRANSMISSIONS</div>
+    <div class="menu__structure">
+      <a class="menu__top-link" href="/" data-index="00">ACCUEIL</a>
+      <div class="menu__chapter">
+        <a class="menu__top-link" href="/frequence" data-index="01">FRÉQUENCE</a>
+        <div class="menu__tracks" aria-label="Morceaux de Fréquence">
+          <a href="/frequence/01" data-index="01.01">FRÉQUENCE_01</a>
+          <a href="/frequence/02" data-index="01.02">FRÉQUENCE_02</a>
+          <a href="/frequence/03" data-index="01.03" aria-current="page">FRÉQUENCE_03 <span>À VENIR</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="menu__foot mono">LE PROCHAIN SIGNAL EST DÉJÀ EN ROUTE.</div>
+  </nav>
+
+  <main class="frequency-index">
+    <section class="coming-soon">
+      <span class="coming-soon__signal mono">[ TRANSMISSION 003 / VERROUILLÉE ]</span>
+      <h1>FRÉQUENCE_03</h1>
+      <p class="frequency-index__lede">Le prochain fragment existe déjà quelque part derrière le bruit. Il n'a simplement pas encore traversé la fréquence.</p>
+      <div class="coming-soon__mark" aria-hidden="true">03</div>
+      <a class="frequency-index__action magnetic mono" href="/#contact"><b>⌁</b> ÊTRE PRÉVENU À L'OUVERTURE</a>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <div><strong>VRTG</strong><span>FRÉQUENCE_03 / À VENIR</span></div>
+    <div class="footer__links"><a href="/">ACCUEIL</a><a href="/frequence">FRÉQUENCE</a><a href="/frequence/01">FRÉQUENCE_01</a><a href="/frequence/02">FRÉQUENCE_02</a></div>
+    <div>LE SIGNAL<br />S'OUVRE QUAND<br />IL EST PRÊT.</div>
+  </footer>
+
+  <script src="/release.js"></script>
+</body>
+</html>
