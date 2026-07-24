@@ -7,12 +7,16 @@
   <meta name="description" content="FRÉQUENCE_01 — Le premier signal de VRTG. Rap psychique, oracle urbain et cosmologie intérieure." />
   <meta property="og:title" content="FRÉQUENCE_01 — VRTG" />
   <meta property="og:description" content="Le point zéro. Le premier signal VRTG." />
-  <meta property="og:image" content="../assets/cover-frequence-01.webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.vrtgmusic.ca/frequence-01" />
+  <meta property="og:image" content="https://www.vrtgmusic.ca/assets/cover-frequence-01.webp" />
   <title>FRÉQUENCE_01 — VRTG</title>
+  <link rel="canonical" href="https://www.vrtgmusic.ca/frequence-01" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../release.css" />
+  <link rel="stylesheet" href="/release.css" />
 </head>
 <body class="freq-01">
   <div class="boot" id="boot" aria-hidden="true">
@@ -30,24 +34,31 @@
   <div class="cursor" id="cursor" aria-hidden="true"></div>
 
   <header class="topbar">
-    <a class="topbar__brand magnetic" href="../" aria-label="VRTG, retour à l'accueil">VRTG</a>
+    <a class="topbar__brand magnetic" href="/" aria-label="VRTG, retour à l'accueil">VRTG</a>
     <div class="topbar__status mono"><i></i> ARCHIVE 001 / OUVERTE</div>
     <div class="topbar__coords mono">ORIGINE / POINT ZÉRO</div>
     <button class="menu-button magnetic" id="menuButton" type="button" aria-controls="menu" aria-expanded="false">MENU <span>+</span></button>
   </header>
 
   <nav class="menu" id="menu" aria-hidden="true">
-    <div class="menu__meta mono">INDEX DES TRANSMISSIONS</div>
-    <a href="../" data-index="00">ACCUEIL</a>
-    <a href="#ecouter" data-index="01">ÉCOUTER</a>
-    <a href="#oracle-section" data-index="02">ORACLE</a>
-    <a href="../frequence-02/" data-index="03">SIGNAL 02</a>
+    <div class="menu__meta mono">ARCHITECTURE DES TRANSMISSIONS</div>
+    <div class="menu__structure">
+      <a class="menu__top-link" href="/" data-index="00">ACCUEIL</a>
+      <div class="menu__chapter">
+        <a class="menu__top-link" href="/frequence" data-index="01">FRÉQUENCE</a>
+        <div class="menu__tracks" aria-label="Morceaux de Fréquence">
+          <a href="/frequence/01" data-index="01.01" aria-current="page">FRÉQUENCE_01</a>
+          <a href="/frequence/02" data-index="01.02">FRÉQUENCE_02</a>
+          <a href="/frequence/03" data-index="01.03">FRÉQUENCE_03 <span>À VENIR</span></a>
+        </div>
+      </div>
+    </div>
     <div class="menu__foot mono">LE PREMIER SIGNAL NE COMMENCE PAS. IL S'OUVRE.</div>
   </nav>
 
   <main>
     <section class="release-hero">
-      <div class="release-hero__media" aria-hidden="true"><img src="../assets/cover-frequence-01.webp" alt="" /></div>
+      <div class="release-hero__media" aria-hidden="true"><img src="/assets/cover-frequence-01.webp" alt="" /></div>
       <div class="signal-ring" aria-hidden="true"></div>
       <div class="release-hero__meta mono reveal"><span>TRANSMISSION / 001</span><span>RAP PSYCHIQUE — ORACLE URBAIN</span></div>
       <p class="release-hero__number" aria-hidden="true">01</p>
@@ -133,7 +144,7 @@
 
     <section class="next-signal">
       <span class="next-signal__index mono">[ TRANSMISSION SUIVANTE / 002 ]</span>
-      <a href="../frequence-02/" aria-label="Découvrir FRÉQUENCE_02"><h2>PLUS PRÈS<br />DE L'OS. ↗</h2></a>
+      <a href="/frequence/02" aria-label="Découvrir FRÉQUENCE_02"><h2>PLUS PRÈS<br />DE L'OS. ↗</h2></a>
       <p>Le premier signal ouvrait le ciel. Le deuxième descend dans la matière : la nuque, la peur, le temps et la pression intérieure.</p>
       <div class="next-signal__giant" aria-hidden="true">02</div>
     </section>
@@ -141,10 +152,10 @@
 
   <footer class="footer mono">
     <div><strong>VRTG</strong><span>FRÉQUENCE_01 / 2026</span></div>
-    <div class="footer__links"><a href="../">ACCUEIL</a><a href="../frequence-02/">FRÉQUENCE_02</a><a href="https://open.spotify.com/album/1WjyWQR7PkzstSkkiZlshC" target="_blank" rel="noreferrer">SPOTIFY ↗</a></div>
+    <div class="footer__links"><a href="/">ACCUEIL</a><a href="/frequence">FRÉQUENCE</a><a href="/frequence/02">FRÉQUENCE_02</a><a href="https://open.spotify.com/album/1WjyWQR7PkzstSkkiZlshC" target="_blank" rel="noreferrer">SPOTIFY ↗</a></div>
     <div>LE PREMIER SIGNAL<br />N'A PAS DE FIN.<br />SEULEMENT UNE ORBITE.</div>
   </footer>
 
-  <script src="../release.js"></script>
+  <script src="/release.js"></script>
 </body>
 </html>
