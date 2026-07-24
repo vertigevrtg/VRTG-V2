@@ -7,8 +7,12 @@
   <meta name="description" content="VRTG — Rap psychique. Fragments sonores, signal, fréquence et vertige." />
   <meta property="og:title" content="VRTG — Le signal est déjà là" />
   <meta property="og:description" content="Rap psychique. Oracle urbain. Entrez dans le signal VRTG." />
-  <meta property="og:image" content="assets/hero-vrtg.webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.vrtgmusic.ca/" />
+  <meta property="og:image" content="https://www.vrtgmusic.ca/assets/hero-vrtg.webp" />
   <title>VRTG — Le signal est déjà là</title>
+  <link rel="canonical" href="https://www.vrtgmusic.ca/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -37,12 +41,19 @@
   </header>
 
   <nav class="menu" id="menu" aria-hidden="true">
-    <div class="menu__meta mono">INDEX DES TRANSMISSIONS</div>
-    <a href="#transmissions" data-index="01">ÉCOUTER</a>
-    <a href="#manifesto" data-index="02">LE SIGNAL</a>
-    <a href="#identity" data-index="03">VRTG</a>
-    <a href="#contact" data-index="04">RECEVOIR</a>
-    <div class="menu__foot mono">PAS DE BRUIT. SEULEMENT LES SIGNES IMPORTANTS.</div>
+    <div class="menu__meta mono">ARCHITECTURE DES TRANSMISSIONS</div>
+    <div class="menu__structure">
+      <a class="menu__top-link" href="/" data-index="00">ACCUEIL</a>
+      <div class="menu__chapter">
+        <a class="menu__top-link" href="/frequence" data-index="01">FRÉQUENCE</a>
+        <div class="menu__tracks" aria-label="Morceaux de Fréquence">
+          <a href="/frequence/01" data-index="01.01">FRÉQUENCE_01</a>
+          <a href="/frequence/02" data-index="01.02">FRÉQUENCE_02</a>
+          <a href="/frequence/03" data-index="01.03">FRÉQUENCE_03 <span>À VENIR</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="menu__foot mono">CHAQUE EP OUVRE SES PROPRES TRANSMISSIONS.</div>
   </nav>
 
   <main id="top">
@@ -103,7 +114,7 @@
           <blockquote>« Plus je comprends, plus je prends de l'âge. Conscience s'élève, au-delà l'espace. »</blockquote>
           <div class="release__actions">
             <a class="play-button magnetic" href="https://open.spotify.com/track/1C9Vg9ocyrMYbzLWoFbl8R" target="_blank" rel="noreferrer"><span>▶</span> ÉCOUTER SUR SPOTIFY</a>
-            <a class="text-link" href="frequence-02/">DÉCODER LE MORCEAU ↗</a>
+            <a class="text-link" href="/frequence/02">DÉCODER LE MORCEAU ↗</a>
           </div>
         </div>
       </article>
@@ -120,7 +131,7 @@
           <blockquote>« Les murmures dans ma nuque m'indiquent le chemin cosmique. »</blockquote>
           <div class="release__actions">
             <a class="play-button magnetic" href="https://open.spotify.com/album/1WjyWQR7PkzstSkkiZlshC" target="_blank" rel="noreferrer"><span>▶</span> ÉCOUTER SUR SPOTIFY</a>
-            <a class="text-link" href="frequence-01/">DÉCODER LE MORCEAU ↗</a>
+            <a class="text-link" href="/frequence/01">DÉCODER LE MORCEAU ↗</a>
           </div>
         </div>
       </article>
@@ -135,7 +146,7 @@
           <h3>FRÉQUENCE_<em>03</em></h3>
           <blockquote>Le prochain fragment existe déjà quelque part. Il n'a simplement pas encore traversé le bruit.</blockquote>
           <div class="release__actions">
-            <a class="play-button magnetic" href="#contact"><span>⌁</span> ÊTRE PRÉVENU</a>
+            <a class="play-button magnetic" href="/frequence/03"><span>⌁</span> DÉCOUVRIR LE SIGNAL À VENIR</a>
           </div>
         </div>
       </article>
