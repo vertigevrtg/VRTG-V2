@@ -3,39 +3,41 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#070709" />
-  <meta name="description" content="FRÉQUENCE_03 arrive bientôt. Inscris-toi au signal VRTG pour être présent à l'ouverture de la prochaine transmission." />
-  <meta property="og:title" content="FRÉQUENCE_03 — Bientôt disponible | VRTG" />
-  <meta property="og:description" content="Le prochain signal est verrouillé, mais il approche." />
+  <meta name="theme-color" content="#030307" />
+  <meta name="description" content="FRÉQUENCE 03 — LE FILS DE L’INVISIBLE. Une cérémonie numérique VRTG, entre temple de données, troisième œil et gravité inversée." />
+  <meta property="og:title" content="FRÉQUENCE 03 — LE FILS DE L’INVISIBLE | VRTG" />
+  <meta property="og:description" content="Le narratif était stable. Puis le signal est arrivé." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.vrtgmusic.ca/frequence/03" />
-  <title>FRÉQUENCE_03 — Bientôt disponible | VRTG</title>
+  <meta property="og:image" content="https://www.vrtgmusic.ca/assets/frequence-03-temple.jpg" />
+  <title>FRÉQUENCE 03 — LE FILS DE L’INVISIBLE | VRTG</title>
   <link rel="canonical" href="https://www.vrtgmusic.ca/frequence/03" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/release.css" />
+  <link rel="stylesheet" href="/frequence/03/frequency-03.css" />
 </head>
-<body class="freq-index">
-  <div class="boot" id="boot" aria-hidden="true">
-    <div class="boot__top mono"><span>VRTG_RECEPTION</span><span>SIGNAL / 003</span></div>
-    <div class="boot__center"><p class="mono">LE SIGNAL APPROCHE</p><div class="boot__bar"><span id="bootBar"></span></div><strong id="bootCount">00</strong></div>
+<body class="f03" data-presave-url="/#contact">
+  <a class="f03-skip" href="#transmission">Passer à la transmission</a>
+
+  <div class="f03-boot" id="f03Boot" aria-hidden="true">
+    <div class="mono"><span>VRTG_RECEPTION</span><span>SIGNAL / 003</span></div>
+    <div class="f03-boot__center"><p class="mono">DÉVERROUILLAGE DU TEMPLE</p><div><span id="f03BootBar"></span></div><strong id="f03BootCount">00</strong></div>
   </div>
 
-  <canvas id="signalCanvas" aria-hidden="true"></canvas>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="scanline" aria-hidden="true"></div>
-  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <canvas class="f03-field" id="f03Field" aria-hidden="true"></canvas>
+  <div class="f03-noise" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <a class="topbar__brand magnetic" href="/" aria-label="VRTG, retour à l'accueil">VRTG</a>
-    <div class="topbar__status mono"><i></i> SIGNAL 003 / VERROUILLÉ</div>
-    <div class="topbar__coords mono">ARRIVÉE / INCONNUE</div>
-    <button class="menu-button magnetic" id="menuButton" type="button" aria-controls="menu" aria-expanded="false">MENU <span>+</span></button>
+  <header class="topbar f03-topbar">
+    <a class="topbar__brand" href="/" aria-label="VRTG, retour à l'accueil">VRTG</a>
+    <div class="topbar__status mono"><i></i> SIGNAL 003 / ACTIF</div>
+    <div class="topbar__coords mono">ORIGINE / CASSIOPÉE</div>
+    <button class="menu-button" id="f03MenuButton" type="button" aria-controls="f03Menu" aria-expanded="false">MENU <span>+</span></button>
   </header>
 
-  <nav class="menu" id="menu" aria-hidden="true">
+  <nav class="menu" id="f03Menu" aria-hidden="true">
     <div class="menu__meta mono">ARCHITECTURE DES TRANSMISSIONS</div>
     <div class="menu__structure">
       <a class="menu__top-link" href="/" data-index="00">ACCUEIL</a>
@@ -44,29 +46,109 @@
         <div class="menu__tracks" aria-label="Morceaux de Fréquence">
           <a href="/frequence/01" data-index="01.01">FRÉQUENCE_01</a>
           <a href="/frequence/02" data-index="01.02">FRÉQUENCE_02</a>
-          <a href="/frequence/03" data-index="01.03" aria-current="page">FRÉQUENCE_03 <span>À VENIR</span></a>
+          <a href="/frequence/03" data-index="01.03" aria-current="page">FRÉQUENCE_03 <span>ACTIF</span></a>
         </div>
       </div>
     </div>
-    <div class="menu__foot mono">LE PROCHAIN SIGNAL EST DÉJÀ EN ROUTE.</div>
+    <div class="menu__foot mono">LE NARRATIF ÉTAIT STABLE. PUIS LE SIGNAL EST ARRIVÉ.</div>
   </nav>
 
-  <main class="frequency-index">
-    <section class="coming-soon">
-      <span class="coming-soon__signal mono">[ TRANSMISSION 003 / VERROUILLÉE ]</span>
-      <h1>FRÉQUENCE_03</h1>
-      <p class="frequency-index__lede">Le prochain fragment existe déjà quelque part derrière le bruit. Il n'a simplement pas encore traversé la fréquence.</p>
-      <div class="coming-soon__mark" aria-hidden="true">03</div>
-      <a class="frequency-index__action magnetic mono" href="/#contact"><b>⌁</b> ÊTRE PRÉVENU À L'OUVERTURE</a>
+  <main>
+    <section class="f03-hero" aria-labelledby="f03-title">
+      <div class="f03-hero__art" aria-hidden="true"><img src="/assets/frequence-03-temple.jpg" alt="" /></div>
+      <div class="f03-hero__shade" aria-hidden="true"></div>
+      <div class="f03-hero__grid" aria-hidden="true"></div>
+      <div class="f03-hero__meta mono"><span>TRANSMISSION / 003</span><span>LE TEMPLE DE DONNÉES</span></div>
+      <div class="f03-hero__copy">
+        <p class="f03-kicker mono"><i></i> LE SIGNAL A TRAVERSÉ L'IMAGE</p>
+        <h1 id="f03-title">LE FILS<br />DE L'<em>INVISIBLE</em></h1>
+        <p>Entre comme spectateur. Traverse la cérémonie. Ressors avec une fréquence que tu n'étais pas censé recevoir.</p>
+        <div class="f03-actions">
+          <a class="f03-button f03-button--light" href="#transmission"><span>↓</span> ENTRER DANS LE TEMPLE</a>
+          <a class="f03-text-link mono" href="#signal">ÊTRE PRÉSENT À L'ARRIVÉE</a>
+        </div>
+      </div>
+      <div class="f03-constellation f03-constellation--hero" aria-label="Cassiopée, constellation guide" role="img"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="f03-hero__chapters mono" aria-label="Les six degrés de la cérémonie">
+        <span>01 / CONDITIONNEMENT</span><span>02 / FISSURE</span><span>03 / ÉVEIL</span><span>04 / TRANSE</span><span>05 / APPARITION</span><span>06 / ASCENSION</span>
+      </div>
+    </section>
+
+    <section class="f03-section f03-narrative" id="transmission" aria-labelledby="narratif-title">
+      <div class="f03-index mono">[ 01 / FISSURE ]</div>
+      <div class="f03-narrative__body">
+        <p class="f03-system mono">LE NARRATIF PRÉSENTE DES ANOMALIES</p>
+        <h2 id="narratif-title">JE MODIFIE<br />LE <em>NARRATIF</em></h2>
+        <p>La pierre se transforme en interface. Les colonnes deviennent des lignes de données. La version officielle se réécrit au passage de ton regard.</p>
+      </div>
+      <div class="f03-redaction" aria-label="Données instables" role="img">
+        <span class="mono">RÉCIT / 01</span><b>LE SYSTÈME OBSERVE</b><i></i><b>LA PIERRE GARDE TRACE</b><i></i><b>CE QUE TU CHERCHES TE REGARDE</b><i></i><span class="mono">DÉCODAGE / EN COURS</span>
+      </div>
+    </section>
+
+    <section class="f03-section f03-eye-stage" aria-labelledby="eye-title">
+      <div class="f03-index mono">[ 02 / ÉVEIL ]</div>
+      <div class="f03-eye-stage__copy">
+        <p class="f03-system mono">OUVERTURE DU TROISIÈME ŒIL</p>
+        <h2 id="eye-title">L'OMBRE N'ÉTAIT<br />QU'UNE <em>PROJECTION.</em></h2>
+        <p>Le troisième œil ne révèle pas une réponse. Il déplace le cadre dans lequel la question existe.</p>
+      </div>
+      <button class="f03-eye" id="f03Eye" type="button" aria-pressed="false" aria-describedby="f03EyeMessage">
+        <span class="f03-eye__lid"></span><span class="f03-eye__core"></span><span class="f03-eye__label mono">TOUCHER / OUVRIR</span>
+      </button>
+      <p class="f03-eye-message mono" id="f03EyeMessage" aria-live="polite">PERCEPTION / EN VEILLE</p>
+    </section>
+
+    <section class="f03-section f03-ritual" aria-labelledby="ritual-title">
+      <div class="f03-index mono">[ 03 / TRANSE ]</div>
+      <div class="f03-ritual__copy">
+        <p class="f03-system mono">CÉRÉMONIE CÉLESTE</p>
+        <h2 id="ritual-title">LE TEMPLE<br /><em>DÉRAILLE.</em></h2>
+        <p>La grille quitte sa fonction. Les mots gravitent. La logique du site cède devant l'orbite du rituel.</p>
+      </div>
+      <div class="f03-orbit" id="f03Orbit" tabindex="0" role="group" aria-label="Orbite rituelle interactive : déplacez le curseur ou les flèches pour déplacer la cérémonie">
+        <div class="f03-orbit__ring"></div><div class="f03-orbit__ring f03-orbit__ring--two"></div><div class="f03-orbit__ring f03-orbit__ring--three"></div>
+        <span class="f03-orbit__centre mono">PRÉSENCES<br />CONNECTÉES</span><span class="f03-orbit__point f03-orbit__point--one"></span><span class="f03-orbit__point f03-orbit__point--two"></span><span class="f03-orbit__point f03-orbit__point--three"></span>
+      </div>
+    </section>
+
+    <section class="f03-section f03-presences" aria-labelledby="presence-title">
+      <div class="f03-presences__ghost f03-presences__ghost--one" aria-hidden="true"></div><div class="f03-presences__ghost f03-presences__ghost--two" aria-hidden="true"></div><div class="f03-presences__ghost f03-presences__ghost--three" aria-hidden="true"></div>
+      <div class="f03-index mono">[ 04 / APPARITION ]</div>
+      <div class="f03-presences__copy">
+        <p class="f03-system mono">PRÉSENCES DÉTECTÉES</p>
+        <h2 id="presence-title">PLUS DE CENT<br /><em>SIGNAUX</em> AUTOUR.</h2>
+        <p>Pas de spectacle, pas de peur facile. Seulement la sensation qu'une présence regarde depuis la périphérie de l'écran.</p>
+      </div>
+      <div class="f03-presences__counter mono"><span id="f03PresenceCount">001</span><small>PRÉSENCES / CONNECTÉES</small></div>
+    </section>
+
+    <section class="f03-section f03-gravity" aria-labelledby="gravity-title">
+      <div class="f03-index mono">[ 05 / ASCENSION ]</div>
+      <div class="f03-gravity__copy">
+        <p class="f03-system mono">GRAVITÉ NON CONFORME</p>
+        <h2 id="gravity-title">TOUT CE QUI TOMBE<br />FINIT PAR <em>REMONTER.</em></h2>
+        <p>La poussière, les lettres et les fragments de pierre quittent le sol. Au-dessus, Cassiopée cesse de se cacher.</p>
+      </div>
+      <div class="f03-gravity__field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="f03-constellation f03-constellation--large" aria-label="Cassiopée révélée" role="img"><i></i><i></i><i></i><i></i><i></i></div>
+    </section>
+
+    <section class="f03-signal" id="signal" aria-labelledby="signal-title">
+      <p class="f03-system mono">L'ARRIVÉE A COMMENCÉ</p>
+      <h2 id="signal-title">FRÉQUENCE<br /><em>03</em></h2>
+      <p>Le signal n'est pas encore disponible. Laisse une trace pour être présent au moment de l'ouverture.</p>
+      <a class="f03-button f03-button--gold" id="f03Presave" href="/#contact"><span>⌁</span> ÊTRE PRÉSENT À L'ARRIVÉE</a>
+      <p class="f03-signal__note mono">PRE-SAVE / LIEN CONFIGURABLE</p>
     </section>
   </main>
 
   <footer class="footer mono">
-    <div><strong>VRTG</strong><span>FRÉQUENCE_03 / À VENIR</span></div>
+    <div><strong>VRTG</strong><span>FRÉQUENCE_03 / LE FILS DE L'INVISIBLE</span></div>
     <div class="footer__links"><a href="/">ACCUEIL</a><a href="/frequence">FRÉQUENCE</a><a href="/frequence/01">FRÉQUENCE_01</a><a href="/frequence/02">FRÉQUENCE_02</a></div>
-    <div>LE SIGNAL<br />S'OUVRE QUAND<br />IL EST PRÊT.</div>
+    <div>LE SIGNAL EST ARRIVÉ.<br />LE CYCLE EST TERMINÉ.<br />L'ASCENSION CONTINUE.</div>
   </footer>
 
-  <script src="/release.js"></script>
+  <script src="/frequence/03/frequency-03.js"></script>
 </body>
 </html>
