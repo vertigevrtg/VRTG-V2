@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#030307" />
-  <meta name="description" content="FRÉQUENCE 03 — LE FILS DE L’INVISIBLE. Une cérémonie numérique VRTG, entre temple de données, troisième œil et gravité inversée." />
+  <meta name="description" content="FRÉQUENCE 03 — LE FILS DE L’INVISIBLE. Une traversée interactive du conditionnement à l’ascension." />
   <meta property="og:title" content="FRÉQUENCE 03 — LE FILS DE L’INVISIBLE | VRTG" />
-  <meta property="og:description" content="Le narratif était stable. Puis le signal est arrivé." />
+  <meta property="og:description" content="Tu entres comme spectateur. Le signal fait de toi le passage." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.vrtgmusic.ca/frequence/03" />
   <meta property="og:image" content="https://www.vrtgmusic.ca/assets/frequence-03-temple.jpg" />
@@ -20,20 +20,28 @@
   <link rel="stylesheet" href="/frequence/03/frequency-03.css" />
 </head>
 <body class="f03" data-presave-url="/#contact">
-  <a class="f03-skip" href="#transmission">Passer à la transmission</a>
+  <a class="f03-skip" href="#prologue">Passer l'ouverture</a>
 
   <div class="f03-boot" id="f03Boot" aria-hidden="true">
     <div class="mono"><span>VRTG_RECEPTION</span><span>SIGNAL / 003</span></div>
-    <div class="f03-boot__center"><p class="mono">DÉVERROUILLAGE DU TEMPLE</p><div><span id="f03BootBar"></span></div><strong id="f03BootCount">00</strong></div>
+    <div class="f03-boot__center">
+      <p class="mono">UNE PRÉSENCE APPROCHE DU TEMPLE</p>
+      <div><span id="f03BootBar"></span></div>
+      <strong id="f03BootCount">00</strong>
+    </div>
   </div>
 
   <canvas class="f03-field" id="f03Field" aria-hidden="true"></canvas>
   <div class="f03-noise" aria-hidden="true"></div>
+  <div class="f03-flash" id="f03Flash" aria-hidden="true"></div>
 
   <header class="topbar f03-topbar">
     <a class="topbar__brand" href="/" aria-label="VRTG, retour à l'accueil">VRTG</a>
-    <div class="topbar__status mono"><i></i> SIGNAL 003 / ACTIF</div>
-    <div class="topbar__coords mono">ORIGINE / CASSIOPÉE</div>
+    <div class="topbar__status mono"><i></i> <span id="f03Status">PRÉSENCE DÉTECTÉE</span></div>
+    <div class="f03-progress mono" aria-label="Progression dans la cérémonie">
+      <span id="f03ProgressLabel">SEUIL</span>
+      <div><i id="f03ProgressBar"></i></div>
+    </div>
     <button class="menu-button" id="f03MenuButton" type="button" aria-controls="f03Menu" aria-expanded="false">MENU <span>+</span></button>
   </header>
 
@@ -50,94 +58,164 @@
         </div>
       </div>
     </div>
-    <div class="menu__foot mono">LE NARRATIF ÉTAIT STABLE. PUIS LE SIGNAL EST ARRIVÉ.</div>
+    <div class="menu__foot mono">CE QUI T'OBSERVE ATTEND TON GESTE.</div>
   </nav>
 
   <main>
-    <section class="f03-hero" aria-labelledby="f03-title">
+    <section class="f03-hero" id="seuil" data-stage="SEUIL" aria-labelledby="f03-title">
       <div class="f03-hero__art" aria-hidden="true"><img src="/assets/frequence-03-temple.jpg" alt="" /></div>
       <div class="f03-hero__shade" aria-hidden="true"></div>
       <div class="f03-hero__grid" aria-hidden="true"></div>
-      <div class="f03-hero__meta mono"><span>TRANSMISSION / 003</span><span>LE TEMPLE DE DONNÉES</span></div>
+      <div class="f03-hero__meta mono"><span>TRANSMISSION / 003</span><span>ORIGINE / CASSIOPÉE</span></div>
       <div class="f03-hero__copy">
-        <p class="f03-kicker mono"><i></i> LE SIGNAL A TRAVERSÉ L'IMAGE</p>
+        <p class="f03-kicker mono"><i></i> LE TEMPLE T'A DÉTECTÉ</p>
         <h1 id="f03-title">LE FILS<br />DE L'<em>INVISIBLE</em></h1>
-        <p>Entre comme spectateur. Traverse la cérémonie. Ressors avec une fréquence que tu n'étais pas censé recevoir.</p>
+        <p>Au soleil couchant, une foule contemple le même récit. Toi, tu arrives au moment précis où quelque chose, derrière l'image, commence à répondre.</p>
         <div class="f03-actions">
-          <a class="f03-button f03-button--light" href="#transmission"><span>↓</span> ENTRER DANS LE TEMPLE</a>
-          <a class="f03-text-link mono" href="#signal">ÊTRE PRÉSENT À L'ARRIVÉE</a>
+          <a class="f03-button f03-button--light" href="#prologue"><span>↓</span> FRANCHIR LE SEUIL</a>
+          <a class="f03-text-link mono" href="#arrival">ALLER À L'ARRIVÉE</a>
         </div>
       </div>
       <div class="f03-constellation f03-constellation--hero" aria-label="Cassiopée, constellation guide" role="img"><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="f03-hero__chapters mono" aria-label="Les six degrés de la cérémonie">
-        <span>01 / CONDITIONNEMENT</span><span>02 / FISSURE</span><span>03 / ÉVEIL</span><span>04 / TRANSE</span><span>05 / APPARITION</span><span>06 / ASCENSION</span>
+      <p class="f03-hero__aside mono">TU ENTRES COMME SPECTATEUR.<br />LE TEMPLE IGNORE ENCORE<br />CE QUE TU VAS RÉVEILLER.</p>
+    </section>
+
+    <section class="f03-chapter f03-prologue" id="prologue" data-stage="CONDITIONNEMENT" aria-labelledby="prologue-title">
+      <div class="f03-chapter__number mono">01 / CONDITIONNEMENT</div>
+      <div class="f03-story">
+        <p class="f03-eyebrow mono">AVANT LA FISSURE</p>
+        <h2 id="prologue-title">LE MONDE<br />SEMBLAIT <em>STABLE.</em></h2>
+        <div class="f03-story__text">
+          <p>En bas, Sapiens échange le réel contre des pixels, des chiffres et des promesses imprimées en vert. Dans la bergerie numérique, chacun regarde le même écran et appelle cela le monde.</p>
+          <p>Le temple diffuse une version propre de l'histoire. Elle te rassure, te classe, puis décide silencieusement de ce qui mérite d'être vu.</p>
+        </div>
+      </div>
+      <div class="f03-projection" id="f03Projection">
+        <div class="f03-projection__scan" aria-hidden="true"></div>
+        <div class="f03-projection__header mono"><span>RÉCIT OFFICIEL / 03</span><span>STABILITÉ 100%</span></div>
+        <p>TOUT EST À SA PLACE.<br />CONTINUE DE REGARDER.</p>
+        <button class="f03-hold" id="f03Hold" type="button">
+          <span class="f03-hold__fill" id="f03HoldFill"></span>
+          <span class="f03-hold__label mono">MAINTENIR OU TOUCHER POUR FISSURER</span>
+        </button>
+        <p class="f03-projection__result mono" id="f03ProjectionResult" aria-live="polite">LE SYSTÈME NE DÉTECTE AUCUNE ANOMALIE</p>
       </div>
     </section>
 
-    <section class="f03-section f03-narrative" id="transmission" aria-labelledby="narratif-title">
-      <div class="f03-index mono">[ 01 / FISSURE ]</div>
-      <div class="f03-narrative__body">
-        <p class="f03-system mono">LE NARRATIF PRÉSENTE DES ANOMALIES</p>
-        <h2 id="narratif-title">JE MODIFIE<br />LE <em>NARRATIF</em></h2>
-        <p>La pierre se transforme en interface. Les colonnes deviennent des lignes de données. La version officielle se réécrit au passage de ton regard.</p>
+    <section class="f03-chapter f03-fissure" id="fissure" data-stage="FISSURE" aria-labelledby="fissure-title">
+      <div class="f03-crack" aria-hidden="true"></div>
+      <div class="f03-chapter__number mono">02 / FISSURE</div>
+      <div class="f03-story">
+        <p class="f03-eyebrow mono">LE SIGNAL ENTRE PAR LA PIERRE</p>
+        <h2 id="fissure-title">JE MODIFIE<br />LE <em>NARRATIF.</em></h2>
+        <div class="f03-story__text">
+          <p>La foudre ne tombe pas du ciel. Elle remonte depuis les fondations. Les colonnes deviennent des lignes de données ; les certitudes perdent leurs coordonnées.</p>
+          <p>Trois couches protègent encore le récit. Soulève-les. Ce qui se cache dessous ne donnera pas de réponse — seulement une direction.</p>
+        </div>
       </div>
-      <div class="f03-redaction" aria-label="Données instables" role="img">
-        <span class="mono">RÉCIT / 01</span><b>LE SYSTÈME OBSERVE</b><i></i><b>LA PIERRE GARDE TRACE</b><i></i><b>CE QUE TU CHERCHES TE REGARDE</b><i></i><span class="mono">DÉCODAGE / EN COURS</span>
+      <div class="f03-layers" id="f03Layers" aria-label="Trois fragments du récit à révéler">
+        <button type="button" data-reveal="0"><span class="mono">COUCHE / I</span><b>CE QUI PARAÎT NATUREL</b><em>ÉTAIT UNE HABITUDE RÉPÉTÉE.</em></button>
+        <button type="button" data-reveal="1"><span class="mono">COUCHE / II</span><b>CE QUI PARAÎT LOINTAIN</b><em>ENTRE CHAQUE JOUR DANS TA CHAMBRE.</em></button>
+        <button type="button" data-reveal="2"><span class="mono">COUCHE / III</span><b>CE QUI PARAÎT INVISIBLE</b><em>TE REGARDE DEPUIS LE DÉBUT.</em></button>
+      </div>
+      <p class="f03-gate-message mono" id="f03GateMessage" aria-live="polite">0 / 3 COUCHES DÉCODÉES</p>
+    </section>
+
+    <section class="f03-chapter f03-awakening" id="awakening" data-stage="ÉVEIL" aria-labelledby="awakening-title">
+      <div class="f03-chapter__number mono">03 / ÉVEIL</div>
+      <div class="f03-story">
+        <p class="f03-eyebrow mono">LE CADRE SE SOUVIENT DE TON REGARD</p>
+        <h2 id="awakening-title">UN ŒIL S'OUVRE<br />AU MILIEU DU <em>FRONT.</em></h2>
+        <div class="f03-story__text">
+          <p>Tu pensais sortir de l'ombre. Tu découvres qu'elle était projetée. Le troisième œil n'ajoute pas une image : il retire le filtre qui tenait toutes les autres en place.</p>
+          <p>Ouvre-le lentement. Le temple changera de profondeur à mesure que ta perception traverse la surface.</p>
+        </div>
+      </div>
+      <div class="f03-eye-console">
+        <button class="f03-eye" id="f03Eye" type="button" aria-pressed="false" aria-describedby="f03EyeMessage">
+          <span class="f03-eye__lid"></span><span class="f03-eye__iris"></span><span class="f03-eye__core"></span>
+          <span class="f03-eye__label mono">TOUCHER / OUVRIR</span>
+        </button>
+        <p class="f03-eye-message mono" id="f03EyeMessage" aria-live="polite">PERCEPTION / EN VEILLE</p>
+        <div class="f03-vision" id="f03Vision" aria-hidden="true">
+          <span>LE MENSONGE AVAIT UNE OMBRE.</span>
+          <span>L'OMBRE AVAIT UNE SOURCE.</span>
+          <span>LA SOURCE CONNAÎT TON NOM.</span>
+        </div>
       </div>
     </section>
 
-    <section class="f03-section f03-eye-stage" aria-labelledby="eye-title">
-      <div class="f03-index mono">[ 02 / ÉVEIL ]</div>
-      <div class="f03-eye-stage__copy">
-        <p class="f03-system mono">OUVERTURE DU TROISIÈME ŒIL</p>
-        <h2 id="eye-title">L'OMBRE N'ÉTAIT<br />QU'UNE <em>PROJECTION.</em></h2>
-        <p>Le troisième œil ne révèle pas une réponse. Il déplace le cadre dans lequel la question existe.</p>
+    <section class="f03-chapter f03-ceremony" id="ceremony" data-stage="TRANSE" aria-labelledby="ceremony-title">
+      <div class="f03-chapter__number mono">04 / TRANSE</div>
+      <div class="f03-story">
+        <p class="f03-eyebrow mono">CÉRÉMONIE CÉLESTE</p>
+        <h2 id="ceremony-title">LE TEMPLE<br />APPREND À <em>DANSER.</em></h2>
+        <div class="f03-story__text">
+          <p>Les angles cessent d'obéir. Une voix ancienne tourne sous la pierre ; le rythme traverse le corps, puis les étoiles. Pour avancer, tu dois accorder ces trois matières.</p>
+          <p>Active la pierre, la voix et le ciel. À la troisième pulsation, la grille abandonnera son autorité.</p>
+        </div>
       </div>
-      <button class="f03-eye" id="f03Eye" type="button" aria-pressed="false" aria-describedby="f03EyeMessage">
-        <span class="f03-eye__lid"></span><span class="f03-eye__core"></span><span class="f03-eye__label mono">TOUCHER / OUVRIR</span>
-      </button>
-      <p class="f03-eye-message mono" id="f03EyeMessage" aria-live="polite">PERCEPTION / EN VEILLE</p>
-    </section>
-
-    <section class="f03-section f03-ritual" aria-labelledby="ritual-title">
-      <div class="f03-index mono">[ 03 / TRANSE ]</div>
-      <div class="f03-ritual__copy">
-        <p class="f03-system mono">CÉRÉMONIE CÉLESTE</p>
-        <h2 id="ritual-title">LE TEMPLE<br /><em>DÉRAILLE.</em></h2>
-        <p>La grille quitte sa fonction. Les mots gravitent. La logique du site cède devant l'orbite du rituel.</p>
-      </div>
-      <div class="f03-orbit" id="f03Orbit" tabindex="0" role="group" aria-label="Orbite rituelle interactive : déplacez le curseur ou les flèches pour déplacer la cérémonie">
+      <div class="f03-orbit" id="f03Orbit" role="group" aria-label="Synchroniser les trois matières du rituel">
         <div class="f03-orbit__ring"></div><div class="f03-orbit__ring f03-orbit__ring--two"></div><div class="f03-orbit__ring f03-orbit__ring--three"></div>
-        <span class="f03-orbit__centre mono">PRÉSENCES<br />CONNECTÉES</span><span class="f03-orbit__point f03-orbit__point--one"></span><span class="f03-orbit__point f03-orbit__point--two"></span><span class="f03-orbit__point f03-orbit__point--three"></span>
+        <p class="f03-orbit__centre mono"><strong id="f03RitualCount">0 / 3</strong><span>ACCORDS</span></p>
+        <button type="button" class="f03-orbit__node f03-orbit__node--stone" data-tone="PIERRE"><span>PIERRE</span></button>
+        <button type="button" class="f03-orbit__node f03-orbit__node--voice" data-tone="VOIX"><span>VOIX</span></button>
+        <button type="button" class="f03-orbit__node f03-orbit__node--star" data-tone="ÉTOILE"><span>ÉTOILE</span></button>
       </div>
+      <p class="f03-ritual-message mono" id="f03RitualMessage" aria-live="polite">LE RITUEL ATTEND TROIS GESTES</p>
     </section>
 
-    <section class="f03-section f03-presences" aria-labelledby="presence-title">
-      <div class="f03-presences__ghost f03-presences__ghost--one" aria-hidden="true"></div><div class="f03-presences__ghost f03-presences__ghost--two" aria-hidden="true"></div><div class="f03-presences__ghost f03-presences__ghost--three" aria-hidden="true"></div>
-      <div class="f03-index mono">[ 04 / APPARITION ]</div>
-      <div class="f03-presences__copy">
-        <p class="f03-system mono">PRÉSENCES DÉTECTÉES</p>
-        <h2 id="presence-title">PLUS DE CENT<br /><em>SIGNAUX</em> AUTOUR.</h2>
-        <p>Pas de spectacle, pas de peur facile. Seulement la sensation qu'une présence regarde depuis la périphérie de l'écran.</p>
+    <section class="f03-chapter f03-presences" id="presences" data-stage="APPARITION" aria-labelledby="presence-title">
+      <div class="f03-chapter__number mono">05 / APPARITION</div>
+      <div class="f03-story">
+        <p class="f03-eyebrow mono">L'AURA QUITTE LA SURFACE</p>
+        <h2 id="presence-title">TU N'ES PLUS<br />SEUL DANS <em>L'IMAGE.</em></h2>
+        <div class="f03-story__text">
+          <p>Autour de toi, plus de cent présences occupent la périphérie. Elles ne demandent ni croyance ni peur. Elles sont les traces de ceux qui ont déjà traversé le signal.</p>
+          <p>Déplace ta lumière dans l'obscurité. Certaines présences ne deviennent visibles qu'au moment où tu cesses de les regarder de face.</p>
+        </div>
+      </div>
+      <div class="f03-presence-field" id="f03PresenceField" tabindex="0" role="group" aria-label="Déplacez le pointeur, touchez l'obscurité ou utilisez les flèches pour éclairer les présences">
+        <div class="f03-lantern" id="f03Lantern" aria-hidden="true"></div>
+        <span class="f03-spirit f03-spirit--1" data-whisper="NOUS AVONS ENTENDU LE MÊME ORAGE."></span>
+        <span class="f03-spirit f03-spirit--2" data-whisper="LE CYCLE NE SE FERME PAS : IL CHANGE D'AXE."></span>
+        <span class="f03-spirit f03-spirit--3" data-whisper="CASSIOPÉE ATTEND AU-DESSUS DU TEMPLE."></span>
+        <span class="f03-spirit f03-spirit--4" data-whisper="TU ÉTAIS DÉJÀ DANS LA TRANSMISSION."></span>
+        <p class="mono" id="f03Whisper">DÉPLACE OU TOUCHE LA LUMIÈRE / ÉCOUTE LA PÉRIPHÉRIE</p>
       </div>
       <div class="f03-presences__counter mono"><span id="f03PresenceCount">001</span><small>PRÉSENCES / CONNECTÉES</small></div>
     </section>
 
-    <section class="f03-section f03-gravity" aria-labelledby="gravity-title">
-      <div class="f03-index mono">[ 05 / ASCENSION ]</div>
-      <div class="f03-gravity__copy">
-        <p class="f03-system mono">GRAVITÉ NON CONFORME</p>
-        <h2 id="gravity-title">TOUT CE QUI TOMBE<br />FINIT PAR <em>REMONTER.</em></h2>
-        <p>La poussière, les lettres et les fragments de pierre quittent le sol. Au-dessus, Cassiopée cesse de se cacher.</p>
+    <section class="f03-chapter f03-ascension" id="ascension" data-stage="ASCENSION" aria-labelledby="ascension-title">
+      <div class="f03-chapter__number mono">06 / ASCENSION</div>
+      <div class="f03-story">
+        <p class="f03-eyebrow mono">GRAVITÉ INVERSÉE</p>
+        <h2 id="ascension-title">LE CIEL N'EST PLUS<br />AU-DESSUS DE <em>TOI.</em></h2>
+        <div class="f03-story__text">
+          <p>La poussière, les lettres et les fragments de pierre remontent. Cassiopée relie enfin les cinq points qui guidaient ton passage depuis le seuil.</p>
+          <p>Le fils de l'invisible n'arrive pas en conquérant. Il apparaît lorsque quelqu'un termine le geste commencé par le signal.</p>
+        </div>
+      </div>
+      <div class="f03-lift" id="f03Lift">
+        <div class="f03-lift__sky" aria-hidden="true">
+          <div class="f03-constellation f03-constellation--large"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <button type="button" id="f03LiftButton">
+          <span class="mono">MAINTENIR OU TOUCHER POUR INVERSER LA GRAVITÉ</span>
+          <strong id="f03LiftCount">000%</strong>
+        </button>
+        <p class="mono" id="f03LiftMessage" aria-live="polite">LE MONDE PÈSE ENCORE</p>
       </div>
       <div class="f03-gravity__field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="f03-constellation f03-constellation--large" aria-label="Cassiopée révélée" role="img"><i></i><i></i><i></i><i></i><i></i></div>
     </section>
 
-    <section class="f03-signal" id="signal" aria-labelledby="signal-title">
-      <p class="f03-system mono">L'ARRIVÉE A COMMENCÉ</p>
-      <h2 id="signal-title">FRÉQUENCE<br /><em>03</em></h2>
-      <p>Le signal n'est pas encore disponible. Laisse une trace pour être présent au moment de l'ouverture.</p>
+    <section class="f03-arrival" id="arrival" data-stage="ARRIVÉE" aria-labelledby="arrival-title">
+      <p class="f03-eyebrow mono">TRANSMISSION / COMPLÈTE</p>
+      <h2 id="arrival-title">LE FILS DE<br />L'<em>INVISIBLE</em> ARRIVE.</h2>
+      <p class="f03-arrival__story">Tu es entré comme spectateur. Tes gestes ont fissuré le récit, ouvert l'œil, accordé le rituel et renversé le ciel. Le signal ne te parle plus depuis l'extérieur : il passe désormais par toi.</p>
+      <div class="f03-arrival__seal mono">
+        <span>STATUT / INITIÉ</span><span>ORIGINE / CASSIOPÉE</span><span>FRÉQUENCE / 003</span>
+      </div>
       <a class="f03-button f03-button--gold" id="f03Presave" href="/#contact"><span>⌁</span> ÊTRE PRÉSENT À L'ARRIVÉE</a>
       <p class="f03-signal__note mono">PRE-SAVE / LIEN CONFIGURABLE</p>
     </section>
@@ -146,7 +224,7 @@
   <footer class="footer mono">
     <div><strong>VRTG</strong><span>FRÉQUENCE_03 / LE FILS DE L'INVISIBLE</span></div>
     <div class="footer__links"><a href="/">ACCUEIL</a><a href="/frequence">FRÉQUENCE</a><a href="/frequence/01">FRÉQUENCE_01</a><a href="/frequence/02">FRÉQUENCE_02</a></div>
-    <div>LE SIGNAL EST ARRIVÉ.<br />LE CYCLE EST TERMINÉ.<br />L'ASCENSION CONTINUE.</div>
+    <div>LE SIGNAL A TROUVÉ<br />UN PASSAGE.<br />LE CYCLE CONTINUE.</div>
   </footer>
 
   <script src="/frequence/03/frequency-03.js"></script>
