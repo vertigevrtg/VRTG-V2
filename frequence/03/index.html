@@ -9,7 +9,11 @@
   <meta property="og:description" content="Tu entres comme spectateur. Le signal fait de toi le passage." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.vrtgmusic.ca/frequence/03" />
-  <meta property="og:image" content="https://www.vrtgmusic.ca/assets/frequence-03-temple.jpg" />
+  <meta property="og:image" content="https://www.vrtgmusic.ca/assets/cover-frequence-03.webp" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="1600" />
+  <meta property="og:image:alt" content="Pochette officielle de FRÉQUENCE 03 par VRTG" />
+  <meta name="twitter:card" content="summary_large_image" />
   <title>FRÉQUENCE 03 — LE FILS DE L’INVISIBLE | VRTG</title>
   <link rel="canonical" href="https://www.vrtgmusic.ca/frequence/03" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -19,7 +23,7 @@
   <link rel="stylesheet" href="/release.css" />
   <link rel="stylesheet" href="/frequence/03/frequency-03.css" />
 </head>
-<body class="f03" data-presave-url="/#contact">
+<body class="f03">
   <a class="f03-skip" href="#prologue">Passer l'ouverture</a>
 
   <div class="f03-boot" id="f03Boot" aria-hidden="true">
@@ -73,11 +77,34 @@
         <p>Au soleil couchant, une foule contemple le même récit. Toi, tu arrives au moment précis où quelque chose, derrière l'image, commence à répondre.</p>
         <div class="f03-actions">
           <a class="f03-button f03-button--light" href="#prologue"><span>↓</span> FRANCHIR LE SEUIL</a>
-          <a class="f03-text-link mono" href="#arrival">ALLER À L'ARRIVÉE</a>
+          <a class="f03-text-link mono" href="#ecouter">ÉCOUTER FRÉQUENCE 03</a>
         </div>
       </div>
       <div class="f03-constellation f03-constellation--hero" aria-label="Cassiopée, constellation guide" role="img"><i></i><i></i><i></i><i></i><i></i></div>
       <p class="f03-hero__aside mono">TU ENTRES COMME SPECTATEUR.<br />LE TEMPLE IGNORE ENCORE<br />CE QUE TU VAS RÉVEILLER.</p>
+    </section>
+
+    <section class="f03-listen" id="ecouter" data-stage="ÉCOUTE" aria-labelledby="listen-title">
+      <div class="f03-listen__visual">
+        <div class="f03-listen__cover">
+          <img src="/assets/cover-frequence-03.webp" width="1600" height="1600" alt="Pochette officielle de FRÉQUENCE 03 par VRTG" />
+        </div>
+        <div class="f03-listen__index mono"><span>003</span><span>SIGNAL / DISPONIBLE</span></div>
+      </div>
+      <div class="f03-listen__content">
+        <p class="f03-eyebrow mono">TRANSMISSION IDENTIFIÉE / 003</p>
+        <h2 id="listen-title">FRÉQUENCE_<em>03</em></h2>
+        <p class="f03-listen__title">LE FILS DE L'INVISIBLE</p>
+        <p class="f03-listen__intro">Le signal a traversé le bruit. Lance la transmission, mets-la en pause ou reprends-la ici, sans quitter le temple.</p>
+        <div class="f03-player">
+          <div class="f03-player__head mono"><span>VRTG_PLAYER / 003</span><span id="f03AudioStatus" aria-live="polite">ÉTAT / PRÊT</span></div>
+          <audio id="f03Audio" controls preload="metadata">
+            <source src="/assets/frequence-03-vrtg.mp3" type="audio/mpeg" />
+            Votre navigateur ne prend pas en charge la lecture audio.
+          </audio>
+          <div class="f03-player__foot mono"><span>FRÉQUENCE_03 / VRTG</span><span>CASQUE / RECOMMANDÉ</span></div>
+        </div>
+      </div>
     </section>
 
     <section class="f03-chapter f03-prologue" id="prologue" data-stage="CONDITIONNEMENT" aria-labelledby="prologue-title">
@@ -216,8 +243,8 @@
       <div class="f03-arrival__seal mono">
         <span>STATUT / INITIÉ</span><span>ORIGINE / CASSIOPÉE</span><span>FRÉQUENCE / 003</span>
       </div>
-      <a class="f03-button f03-button--gold" id="f03Presave" href="/#contact"><span>⌁</span> ÊTRE PRÉSENT À L'ARRIVÉE</a>
-      <p class="f03-signal__note mono">PRE-SAVE / LIEN CONFIGURABLE</p>
+      <a class="f03-button f03-button--gold" href="#ecouter"><span>▶</span> ÉCOUTER FRÉQUENCE 03</a>
+      <p class="f03-signal__note mono">SIGNAL / DISPONIBLE</p>
     </section>
   </main>
 

@@ -355,6 +355,125 @@ body.f03 {
   opacity: .8;
 }
 
+.f03-listen {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 100svh;
+  grid-template-columns: minmax(280px, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(48px, 8vw, 140px);
+  overflow: hidden;
+  padding: 14vh 7vw;
+  border-top: 1px solid rgba(197, 138, 50, .42);
+  border-bottom: 1px solid rgba(244, 243, 255, .12);
+  background:
+    radial-gradient(circle at 22% 46%, rgba(197, 138, 50, .2), transparent 30rem),
+    linear-gradient(125deg, #030307 0%, #0b0815 48%, #160f3d 100%);
+}
+
+.f03-listen::before {
+  position: absolute;
+  inset: 0;
+  opacity: .15;
+  background-image:
+    linear-gradient(rgba(244, 243, 255, .12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 243, 255, .12) 1px, transparent 1px);
+  background-size: 64px 64px;
+  content: "";
+  mask-image: linear-gradient(90deg, #000, transparent 72%);
+  pointer-events: none;
+}
+
+.f03-listen > * { position: relative; z-index: 1; }
+.f03-listen__visual { width: min(100%, 650px); justify-self: end; }
+.f03-listen__cover {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid rgba(197, 138, 50, .6);
+  background: #020202;
+  box-shadow: 28px 28px 0 rgba(197, 138, 50, .08), 0 0 90px rgba(197, 138, 50, .18);
+}
+
+.f03-listen__cover::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(244, 243, 255, .13);
+  content: "";
+  transform: scale(.96);
+  pointer-events: none;
+}
+
+.f03-listen__cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.f03-listen__index {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 18px;
+  color: rgba(244, 243, 255, .55);
+  font-size: 8px;
+}
+
+.f03-listen__index span:first-child { color: var(--f03-gold); }
+.f03-listen__content { max-width: 760px; }
+.f03-listen__content h2 { margin-top: 22px; font-size: clamp(52px, 5.8vw, 110px); }
+.f03-listen__content h2 em { color: var(--f03-gold); font-style: normal; }
+.f03-listen__title {
+  margin: 24px 0 0;
+  font: 500 clamp(15px, 1.6vw, 22px) "IBM Plex Mono", monospace;
+  letter-spacing: .12em;
+}
+
+.f03-listen__intro {
+  max-width: 620px;
+  margin: 28px 0 0;
+  color: rgba(244, 243, 255, .72);
+  font-size: clamp(17px, 1.45vw, 21px);
+  line-height: 1.5;
+}
+
+.f03-player {
+  margin-top: 44px;
+  border: 1px solid rgba(244, 243, 255, .22);
+  padding: 20px;
+  background: rgba(3, 3, 7, .82);
+  box-shadow: 16px 16px 0 rgba(109, 59, 255, .08);
+}
+
+.f03-player__head,
+.f03-player__foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: rgba(244, 243, 255, .55);
+  font-size: 8px;
+}
+
+.f03-player__head { padding-bottom: 16px; border-bottom: 1px solid rgba(244, 243, 255, .14); }
+.f03-player__head span:last-child { color: var(--f03-gold); }
+.f03-player audio {
+  display: block;
+  width: 100%;
+  height: 56px;
+  margin-top: 18px;
+  color-scheme: dark;
+  accent-color: var(--f03-gold);
+}
+
+.f03-player audio::-webkit-media-controls-panel { background: rgba(244, 243, 255, .92); }
+.f03-player__foot { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(244, 243, 255, .14); }
+.f03-listen.is-playing .f03-listen__cover {
+  border-color: var(--f03-gold);
+  box-shadow: 28px 28px 0 rgba(197, 138, 50, .12), 0 0 130px rgba(197, 138, 50, .3);
+}
+
 .f03-chapter {
   position: relative;
   display: grid;
@@ -1017,6 +1136,16 @@ body.f03.is-awake .f03-noise { opacity: .055; }
     margin-top: 32px;
     text-align: left;
   }
+
+  .f03-listen {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 64px;
+    padding: 13vh 7vw;
+  }
+
+  .f03-listen__visual { width: min(100%, 580px); justify-self: center; }
+  .f03-listen__content { width: min(100%, 680px); justify-self: center; }
 }
 
 @media (max-width: 540px) {
@@ -1037,6 +1166,10 @@ body.f03.is-awake .f03-noise { opacity: .055; }
   .f03-spirit { width: 35%; }
   .f03-lift { min-height: 440px; }
   .f03-lift button { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .f03-listen { gap: 48px; padding: 12vh 18px; }
+  .f03-listen__cover { box-shadow: 14px 14px 0 rgba(197, 138, 50, .08), 0 0 64px rgba(197, 138, 50, .15); }
+  .f03-player { margin-top: 34px; padding: 14px; box-shadow: 9px 9px 0 rgba(109, 59, 255, .08); }
+  .f03-player__head, .f03-player__foot { gap: 12px; font-size: 7px; }
   .f03-arrival { padding-inline: 18px; }
   .f03-arrival__story { font-size: 18px; }
   .f03 .footer { padding: 38px 18px; }

@@ -293,9 +293,18 @@
     }
   });
 
-  const presave = byId("f03Presave");
-  const presaveUrl = body.dataset.presaveUrl?.trim();
-  if (presaveUrl) presave.href = presaveUrl;
+  const audio = byId("f03Audio");
+  const audioStatus = byId("f03AudioStatus");
+  const listenSection = document.querySelector(".f03-listen");
+  const setAudioState = (state) => {
+    audioStatus.textContent = `ÉTAT / ${state}`;
+    listenSection.classList.toggle("is-playing", state === "EN LECTURE");
+  };
+
+  audio.addEventListener("play", () => setAudioState("EN LECTURE"));
+  audio.addEventListener("pause", () => setAudioState(audio.ended ? "TRANSMISSION COMPLÈTE" : "EN PAUSE"));
+  audio.addEventListener("ended", () => setAudioState("TRANSMISSION COMPLÈTE"));
+  audio.addEventListener("error", () => setAudioState("SIGNAL INDISPONIBLE"));
 
   const canvas = byId("f03Field");
   const context = canvas.getContext("2d");
