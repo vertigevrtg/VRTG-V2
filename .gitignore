@@ -1,0 +1,13 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.log
+
+# Masters remain local; only platform players are published.
+assets/*.mp3

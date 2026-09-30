@@ -1,7 +1,138 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node tools/export_site.mjs",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "redirects": [
-    { "source": "/frequence-01", "destination": "/frequence/01", "permanent": true },
-    { "source": "/frequence-02", "destination": "/frequence/02", "permanent": true }
+    {
+      "source": "/frequence",
+      "destination": "/frequences",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence/",
+      "destination": "/frequences",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence/index.html",
+      "destination": "/frequences",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence/01",
+      "destination": "/frequences#frequence-01",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence/01/",
+      "destination": "/frequences#frequence-01",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence/01/index.html",
+      "destination": "/frequences#frequence-01",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence/02",
+      "destination": "/frequences#frequence-02",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence/02/",
+      "destination": "/frequences#frequence-02",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence/02/index.html",
+      "destination": "/frequences#frequence-02",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence/03",
+      "destination": "/frequences#frequence-03",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence/03/",
+      "destination": "/frequences#frequence-03",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence/03/index.html",
+      "destination": "/frequences#frequence-03",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence-01",
+      "destination": "/frequences#frequence-01",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence-01/",
+      "destination": "/frequences#frequence-01",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence-01/index.html",
+      "destination": "/frequences#frequence-01",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence-02",
+      "destination": "/frequences#frequence-02",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence-02/",
+      "destination": "/frequences#frequence-02",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence-02/index.html",
+      "destination": "/frequences#frequence-02",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence-03",
+      "destination": "/frequences#frequence-03",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence-03/",
+      "destination": "/frequences#frequence-03",
+      "statusCode": 301
+    },
+    {
+      "source": "/frequence-03/index.html",
+      "destination": "/frequences#frequence-03",
+      "statusCode": 301
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
   ]
 }

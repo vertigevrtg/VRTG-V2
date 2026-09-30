@@ -1,0 +1,23 @@
+[
+  {
+    "path": "/",
+    "lcp": 492,
+    "cls": 0,
+    "bytes": 92540,
+    "audioRequests": 0
+  },
+  {
+    "path": "/frequences",
+    "lcp": 1380,
+    "cls": 0,
+    "bytes": 193190,
+    "audioRequests": 0
+  },
+  {
+    "path": "/fragments",
+    "lcp": 612,
+    "cls": 0,
+    "bytes": 52122,
+    "audioRequests": 0
+  }
+]
