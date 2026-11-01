@@ -30,7 +30,11 @@ for url,d in docs.items():
  for item in graph:
   if item['@type']=='MusicRecording':
    assert item['byArtist']['@id'] in ids and item['inAlbum']['@id'] in ids
-   assert 'audio' not in item, 'No direct audio URLs in public schema'
+   if 'audio' in item:
+    assert '/fragments#fragment-' in item['@id'], 'Only the three approved final Fragments have direct audio'
+    audio_path=urlparse(item['audio']['contentUrl']).path
+    assert (root/audio_path.lstrip('/')).is_file(), audio_path
+    assert item.get('duration') and item['inAlbum']['@id'].endswith('/fragments#album')
  for link in d.links:
   u=urlparse(link)
   if u.netloc:continue
@@ -44,6 +48,11 @@ assert len(urls)==3 and set(urls)=={'https://www.vrtgmusic.ca'+p for p in pages}
 assert 'Sitemap: https://www.vrtgmusic.ca/sitemap.xml' in (root/'robots.txt').read_text()
 print('PASS sitemap and robots')
 
-assert not list(root.rglob('*.mp3')), 'No masters in public export'
-for page in root.rglob('*.html'): assert '.mp3' not in page.read_text()
-print('PASS no public masters or direct audio links')
+expected={f'assets/audio/fragment-{n}-final.mp3' for n in ['01','02','03']}
+assert {str(p.relative_to(root)) for p in root.rglob('*.mp3')}==expected, 'Only the three approved final Fragments may be exported'
+for n in ['01','02','03']:
+ assert 'fragment-'+n in docs['/fragments'].ids
+fragment_graph=json.loads(docs['/fragments'].schema)['@graph']
+assert len([item for item in fragment_graph if item['@type']=='MusicRecording'])==3
+assert 'À VENIR' not in (root/'fragments/index.html').read_text()
+print('PASS three final Fragments, durations, tracklist and audio export')

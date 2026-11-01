@@ -1,0 +1,52 @@
+{
+  "audio_files": [
+    {
+      "track": "Fragment_01",
+      "file": "assets/audio/fragment-01-final.mp3",
+      "sha256": "51d322d1925dfb2a49b004f3d3afe019ec727f2d6c28e3de4463bac204087e9f"
+    },
+    {
+      "track": "Fragment_02",
+      "file": "assets/audio/fragment-02-final.mp3",
+      "sha256": "5a24fde1807d628682ccf73858fdd37972e1150b6c99246930b3e37e912aa253"
+    },
+    {
+      "track": "Fragment_03",
+      "file": "assets/audio/fragment-03-final.mp3",
+      "sha256": "d0613193fe4e00259beb0bd054fdd72732f2985586fc44b59e5de11e161f5f35"
+    }
+  ],
+  "browser_tests": {
+    "passed": 27,
+    "checks": [
+      "1440px tracklist and no overflow",
+      "1440px no autoplay or audio preload",
+      "1440px final metadata",
+      "390px tracklist and no overflow",
+      "390px no autoplay or audio preload",
+      "390px final metadata",
+      "320px tracklist and no overflow",
+      "320px no autoplay or audio preload",
+      "320px final metadata",
+      "Playback of final Fragment_01",
+      "Playback of final Fragment_02",
+      "Playback of final Fragment_03",
+      "Pause",
+      "Seek",
+      "Previous track",
+      "Next track",
+      "Mobile player fits",
+      "Audio persists across navigation",
+      "Audio persists with Back",
+      "Spotify pauses Fragments",
+      "Fragments closes Spotify",
+      "Continuous playback advances",
+      "End of project does not loop",
+      "Close stops and resets",
+      "Analytics play and track events",
+      "No-JS accessible audio fallbacks",
+      "No JavaScript exceptions"
+    ],
+    "errors": []
+  }
+}

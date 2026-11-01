@@ -1,6 +1,6 @@
 # VRTG — musique d’abord
 
-Site statique en français : `/`, `/frequences`, `/fragments`. Lecteurs Spotify pour Fréquence_01 et Fréquence_02, persistants entre les pages. Fragments est annoncé « À venir ». Sans JavaScript, les liens ouvrent directement Spotify. Les masters MP3 restent locaux et sont exclus de Git et de l’export. Aucun framework requis. Spotify est chargé uniquement après un clic d’écoute. La lecture et ses restrictions dépendent de Spotify.
+Site statique en français : `/`, `/frequences`, `/fragments`. Lecteurs Spotify pour Fréquence_01 et Fréquence_02. Fragments propose les trois MP3 finaux fournis le 1er novembre 2026, dans un lecteur persistant avec lecture, pause, progression et changement de morceau. Sans JavaScript, les liens Spotify et les lecteurs audio natifs restent disponibles. Les anciennes versions audio restent exclues de l’export. Aucun framework requis. Aucun audio ne démarre automatiquement et aucun MP3 n’est préchargé avant une action. Démarrer Fragments arrête Spotify, et inversement. Les lecteurs ne proposent aucun bouton de téléchargement ; les MP3 diffusés restent techniquement récupérables.
 
 ## Prévisualiser
 
@@ -31,7 +31,7 @@ Après déploiement, contrôler les statuts HTTP réels, la lecture sur Safari i
 
 Aucun identifiant Google Analytics ni collecte existante trouvé dans les pages et scripts audités. Le site émet des événements `vrtg:analytics` et appelle, si présente, la fonction `window.vrtgAnalytics(detail)`. Brancher un fournisseur de mesure choisi pour collecter les données : les événements seuls ne stockent et n’envoient aucune donnée.
 
-Événements : `page_view` (chemin et référent), `play_click`, `streaming_click` (plateforme et morceau), `project_open` (Home vers projet). Les clics ouvrant le lecteur sont mesurés ; les lectures réelles à l’intérieur du lecteur Spotify ne sont pas mesurées. Le chargement initial inclut le référent externe ; les navigations internes incluent la page précédente. Les paramètres UTM restent dans l’URL mais ne sont pas collectés par défaut. Un fournisseur peut les ajouter pour l’attribution.
+Événements : `page_view` (chemin et référent), `play_click`, `track_started`, `audio_error`, `streaming_click` (plateforme et morceau), `project_open` (Home vers projet). Pour Fragments, les démarrages et erreurs audio sont aussi émis. Les clics ouvrant Spotify sont mesurés ; les lectures réelles à l’intérieur du lecteur Spotify ne sont pas mesurées. Le chargement initial inclut le référent externe ; les navigations internes incluent la page précédente. Les paramètres UTM restent dans l’URL mais ne sont pas collectés par défaut. Un fournisseur peut les ajouter pour l’attribution.
 
 Pour un adaptateur GA4 : attendre le consentement approprié, désactiver les pages vues automatiques et la mesure automatique de l’historique, puis traduire les événements reçus pour éviter les doublons. Installer l’adaptateur avant `site.js` pour inclure la première page vue. Aucun identifiant fictif n’a été ajouté.
 
