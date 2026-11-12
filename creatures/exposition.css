@@ -1,76 +1,23 @@
-.creatures {
-  --ash:#11100e; --ivory:#e9e2d7; --rust:#a66c58; --olive:#777459; --gold:#a68a58;
-  --fg:var(--ivory); --bg:var(--ash); --line:#514b41; --accent:var(--gold);
-  background:var(--ash); color:var(--ivory); color-scheme:dark;
-  --gutter:clamp(1.25rem,5vw,6rem);
-}
-.creatures .header {margin-inline:var(--gutter); border-color:var(--line)}
-.creatures .header nav {gap:clamp(.65rem,2vw,2rem)}
-.creatures main {max-width:1920px;margin:auto}
-.creatures figure,.creatures blockquote,.creatures h1,.creatures h2,.creatures h3 {margin:0}
-.creatures .label,.creatures figcaption,.museum-nav,.section-label,.creatures .hero-actions,.work-actions,.controls,.timeline,.services,.now p,#mini {
-  font: 500 .72rem/1.5 ui-monospace,"Courier New",monospace; letter-spacing:.08em;
-}
-.apparition {padding:0 var(--gutter);min-height:calc(90svh - 76px);display:flex;flex-direction:column}
-.museum-nav,.creatures figcaption {display:flex;justify-content:space-between;gap:1rem}
-.museum-nav {padding:1.2rem 0;text-transform:uppercase;color:#c3bdae;align-items:center}
-.museum-nav>span:before {content:"";display:inline-block;width:.6em;height:.6em;background:var(--gold);margin-right:.7em}
-.museum-nav div,.creatures .hero-actions,.work-actions,.controls {display:flex;align-items:center;gap:1.3rem;flex-wrap:wrap}
-.museum-nav a,.work-actions a,.controls button,.creatures button,.creatures .hero-actions a {display:inline-flex;align-items:center;min-height:44px}
-.opening {flex:1;display:grid;grid-template-columns:1.45fr 1fr;align-items:center;padding:clamp(3rem,6vh,7rem) 0 5rem;position:relative}
-.opening-copy {z-index:1;grid-column:1;grid-row:1}
-.creatures .label,.creatures .section-label {text-transform:uppercase}
-.opening-copy>.label,.work-number b {color:#c8ad7b}
-.creatures h1 {font:700 clamp(4rem,12vw,13rem)/.95 Arial,Helvetica,sans-serif;letter-spacing:-.085em;margin-left:-.06em}
-.intro,.work-text p {font:italic clamp(1.35rem,2.3vw,2.65rem)/1.14 Georgia,serif;letter-spacing:-.035em}
-.creatures .hero-actions {margin-top:2.5rem;text-transform:uppercase;gap:1.5rem}
-.creatures .hero-actions a:first-child {background:var(--ivory);color:var(--ash);padding:.85rem 1.1rem}
-.creatures .hero-actions a:last-child,.work-actions a {text-decoration:underline;text-underline-offset:.4em}
-.exhibit {grid-column:2;grid-row:1;transform:rotate(-2deg);padding:clamp(.5rem,1.25vw,1.5rem);background:#24221e;border:1px solid #49453b;box-shadow:0 1.2rem 3rem #0008}
-.creatures figure img {display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
-.creatures figcaption {padding-top:.65rem;text-transform:uppercase}
-.creatures .section-label {padding:1rem 0;border-top:1px solid currentColor;font-size:.75rem;letter-spacing:.14em}
-#collection>.section-label {margin-inline:var(--gutter)}
-.work {display:grid;grid-template-columns:1fr 1fr;align-items:center;column-gap:8vw;padding:clamp(3rem,8vw,9rem) var(--gutter);position:relative}
-.work-number {align-self:start}.work-number b {font-weight:normal}
-.work-text {grid-column:1;grid-row:2;align-self:end}
-.work figure {grid-column:2;grid-row:1/3;width:min(100%,650px)}
-.creatures h3,#ecouter h2 {font:650 clamp(3rem,7.2vw,8rem)/.94 Arial,sans-serif;letter-spacing:-.07em}
-.work-actions {margin-top:2rem}
-.creatures button {background:transparent;border:1px solid currentColor;color:inherit;padding:.5rem .9rem;font:inherit}
-.creatures button:disabled {color:#b9ada0;cursor:default;border-color:#58534b}
-.work-1 {background:var(--ivory);color:var(--ash);color-scheme:light}
-.work-1 figure {grid-column:1}.work-1 .work-text,.work-1 .work-number {grid-column:2}
-.work-1 .work-number b {color:#625a39}.work-1 button:disabled {color:#5b5149;border-color:#9a8d80}
-.work-2 {min-height:55vh;background:#211f1a;border-bottom:1px solid var(--line)}
-.work-2 .work-text {grid-column:1/-1;margin-top:3rem}
-#traces,#ecouter {padding:clamp(3rem,7vw,7rem) var(--gutter)}
-#traces {background:#dcd4c5;color:#252019}
-#traces figure,#traces details {margin:clamp(2rem,6vw,7rem) auto;max-width:53rem}
-#traces blockquote {font:italic clamp(2.4rem,5.2vw,6rem)/1.07 Georgia,serif;letter-spacing:-.055em}
-#traces figcaption {margin-top:1.5rem;color:#554e42}
-#traces summary {cursor:pointer;padding:1rem 0}#traces details p {white-space:pre-line;font:1.35rem/1.65 Georgia,serif}
-#ecouter h2 {margin-top:3rem}.listen-list {list-style:none;padding:0;margin:3rem 0}
-.listen-list li {display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;border-top:1px solid var(--line);padding:1rem 0}
-.listen-list li[aria-current] {color:#ddc597}.listen-list strong {font-size:clamp(1rem,2.6vw,2.2rem);letter-spacing:-.035em}
-.console {border-block:1px solid var(--line);padding:1.5rem 0}.now,.timeline {display:flex;align-items:center;gap:1rem}
-.now p {margin:.25rem 0;color:#d3c4a8}.timeline {margin:1.2rem 0}.timeline input {flex:1;min-width:0}
-.controls {gap:.5rem}.creatures input {accent-color:var(--gold);min-height:44px}.controls input {width:7rem}
-.services {padding-block:1.25rem}.services a {display:inline-block;padding:.6rem}
-.creatures :focus-visible {outline:3px solid currentColor;outline-offset:3px}
-#mini {display:none}.creatures [hidden] {display:none!important}
-@media (prefers-reduced-motion:no-preference) {
-  .opening {animation:appear .65s ease-out}.work figure img {transition:transform .3s}.work figure:hover img {transform:translateY(-3px)}
-  .entered {animation:appear .5s ease-out}@keyframes appear {from{opacity:.55;translate:0 6px}to{opacity:1;translate:0}}
-}
-@media(max-width:700px) {
-  .museum-nav {align-items:start;flex-wrap:wrap;gap:0 .75rem;font-size:.65rem}.museum-nav div {gap:1rem}.museum-nav>span {line-height:44px}
-  .opening {display:flex;flex-direction:column;align-items:stretch;gap:1.75rem;padding:2rem 0 3rem}
-  .creatures h1 {font-size:17vw}.creatures .hero-actions {gap:1rem;margin-top:1.2rem}
-  .exhibit {align-self:end;width:min(58%,300px)}.apparition {min-height:0}
-  .work {grid-template-columns:1fr;gap:1.5rem}.work .work-number,.work .work-text,.work figure {grid-column:1;grid-row:auto}
-  .work figure {width:100%;max-width:480px}.work-2 {min-height:40vh}
-  .listen-list li {gap:.6rem}.listen-list button {font-size:.75rem}
-  #mini:not([hidden]) {display:flex;position:fixed;z-index:10;bottom:0;left:0;right:0;align-items:center;justify-content:space-between;background:#24211d;color:var(--ivory);padding:.5rem var(--gutter) calc(.5rem + env(safe-area-inset-bottom));border-top:1px solid var(--gold)}
+/* The hero, track list and story use the shared Fragments layout. */
+.creatures .fragment-hero {background:#171512}
+.creatures .fragment-hero > img {object-fit:contain;object-position:center}
+.creatures .tracklist li > img {width:48px;height:48px;object-fit:contain}
+.creatures .tracklist li[aria-current] {background:var(--panel)}
+.creatures .project-story figure {margin:2rem 0}
+.creatures blockquote {margin:0;font:italic clamp(1.5rem,3vw,2.4rem)/1.25 Georgia,serif}
+.creatures figcaption {margin-top:.8rem;color:var(--muted)}
+.creatures details p {white-space:pre-line}
+.creatures .console {border-block:1px solid var(--line);padding:1.25rem 0}
+.creatures .now,.creatures .timeline,.creatures .controls {display:flex;align-items:center;gap:1rem}
+.creatures .timeline {margin:1rem 0}
+.creatures .timeline input {min-width:0;flex:1}
+.creatures .controls {flex-wrap:wrap}
+.creatures .console button,.creatures #mini button {min-height:44px;background:var(--panel);color:var(--fg);border:1px solid var(--line);padding:.5rem 1rem}
+.creatures #mini {display:none}
+@media(max-width:600px) {
+  .creatures .tracklist li {grid-template-columns:2rem minmax(0,1fr) auto}
+  .creatures .tracklist .track-play {grid-column:2;justify-self:start}
+  .creatures .tracklist li > img {width:40px;height:40px}
+  .creatures #mini:not([hidden]) {display:flex;position:fixed;z-index:10;bottom:0;left:0;right:0;align-items:center;justify-content:space-between;background:#24211d;color:var(--fg);padding:.5rem 6% calc(.5rem + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
   .creatures.mini-active {padding-bottom:calc(5rem + env(safe-area-inset-bottom))}
 }
