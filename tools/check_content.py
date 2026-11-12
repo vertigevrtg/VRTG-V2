@@ -21,12 +21,12 @@ class Doc(HTMLParser):
   if tag=='script':self.in_schema=False
  def handle_data(self,data):
   if self.in_schema:self.schema+=data
-pages={'/':'index.html','/frequences':'frequences/index.html','/fragments':'fragments/index.html'}
+pages={'/':'index.html','/frequences':'frequences/index.html','/fragments':'fragments/index.html','/creatures':'creatures/index.html'}
 docs={url:Doc((root/path).read_text()) for url,path in pages.items()}
 for url,d in docs.items():
  assert d.h1==1
  for key in ['description','og:title','og:description','og:image','og:url','twitter:card','twitter:title','twitter:description','twitter:image']:assert d.meta.get(key),key
- graph=json.loads(d.schema)['@graph'];ids={x['@id'] for x in graph}
+ graph=[] if url=='/creatures' else json.loads(d.schema)['@graph'];ids={x['@id'] for x in graph}
  for item in graph:
   if item['@type']=='MusicRecording':
    assert item['byArtist']['@id'] in ids and item['inAlbum']['@id'] in ids
@@ -44,11 +44,13 @@ for url,d in docs.items():
   if u.fragment:assert u.fragment in docs[route].ids,(url,link)
  print('PASS metadata, audio, graph, images and all internal links:',url)
 urls=[el.text for el in ET.parse(root/'sitemap.xml').iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
-assert len(urls)==3 and set(urls)=={'https://www.vrtgmusic.ca'+p for p in pages}
+assert len(urls)==len(pages) and set(urls)=={'https://www.vrtgmusic.ca'+p for p in pages}
 assert 'Sitemap: https://www.vrtgmusic.ca/sitemap.xml' in (root/'robots.txt').read_text()
 print('PASS sitemap and robots')
 
 expected={f'assets/audio/fragment-{n}-final.mp3' for n in ['01','02','03']} | {'assets/audio/frequence-03.mp3'}
+collection=json.loads((root.parent/'creatures/collection.json').read_text())
+expected.update(t['audio'].lstrip('/') for t in collection['tracks'] if t['audio'])
 assert {str(p.relative_to(root)) for p in root.rglob('*.mp3')}==expected, 'Only the approved Fragments and Fréquence_03 may be exported'
 for n in ['01','02','03']:
  assert 'fragment-'+n in docs['/fragments'].ids

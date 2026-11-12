@@ -25,7 +25,7 @@ def button(n='02',text='ÉCOUTER',cls='button',project='frequence'):
 def fallback(n, project='frequence'):
     return ''
 
-nav = '<header class="header"><a class="brand" href="/" aria-label="VRTG — accueil">VRTG</a><nav aria-label="Navigation principale"><a href="/frequences">Fréquences</a><a href="/fragments">Fragments</a></nav></header>'
+nav = '<header class="header"><a class="brand" href="/" aria-label="VRTG — accueil">VRTG</a><nav aria-label="Navigation principale"><a href="/frequences">Fréquences</a><a href="/fragments">Fragments</a><a href="/creatures">Créatures</a></nav></header>'
 player = '''<aside class="platform-player" aria-label="Lecteur Spotify" hidden><div class="platform-player-head"><span id="player-title">Écouter VRTG</span><button id="close-player" class="round" aria-label="Fermer le lecteur Spotify">×</button></div><iframe id="spotify-player" title="Écouter VRTG sur Spotify" width="100%" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe><p>Lecture proposée par Spotify. <a id="player-external" href="https://open.spotify.com/track/1C9Vg9ocyrMYbzLWoFbl8R" target="_blank" rel="noopener noreferrer" data-platform="spotify">Ouvrir dans Spotify ↗</a></p></aside>
 <aside class="mini-player" id="fragment-player" aria-label="Lecteur Fragments" hidden>
 <img id="fragment-art" alt="" width="48" height="48">

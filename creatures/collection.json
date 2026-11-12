@@ -1,0 +1,28 @@
+{
+  "shareImage": "/assets/creatures/corrida.webp",
+  "streamingLinks": {},
+  "tracks": [
+    {
+      "id": "corrida", "number": "001", "title": "CORRIDA",
+      "description": "Confrontation. Instinct. Violence intérieure.",
+      "cover": "/assets/creatures/corrida.webp",
+      "alt": "Fragments de papier ancien, surfaces calcinées et fines traces dorées dans une composition sombre.",
+      "audio": null, "lyrics": null, "excerpts": [], "releaseDate": null, "streamingLinks": {}
+    },
+    {
+      "id": "racine", "number": "002", "title": "RACINE",
+      "description": "Mémoire. Origines. Persistance.",
+      "cover": "/assets/creatures/racine.webp",
+      "alt": "Installation de matières végétales sombres et de chardons dans l’angle lumineux d’une pièce blanche.",
+      "audio": null, "lyrics": null,
+      "excerpts": ["Mes rêves ravivés raclent les recoins d'un ciel dégagé."],
+      "releaseDate": null, "streamingLinks": {}
+    },
+    {
+      "id": "fragment-003", "number": "003", "title": null,
+      "description": "Troisième fragment — À découvrir.",
+      "cover": null, "alt": "", "audio": null, "lyrics": null, "excerpts": [],
+      "releaseDate": null, "streamingLinks": {}
+    }
+  ]
+}
