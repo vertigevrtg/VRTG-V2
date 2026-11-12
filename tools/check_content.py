@@ -31,10 +31,10 @@ for url,d in docs.items():
   if item['@type']=='MusicRecording':
    assert item['byArtist']['@id'] in ids and item['inAlbum']['@id'] in ids
    if 'audio' in item:
-    assert '/fragments#fragment-' in item['@id'], 'Only the three approved final Fragments have direct audio'
+    assert '/fragments#fragment-' in item['@id'] or item['@id'].endswith('/frequences#frequence-03'), 'Only approved tracks have direct audio'
     audio_path=urlparse(item['audio']['contentUrl']).path
     assert (root/audio_path.lstrip('/')).is_file(), audio_path
-    assert item.get('duration') and item['inAlbum']['@id'].endswith('/fragments#album')
+    assert item.get('duration') and item['inAlbum']['@id'] == item['@id'].split('#')[0]+'#album'
  for link in d.links:
   u=urlparse(link)
   if u.netloc:continue
@@ -48,11 +48,11 @@ assert len(urls)==3 and set(urls)=={'https://www.vrtgmusic.ca'+p for p in pages}
 assert 'Sitemap: https://www.vrtgmusic.ca/sitemap.xml' in (root/'robots.txt').read_text()
 print('PASS sitemap and robots')
 
-expected={f'assets/audio/fragment-{n}-final.mp3' for n in ['01','02','03']}
-assert {str(p.relative_to(root)) for p in root.rglob('*.mp3')}==expected, 'Only the three approved final Fragments may be exported'
+expected={f'assets/audio/fragment-{n}-final.mp3' for n in ['01','02','03']} | {'assets/audio/frequence-03.mp3'}
+assert {str(p.relative_to(root)) for p in root.rglob('*.mp3')}==expected, 'Only the approved Fragments and Fréquence_03 may be exported'
 for n in ['01','02','03']:
  assert 'fragment-'+n in docs['/fragments'].ids
 fragment_graph=json.loads(docs['/fragments'].schema)['@graph']
 assert len([item for item in fragment_graph if item['@type']=='MusicRecording'])==3
 assert 'À VENIR' not in (root/'fragments/index.html').read_text()
-print('PASS three final Fragments, durations, tracklist and audio export')
+print('PASS final Fragments, Fréquence_03 and approved audio export')

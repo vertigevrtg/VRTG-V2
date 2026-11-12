@@ -7,6 +7,12 @@ for(const path of ['/','/frequences','/fragments']){
  const response=await fetch(base+path);assert.equal(response.status,200);
  const html=await response.text();
  assert(html.includes('spotify-player'));assert.equal((html.match(/<h1[ >]/g)||[]).length,1);
+ if(path==='/frequences'){
+  assert(html.includes('data-audio-track="frequence-03"'));
+  assert(html.includes('https://open.spotify.com/intl-fr/track/3CiCthMius0Oq8x8jmidZF?si=2b8c0f25f6514370'));
+  assert(html.includes('src="/assets/audio/frequence-03.mp3"'));
+  assert(!html.includes('Lien plateforme à venir'));
+ }
  if(path==='/fragments'){
   assert(!html.includes('À VENIR'));
   for(const n of ['01','02','03'])assert(html.includes(`data-fragment="${n}"`));
@@ -32,10 +38,10 @@ for(const redirect of config.redirects){
 console.log('PASS 21 legacy redirects');
 for(const path of ['/missing-page','/assets/fragment-01-vrtg.mp3','/assets/fragment-02-vrtg.mp3','/assets/fragment-03-vrtg.mp3','/assets/frequence-01-vrtg.mp3','/assets/frequence-02-vrtg.mp3','/assets/frequence-03-vrtg.mp3','/.env.local'])assert.equal((await fetch(base+path)).status,404,path);
 console.log('PASS 404 and no legacy/provisional MP3 files');
-for(const n of ['01','02','03']){
- const response=await fetch(base+`/assets/audio/fragment-${n}-final.mp3`,{headers:{Range:'bytes=0-255'}});
- assert.equal(response.status,206,n+' supports partial audio requests');
+for(const file of ['fragment-01-final.mp3','fragment-02-final.mp3','fragment-03-final.mp3','frequence-03.mp3']){
+ const response=await fetch(base+`/assets/audio/${file}`,{headers:{Range:'bytes=0-255'}});
+ assert.equal(response.status,206,file+' supports partial audio requests');
  assert(response.headers.get('content-type').startsWith('audio/mpeg'));
  assert.equal((await response.arrayBuffer()).byteLength,256);
 }
-console.log('PASS all three final audio files and byte ranges');
+console.log('PASS all four approved audio files and byte ranges');
