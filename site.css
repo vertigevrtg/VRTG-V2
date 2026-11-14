@@ -15,3 +15,22 @@
 #fragment-status:not(.sr-only){font-size:12px;line-height:1.4;max-width:220px;margin:0}
 @media(max-width:600px){#close-fragment-player{grid-column:6;grid-row:1}#fragment-status:not(.sr-only){grid-column:1/-1;max-width:none}.fragment-play{font-size:11px}.track-duration{font-size:10px}#fragment-player .player-title strong{font-size:12px}}
 @media(max-width:600px){.fragments .tracklist li{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:8px 12px}.fragments .track-number{grid-column:1;grid-row:1 / span 2}.fragments .track-info{grid-column:2;grid-row:1}.fragments .track-duration{grid-column:2;grid-row:2}.fragments .fragment-play{grid-column:3;grid-row:1 / span 2;min-width:80px}.fragments .track-info h3{font-size:21px}}
+
+.corrida-release {
+  margin: 0 5% 24px;
+  padding: clamp(24px, 4vw, 60px) 0;
+  border-block: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: center;
+  gap: clamp(24px, 6vw, 96px);
+}
+.corrida-cover { width: 100%; height: auto; }
+.corrida-details h2 { font: 400 clamp(50px, 7.5vw, 125px)/1 Georgia, serif; letter-spacing: -.065em; margin: 18px 0; }
+.corrida-date { color: var(--muted); font-size: 14px; line-height: 1.5; }
+.corrida-clock { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 34em; border-top: 1px solid var(--line); padding-top: 1em; }
+.corrida-clock span { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.corrida-clock b { display: block; font-size: clamp(26px, 4vw, 56px); font-weight: 400; line-height: 1.2; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+@media (max-width: 600px) {
+  .corrida-release { grid-template-columns: 1fr; gap: 24px; margin: 0 6% 12px; }
+}

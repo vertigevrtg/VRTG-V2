@@ -157,6 +157,27 @@
     document.body.classList.remove('has-platform-player');sync();
     (document.querySelector('[data-play]')||document.querySelector('.brand')).focus();
   });
+  let corridaTimeout;
+  function refreshCorrida() {
+    clearTimeout(corridaTimeout);
+    const release = document.querySelector('.corrida-release');
+    if (!release) return;
+    const remaining = Date.parse(release.querySelector('time').dateTime) - Date.now();
+    const clock = release.querySelector('.corrida-clock');
+    clock.hidden = remaining <= 0;
+    release.querySelector('[data-corrida-listen]').hidden = remaining > 0;
+    if (remaining <= 0) return;
+
+    const seconds = Math.ceil(remaining / 1000);
+    const values = [Math.floor(seconds / 86400), Math.floor(seconds / 3600) % 24,
+      Math.floor(seconds / 60) % 60, seconds % 60];
+    clock.querySelectorAll('b').forEach((digit, index) => {
+      digit.textContent = String(values[index]).padStart(2, '0');
+    });
+    corridaTimeout = setTimeout(refreshCorrida, remaining % 1000 || 1000);
+  }
+  window.addEventListener('pageshow', refreshCorrida);
+  document.addEventListener('visibilitychange', refreshCorrida);
   const normalize = path => path.replace(/\/index\.html$/, '').replace(/\/$/, '') || '/';
   const routes = new Set(['/', '/frequences', '/fragments']);
   function scrollToDestination(url) {
@@ -183,6 +204,7 @@
       document.body.classList.toggle('has-platform-player', !player.hidden);
       document.body.classList.toggle('has-player', !fragmentPlayer.hidden);
       sync();
+      refreshCorrida();
       document.querySelector('main').focus({ preventScroll: true });
       scrollToDestination(url);
       document.querySelector('#navigation-status').textContent = document.title;
@@ -224,6 +246,7 @@
     if (normalize(url.pathname) === normalize(renderedPath)) { ++navigationRequest; scrollToDestination(url); }
     else navigate(url, false);
   });
+  refreshCorrida();
   sync();
   updateProgress();
   track('page_view', { page_referrer: document.referrer });
