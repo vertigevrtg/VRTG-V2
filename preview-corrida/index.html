@@ -16,6 +16,26 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg">
   <link rel="stylesheet" href="/corrida/page.css">
+  <style>
+    .listen-panel{margin:22px 0;padding:18px;border:1px solid var(--gold);border-radius:16px;background:#211f18}
+    .listen-button{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;min-height:64px;padding:16px 20px;border:2px solid #efe6d4;border-radius:10px;background:#efe6d4;color:#151511;cursor:pointer;font:700 20px/1.2 Arial,sans-serif}
+    .listen-button:hover{background:#fff5df;border-color:#fff5df}
+    .listen-button:focus-visible{outline:3px solid #d8b46c;outline-offset:5px}
+    .listen-button:disabled{cursor:wait}
+    .listen-icon{font-size:23px;flex-shrink:0}
+    .listen-panel p{margin:12px 0 0;color:var(--paper);font:14px/1.5 Arial,sans-serif}
+    .listen-panel [hidden]{display:none}
+    #action .cta{background:transparent;color:var(--paper);border:1px solid var(--gold);font-size:14px}
+    #action .cta:hover{background:#302b20}
+    @media(max-width:759px){
+      .spread{display:flex;flex-direction:column;gap:28px}
+      .story{order:-1;margin:0;width:100%}
+      .artwork{width:100%}
+      h1{font-size:clamp(32px,8.5vw,50px)}
+      .listen-panel{margin:18px 0;padding:14px}
+      .listen-button{font-size:18px}
+    }
+  </style>
   <script type="module" src="/preview-corrida/page.mjs"></script>
 </head>
 <body>
@@ -33,12 +53,18 @@
       <section aria-labelledby="title" class="story">
         <h1 id="title">Fatigué des mêmes flows&nbsp;?<br>Monte le son.</h1>
         <p class="copy">Si ta playlist passe du rap au métal, t’es des nôtres. Sois parmi les premiers à écouter CORRIDA sur ta plateforme préférée.</p>
+        <div class="listen-panel">
+          <button class="listen-button" id="listen-button" type="button" aria-controls="corrida-audio" aria-describedby="listen-note" hidden><span class="listen-icon" aria-hidden="true">▶</span><span class="listen-label">Écouter CORRIDA</span></button>
+          <noscript><a class="listen-button" href="#corrida-audio">▶ Écouter CORRIDA</a></noscript>
+          <p id="listen-note">Morceau intégral · En avant-première</p>
+          <p id="listen-feedback" role="status" hidden></p>
+        </div>
         <div id="action"><p class="status">Pré-sauvegarde à venir</p></div>
       </section>
     </div>
     <section class="excerpt" aria-labelledby="excerpt-title">
       <div><h2 id="excerpt-title">Écoute intégrale <span class="duration">· CORRIDA</span></h2><p id="audio-status">Écoute privée — avant-première</p></div>
-      <audio controls preload="none" controlslist="nodownload" aria-label="Écouter CORRIDA en intégralité" aria-describedby="audio-status" style="width:100%">
+      <audio id="corrida-audio" controls preload="none" controlslist="nodownload" aria-label="Écouter CORRIDA en intégralité" aria-describedby="audio-status" style="width:100%">
         <source src="/preview-corrida/Corrida_final.mp3" type="audio/mpeg">
         Votre navigateur ne prend pas en charge la lecture audio.
       </audio>

@@ -64,4 +64,37 @@ document.addEventListener('visibilitychange', () => { if (!document.hidden) refr
 
 const audio = document.querySelector('audio');
 const status = document.querySelector('#audio-status');
-audio.addEventListener('error', () => { status.textContent = 'Lecture momentanément indisponible. Rechargez la page pour réessayer.'; });
+const button = document.querySelector('#listen-button');
+const label = button.querySelector('.listen-label');
+const icon = button.querySelector('.listen-icon');
+const feedback = document.querySelector('#listen-feedback');
+button.hidden = false;
+function syncPlayback() {
+  const playing = !audio.paused && !audio.ended;
+  label.textContent = playing ? 'Mettre en pause' : audio.currentTime > 0 && !audio.ended ? 'Reprendre CORRIDA' : 'Écouter CORRIDA';
+  icon.textContent = playing ? 'Ⅱ' : '▶';
+  status.textContent = playing ? 'Lecture en cours · CORRIDA' : 'Écoute privée — avant-première';
+}
+function showError() {
+  button.disabled = false;
+  syncPlayback();
+  feedback.hidden = false;
+  feedback.textContent = 'Lecture indisponible. Appuyez sur Écouter CORRIDA pour réessayer.';
+}
+button.addEventListener('click', async () => {
+  feedback.hidden = true;
+  if (!audio.paused) { audio.pause(); return; }
+  button.disabled = true;
+  label.textContent = 'Chargement…';
+  try {
+    if (audio.error) audio.load();
+    await audio.play();
+  } catch (error) {
+    if (error.name !== 'AbortError') showError();
+  } finally {
+    button.disabled = false;
+    syncPlayback();
+  }
+});
+for (const event of ['play', 'pause', 'ended']) audio.addEventListener(event, syncPlayback);
+audio.addEventListener('error', showError);
