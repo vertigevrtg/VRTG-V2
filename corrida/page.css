@@ -43,7 +43,8 @@ h1{font:700 clamp(34px,6vw,68px)/1.04 Arial,sans-serif;letter-spacing:-.055em;ma
   header{padding:clamp(10px,2vh,25px) 0}
   .edition{margin:clamp(14px,2.5vh,30px) 0 16px}
   .spread{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:5%}
-  figure{grid-column:2;grid-row:1;width:min(100%,max(230px,calc(100svh - 265px)));margin-inline:auto 0;padding:10px}
+  .artwork{grid-column:2;grid-row:1;width:min(100%,max(230px,calc(100svh - 345px)));margin-inline:auto 0}
+  figure{width:100%;padding:10px}
   .story{grid-column:1;grid-row:1;margin:0}
   h1{font-size:clamp(38px,min(6vw,8.5vh),68px)}
   .copy{margin:clamp(14px,2.5vh,24px) 0}
@@ -56,3 +57,9 @@ h1{font:700 clamp(34px,6vw,68px)/1.04 Arial,sans-serif;letter-spacing:-.055em;ma
 #audio-progress::-webkit-progress-bar{background:var(--line)}
 #audio-progress::-webkit-progress-value{background:var(--gold)}
 #audio-progress::-moz-progress-bar{background:var(--gold)}
+
+
+.countdown{margin-top:14px;text-align:center;font-family:Arial,sans-serif}
+.countdown p{margin:0 0 6px;color:var(--muted);font-size:12px}
+.countdown-values{display:flex;justify-content:center;gap:18px;color:var(--muted);font-size:12px}
+.countdown b{display:block;color:var(--gold);font-size:24px;font-weight:500;line-height:1.2;font-variant-numeric:tabular-nums}

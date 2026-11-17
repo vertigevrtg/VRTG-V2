@@ -45,6 +45,23 @@ refresh();
 window.addEventListener('pageshow', refresh);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
 
+const countdown = document.querySelector('.countdown');
+let countdownTimer;
+function refreshCountdown() {
+  clearTimeout(countdownTimer);
+  const remaining = releaseTime - Date.now();
+  countdown.hidden = remaining <= 0;
+  if (remaining <= 0) return;
+  const minutes = Math.ceil(remaining / 60000);
+  countdown.querySelector('[data-days]').textContent = String(Math.floor(minutes / 1440)).padStart(2, '0');
+  countdown.querySelector('[data-hours]').textContent = String(Math.floor(minutes / 60) % 24).padStart(2, '0');
+  countdown.querySelector('[data-minutes]').textContent = String(minutes % 60).padStart(2, '0');
+  countdownTimer = setTimeout(refreshCountdown, Math.min(remaining, remaining % 60000 || 60000));
+}
+refreshCountdown();
+window.addEventListener('pageshow', refreshCountdown);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshCountdown(); });
+
 if (corrida.excerptFile) {
   const audio = document.createElement('audio');
   const play = document.querySelector('.play');
