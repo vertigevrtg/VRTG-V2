@@ -5,7 +5,7 @@ import { createReadStream } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
 const root = resolve(import.meta.dirname, '../dist');
 const { redirects } = JSON.parse(await readFile(resolve(root, '../vercel.json')));
-const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.mp3':'audio/mpeg','.webp':'image/webp','.svg':'image/svg+xml','.xml':'application/xml','.txt':'text/plain'};
+const types = {'.mjs':'text/javascript; charset=utf-8','.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.mp3':'audio/mpeg','.webp':'image/webp','.svg':'image/svg+xml','.xml':'application/xml','.txt':'text/plain'};
 http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, 'http://localhost');

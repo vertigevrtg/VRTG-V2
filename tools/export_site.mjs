@@ -15,7 +15,7 @@ if (racine.excerptFile) {
   if (!/^[\w-]+\.mp3$/i.test(racine.excerptFile)) throw Error('Nom de fichier MP3 RACINE invalide');
   racineFiles.push(racine.excerptFile);
 }
-const files = [...racineFiles.map(file => 'racine/' + file), ...corridaFiles.map(file => 'corrida/' + file), 'creatures/index.html','creatures/exposition.css','creatures/player.js', ...mediaFiles, 'index.html', 'frequences/index.html', 'fragments/index.html', '404.html', 'site.css', 'site.js', 'favicon.svg', 'robots.txt', 'sitemap.xml', 'assets/hero-vrtg.webp', 'assets/fragments-banner.webp', 'assets/cover-fragments.webp', ...['01','02','03'].map(n => `assets/cover-frequence-${n}.webp`), ...['01','02','03'].map(n => `assets/audio/fragment-${n}-final.mp3`), 'assets/audio/frequence-03.mp3'];
+const files = ['preview-corrida/index.html', 'preview-corrida/page.mjs', 'preview-corrida/Corrida_final.mp3', ...racineFiles.map(file => 'racine/' + file), ...corridaFiles.map(file => 'corrida/' + file), 'creatures/index.html','creatures/exposition.css','creatures/player.js', ...mediaFiles, 'index.html', 'frequences/index.html', 'fragments/index.html', '404.html', 'site.css', 'site.js', 'favicon.svg', 'robots.txt', 'sitemap.xml', 'assets/hero-vrtg.webp', 'assets/fragments-banner.webp', 'assets/cover-fragments.webp', ...['01','02','03'].map(n => `assets/cover-frequence-${n}.webp`), ...['01','02','03'].map(n => `assets/audio/fragment-${n}-final.mp3`), 'assets/audio/frequence-03.mp3'];
 await rm(resolve(root, 'dist'), {recursive:true, force:true});
 for (const file of files) {
   await mkdir(dirname(resolve(root, 'dist', file)), { recursive: true });

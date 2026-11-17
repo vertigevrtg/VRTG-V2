@@ -113,6 +113,15 @@
   ],
   "headers": [
     {
+      "source": "/preview-corrida/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
       "source": "/assets/:path*",
       "headers": [
         {
