@@ -165,7 +165,6 @@
     const remaining = Date.parse(release.querySelector('time').dateTime) - Date.now();
     const clock = release.querySelector('.corrida-clock');
     clock.hidden = remaining <= 0;
-    release.querySelector('[data-corrida-listen]').hidden = remaining > 0;
     if (remaining <= 0) return;
 
     const seconds = Math.ceil(remaining / 1000);
