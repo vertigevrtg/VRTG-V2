@@ -37,16 +37,28 @@
     .track-shortcuts a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--gold);text-decoration:underline;text-underline-offset:4px}
     .track-shortcuts a:hover{color:var(--paper)}
     .hero-player{border-block:1px solid var(--line);padding:14px 0}
-    .hero-player audio{margin-top:10px}
     .track-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 12px}
     .track-heading h2{font:700 21px/1.2 Arial,sans-serif;letter-spacing:-.025em;margin:0}
     .badge{color:var(--gold);font:11px/1.3 ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;border:1px solid var(--line);border-radius:3px;padding:5px 7px}
-    .listen-button{display:flex;align-items:center;justify-content:center;gap:12px;min-height:56px;width:100%;padding:15px 16px;border:1px solid var(--paper);border-radius:8px;background:var(--paper);color:var(--ink);cursor:pointer;font:700 17px/1.3 Arial,sans-serif;text-align:center}
-    .listen-button:hover{background:#fff5df;border-color:#fff5df;text-decoration:none}
-    .listen-button:focus-visible,.secondary:focus-visible{outline:3px solid var(--gold);outline-offset:5px}
-    .listen-button:disabled{cursor:wait}
-    .listen-icon{flex-shrink:0}
     audio{display:block;width:100%;height:42px;margin:0;color-scheme:dark}
+    .audio-player{display:flex;align-items:center;gap:14px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#1e1e18;min-width:0}
+    .hero-player .audio-player{background:#25231b;border-color:var(--gold)}
+    .play-toggle{display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;padding:0;border:0;border-radius:50%;background:var(--paper);color:var(--ink);cursor:pointer}
+    .hero-player .play-toggle{background:var(--gold)}
+    .play-toggle:hover{background:#fff5df}
+    .play-toggle svg{width:23px;height:23px;fill:currentColor}
+    .play-toggle:disabled{cursor:wait;opacity:.65}
+    .play-toggle:focus-visible,.audio-seek:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+    .player-timeline{flex:1;min-width:0}
+    .audio-seek{display:block;appearance:none;-webkit-appearance:none;width:100%;height:24px;margin:0;background:transparent;cursor:pointer;--progress:0%}
+    .audio-seek::-webkit-slider-runnable-track{height:4px;border-radius:4px;background:linear-gradient(to right,var(--gold) var(--progress),#555348 var(--progress))}
+    .audio-seek::-moz-range-track{height:4px;border-radius:4px;background:linear-gradient(to right,var(--gold) var(--progress),#555348 var(--progress))}
+    .audio-seek::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:12px;height:12px;border:0;border-radius:50%;background:var(--paper);margin-top:-4px}
+    .audio-seek::-moz-range-thumb{width:12px;height:12px;border:0;border-radius:50%;background:var(--paper)}
+    .audio-seek:disabled{cursor:default;opacity:.5}
+    .player-time{display:flex;justify-content:space-between;color:var(--muted);font:11px/1.2 ui-monospace,monospace;font-variant-numeric:tabular-nums}
+    .player-time .elapsed{color:var(--paper)}
+    @media(max-width:359px){.audio-player{gap:12px;padding:8px 10px}.play-toggle{width:44px;height:44px;flex-basis:44px}}
     .feedback{color:var(--paper);font:13px/1.5 Arial,sans-serif;margin:12px 0 0}
     .discover-link{display:inline-flex;gap:14px;align-items:center;min-height:48px;font:700 14px/1.4 Arial,sans-serif;color:var(--paper);padding:8px 0;margin-top:5px}
     .discover-link span{color:var(--gold)}
@@ -70,9 +82,6 @@
     .companion h3{font:700 clamp(18px,5vw,24px)/1.25 Arial,sans-serif;letter-spacing:-.03em;margin:0 0 5px;overflow-wrap:anywhere}
     .companion .facet{font:italic 18px/1.4 Georgia,serif;margin:0;color:var(--gold)}
     .companion .description{font:15px/1.65 Arial,sans-serif;color:var(--muted);margin:0 0 18px;max-width:46ch}
-    .secondary{background:transparent;color:var(--paper);border:1px solid var(--gold);min-height:50px;font-size:14px;border-radius:6px}
-    .secondary:hover{background:#302b20;border-color:var(--gold)}
-    .companion audio{margin-top:12px}
     .professional{display:flex;align-items:flex-start;justify-content:space-between;gap:14px 30px;flex-wrap:wrap;margin:12px 0 0;padding:28px 0 25px;border-bottom:1px solid var(--line)}
     .professional h2{font:400 24px/1.3 Georgia,serif;letter-spacing:-.02em;margin:0 0 8px}
     .professional p{font:13px/1.6 Arial,sans-serif;color:var(--muted);max-width:47ch;margin:0}
@@ -91,7 +100,6 @@
       .copy{font-size:16px;margin-bottom:12px}
       .hero-player{padding:12px 0}
       .hero-player .track-heading{margin-bottom:10px}
-      .hero-player .listen-button{min-height:52px;padding:13px 16px}
       .hero-copy>.discover-link{min-height:44px;margin-top:0}
       .hero-art figure{width:min(100%,clamp(240px,42svh,380px))}
       .hero-art{align-self:center}
@@ -101,7 +109,7 @@
       .companion-top{grid-template-columns:116px minmax(0,1fr);gap:22px}
       .discovery-section{margin-top:20px;padding-top:16px}
     }
-    @media(max-width:359px){header{padding:8px 0}.edition{margin:14px 0;font-size:9px;gap:8px;flex-wrap:nowrap}.hero-copy h1{font-size:30px}.tagline{font-size:16px;line-height:1.35;margin:12px 0 8px}.copy{font-size:13px;line-height:1.5;margin-bottom:14px}.hero-player{padding:12px 0}.track-heading{gap:8px}.track-heading h2{font-size:19px}.badge{font-size:9px;padding:4px 5px}.listen-button{min-height:50px;font-size:16px;padding:12px}.secondary{font-size:13px}.track-shortcuts{gap:0 12px;font-size:12px}.discover-link{font-size:13px;gap:8px}.companion-top{grid-template-columns:76px minmax(0,1fr);gap:14px}.companion h3{font-size:17px}}
+    @media(max-width:359px){header{padding:8px 0}.edition{margin:14px 0;font-size:9px;gap:8px;flex-wrap:nowrap}.hero-copy h1{font-size:30px}.tagline{font-size:16px;line-height:1.35;margin:12px 0 8px}.copy{font-size:13px;line-height:1.5;margin-bottom:14px}.hero-player{padding:12px 0}.track-heading{gap:8px}.track-heading h2{font-size:19px}.badge{font-size:9px;padding:4px 5px}.track-shortcuts{gap:0 12px;font-size:12px}.discover-link{font-size:13px;gap:8px}.companion-top{grid-template-columns:76px minmax(0,1fr);gap:14px}.companion h3{font-size:17px}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}}
   </style>
 </head>
@@ -121,9 +129,8 @@
         </nav>
         <p class="copy">Un rap alternatif francophone à la croisée du hip-hop, du métal et des textures industrielles.</p>
         <div class="hero-player" id="corrida">
-          <div class="track-heading"><h2>CORRIDA</h2><span class="badge" id="corrida-badge">Nouveauté · Avant-première</span></div>
-          <button class="listen-button" id="listen-button" type="button" data-play="corrida-audio" aria-controls="corrida-audio" aria-pressed="false" hidden><span class="listen-icon" aria-hidden="true">▶</span><span class="listen-label">Écouter CORRIDA</span></button>
-          <audio id="corrida-audio" controls preload="none" controlslist="nodownload" aria-label="Écouter CORRIDA en intégralité">
+          <div class="track-heading"><h2>CORRIDA</h2><span class="badge" id="corrida-badge">Avant-première</span></div>
+          <audio id="corrida-audio" controls preload="metadata" controlslist="nodownload" aria-label="Écouter CORRIDA en intégralité">
             <source src="/preview-corrida/Corrida_final.mp3" type="audio/mpeg">
             Votre navigateur ne prend pas en charge la lecture audio.
           </audio>
@@ -146,16 +153,14 @@
       <div class="track-grid">
         <article class="companion" id="fragment-02" aria-labelledby="fragment-title">
           <div class="companion-top"><img src="/assets/cover-fragments.webp" width="1600" height="1600" loading="lazy" alt="Pochette officielle de Fragments : un lit défait et une ouverture sur le ciel nocturne."><div><p class="eyebrow">02 / Fragments</p><h3 id="fragment-title">FRAGMENT_02</h3><p class="facet">L’intensité</p></div></div>
-          <p class="description">Une tension à vif, une forme resserrée. FRAGMENT_02 explore le versant intense et expérimental de VRTG, au plus près de la décharge émotionnelle.</p>
-          <button class="listen-button secondary" type="button" data-play="fragment-audio" aria-controls="fragment-audio" aria-pressed="false" hidden><span class="listen-icon" aria-hidden="true">▶</span><span class="listen-label">Écouter FRAGMENT_02</span></button>
-          <audio id="fragment-audio" controls preload="none" controlslist="nodownload" aria-label="Écouter FRAGMENT_02 en intégralité"><source src="/assets/audio/fragment-02-final.mp3" type="audio/mpeg">Votre navigateur ne prend pas en charge la lecture audio.</audio>
+          <p class="description">Une décharge brute, intense et expérimentale.</p>
+          <audio id="fragment-audio" controls preload="metadata" controlslist="nodownload" aria-label="Écouter FRAGMENT_02 en intégralité"><source src="/assets/audio/fragment-02-final.mp3" type="audio/mpeg">Votre navigateur ne prend pas en charge la lecture audio.</audio>
           <p class="feedback" id="fragment-feedback" role="status" hidden></p>
         </article>
         <article class="companion" id="frequence-03" aria-labelledby="frequence-title">
           <div class="companion-top"><img src="/assets/cover-frequence-03.webp" width="1600" height="1600" loading="lazy" alt="Pochette officielle de FRÉQUENCE_03, dans l’univers cosmique de VRTG."><div><p class="eyebrow">03 / Fréquences</p><h3 id="frequence-title">FRÉQUENCE_03</h3><p class="facet">Une autre fréquence</p></div></div>
-          <p class="description">Le regard se tourne vers l’invisible. Un rap introspectif, une écriture symbolique et un imaginaire cosmique dévoilent une autre dimension de VRTG.</p>
-          <button class="listen-button secondary" type="button" data-play="frequence-audio" aria-controls="frequence-audio" aria-pressed="false" hidden><span class="listen-icon" aria-hidden="true">▶</span><span class="listen-label">Écouter FRÉQUENCE_03</span></button>
-          <audio id="frequence-audio" controls preload="none" controlslist="nodownload" aria-label="Écouter FRÉQUENCE_03 en intégralité"><source src="/assets/audio/frequence-03.mp3" type="audio/mpeg">Votre navigateur ne prend pas en charge la lecture audio.</audio>
+          <p class="description">Un rap introspectif aux textures cosmiques.</p>
+          <audio id="frequence-audio" controls preload="metadata" controlslist="nodownload" aria-label="Écouter FRÉQUENCE_03 en intégralité"><source src="/assets/audio/frequence-03.mp3" type="audio/mpeg">Votre navigateur ne prend pas en charge la lecture audio.</audio>
           <p class="feedback" id="frequence-feedback" role="status" hidden></p>
         </article>
       </div>
@@ -170,45 +175,68 @@
     import { corrida } from '/corrida/config.mjs';
 
     const tracks = [
-      {id:'corrida-audio',name:'CORRIDA',key:'corrida'},
-      {id:'fragment-audio',name:'FRAGMENT_02',key:'fragment'},
-      {id:'frequence-audio',name:'FRÉQUENCE_03',key:'frequence'}
-    ].map(track => ({...track,audio:document.getElementById(track.id),button:document.querySelector(`[data-play="${track.id}"]`),feedback:document.getElementById(`${track.key}-feedback`)}));
+      {id:'corrida-audio',name:'CORRIDA',key:'corrida',duration:161.23},
+      {id:'fragment-audio',name:'FRAGMENT_02',key:'fragment',duration:69.30},
+      {id:'frequence-audio',name:'FRÉQUENCE_03',key:'frequence',duration:145.63}
+    ].map(track => ({...track,audio:document.getElementById(track.id),feedback:document.getElementById(`${track.key}-feedback`)}));
     function measure(event,track,extra={}) {
       const detail={event,track,page_path:location.pathname,...extra};
       window.dispatchEvent(new CustomEvent('vrtg:analytics',{detail}));
       window.vrtgAnalytics?.(detail);
     }
+    const playIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4v16l13-8z"/></svg>';
+    const pauseIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>';
+    const formatTime=value=>`${Math.floor(value/60)}:${String(Math.floor(value%60)).padStart(2,'0')}`;
     for (const track of tracks) {
-      const {audio,button,feedback,name}=track;
+      const {audio,feedback,name}=track;
+      const player=document.createElement('div');
+      player.className='audio-player';
+      player.setAttribute('role','group');
+      player.setAttribute('aria-label',`Lecteur ${name}`);
+      player.innerHTML=`<button class="play-toggle" type="button" aria-controls="${track.id}">${playIcon}</button><div class="player-timeline"><input class="audio-seek" type="range" min="0" max="${track.duration}" step="0.1" value="0" aria-label="Position dans ${name}" aria-controls="${track.id}" disabled><div class="player-time" aria-hidden="true"><span class="elapsed">0:00</span><span class="duration">${formatTime(track.duration)}</span></div></div>`;
+      const button=player.querySelector('button');
+      const seek=player.querySelector('input');
+      const elapsed=player.querySelector('.elapsed');
+      const duration=player.querySelector('.duration');
       let pending=false;
       function sync() {
         const playing=!audio.paused&&!audio.ended;
-        button.querySelector('.listen-label').textContent=playing?`Pause · ${name}`:audio.currentTime>0&&!audio.ended?`Reprendre ${name}`:`Écouter ${name}`;
-        button.querySelector('.listen-icon').textContent=playing?'Ⅱ':'▶';
-        button.setAttribute('aria-pressed',String(playing));
+        button.innerHTML=playing?pauseIcon:playIcon;
+        button.setAttribute('aria-label',playing?`Mettre ${name} en pause`:audio.currentTime>0&&!audio.ended?`Reprendre ${name}`:`Écouter ${name}`);
+        player.setAttribute('aria-busy',String(pending));
+        const total=Number.isFinite(audio.duration)&&audio.duration>0?audio.duration:track.duration;
+        seek.max=total;
+        seek.disabled=!(Number.isFinite(audio.duration)&&audio.duration>0);
+        seek.value=audio.currentTime;
+        seek.style.setProperty('--progress',`${Math.min(100,audio.currentTime/total*100)}%`);
+        seek.setAttribute('aria-valuetext',`${formatTime(audio.currentTime)} sur ${formatTime(total)}`);
+        elapsed.textContent=formatTime(audio.currentTime);
+        duration.textContent=formatTime(total);
       }
       function failure() {
         pending=false;
         button.disabled=false;
-        feedback.textContent=`Lecture indisponible. Réessayez avec le bouton Écouter ${name} ou les commandes du lecteur.`;
+        feedback.textContent='Lecture indisponible. Appuyez sur ▶ pour réessayer.';
         feedback.hidden=false;
         sync();
         measure('audio_error',track.key,{code:audio.error?.code??null});
       }
-      button.hidden=false;
       button.addEventListener('click',async()=>{
-        measure('play_click',track.key);
         feedback.hidden=true;
         if(!audio.paused){audio.pause();return;}
         if(pending)return;
+        measure('play_click',track.key);
         pending=true;
         button.disabled=true;
-        button.querySelector('.listen-label').textContent='Chargement…';
+        sync();
+        button.setAttribute('aria-label',`Chargement de ${name}`);
         for(const other of tracks)if(other!==track)other.audio.pause();
         try {if(audio.error)audio.load();await audio.play();}
         catch(error){if(error.name!=='AbortError')failure();}
         finally{pending=false;button.disabled=false;sync();}
+      });
+      seek.addEventListener('input',()=>{
+        if(Number.isFinite(audio.duration)){audio.currentTime=Number(seek.value);sync();}
       });
       audio.addEventListener('play',()=>{
         for(const other of tracks)if(other!==track)other.audio.pause();
@@ -216,8 +244,13 @@
         sync();
       });
       audio.addEventListener('playing',()=>measure('track_started',track.key));
-      for(const event of ['pause','ended','emptied'])audio.addEventListener(event,sync);
+      for(const event of ['pause','ended','emptied','loadedmetadata','durationchange','timeupdate'])audio.addEventListener(event,sync);
       audio.addEventListener('error',failure);
+      sync();
+      // Keep native controls as a fallback until the custom player is ready.
+      audio.before(player);
+      audio.controls=false;
+      audio.hidden=true;
     }
 
     const releaseTime=Date.parse(document.querySelector('time').dateTime);
@@ -247,7 +280,7 @@
       }
       if(previousPhase===live)return;
       previousPhase=live;
-      document.getElementById('corrida-badge').textContent=live?'Nouveauté':'Nouveauté · Avant-première';
+      document.getElementById('corrida-badge').textContent=live?'Nouveauté':'Avant-première';
       const url=destination(live);
       action.replaceChildren();
       if(url){
