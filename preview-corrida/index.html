@@ -4,71 +4,249 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#151511">
-  <title>CORRIDA — VRTG</title>
-  <meta name="description" content="CORRIDA, un single de VRTG. La colère prend corps, l’écriture l’apaise. Sortie le 26 novembre 2026.">
+  <title>VRTG — Le rap à l’état brut | Trois morceaux à découvrir</title>
+  <meta name="description" content="Découvrez VRTG : un rap alternatif francophone entre hip-hop, métal et textures industrielles. Écoutez CORRIDA, FRAGMENT_02 et FRÉQUENCE_03 en intégralité.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://www.vrtgmusic.ca/preview-corrida">
-  <meta property="og:type" content="music.song">
-  <meta property="og:title" content="CORRIDA — VRTG">
-  <meta property="og:description" content="Fatigué des mêmes flows ? Découvre CORRIDA, le single rap-métal de VRTG.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:title" content="VRTG — Le rap à l’état brut">
+  <meta property="og:description" content="Trois morceaux. Trois facettes d’un même univers. Découvrez CORRIDA, FRAGMENT_02 et FRÉQUENCE_03.">
   <meta property="og:url" content="https://www.vrtgmusic.ca/preview-corrida">
   <meta property="og:image" content="https://www.vrtgmusic.ca/corrida/pochette-960.webp">
+  <meta property="og:image:alt" content="Pochette officielle de CORRIDA, par VRTG">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg">
   <link rel="stylesheet" href="/corrida/page.css">
   <style>
-    .listen-panel{margin:22px 0;padding:18px;border:1px solid var(--gold);border-radius:16px;background:#211f18}
-    .listen-button{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;min-height:64px;padding:16px 20px;border:2px solid #efe6d4;border-radius:10px;background:#efe6d4;color:#151511;cursor:pointer;font:700 20px/1.2 Arial,sans-serif}
-    .listen-button:hover{background:#fff5df;border-color:#fff5df}
-    .listen-button:focus-visible{outline:3px solid #d8b46c;outline-offset:5px}
+    [hidden]{display:none!important}
+    html{scroll-padding-top:20px}
+    body{background:radial-gradient(ellipse at 85% 14%,#29271e,transparent 40%),var(--ink)}
+    header,main,footer{width:min(89%,1190px);margin-inline:auto}
+    header{padding:14px 0}
+    .skip-link{position:absolute;top:8px;left:8px;z-index:2;padding:12px;background:var(--paper);color:var(--ink);transform:translateY(-160%);font-family:Arial,sans-serif}
+    .skip-link:focus{transform:none}
+    .edition{margin:24px 0 18px;font-size:11px}
+    .discovery-hero{display:grid;gap:28px;align-items:center}
+    .hero-copy h1{font:700 clamp(32px,8vw,48px)/1.04 Arial,sans-serif;letter-spacing:-.05em;text-wrap:balance;margin:0;max-width:17ch}
+    .hero-copy h1 span{display:block;color:var(--gold);font-size:.38em;line-height:1.5;letter-spacing:.08em;margin-bottom:9px}
+    .tagline{font-size:19px;line-height:1.4;margin:16px 0 10px;max-width:29ch}
+    .copy{max-width:49ch;font:15px/1.55 Arial,sans-serif;margin:0 0 20px}
+    .hero-player{border-block:1px solid var(--line);padding:17px 0 14px}
+    .track-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 7px}
+    .track-heading h2{font:700 21px/1.2 Arial,sans-serif;letter-spacing:-.025em;margin:0}
+    .badge{color:var(--gold);font:11px/1.3 ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;border:1px solid var(--line);border-radius:3px;padding:5px 7px}
+    .track-intro{font:14px/1.5 Arial,sans-serif;color:var(--muted);margin:0 0 14px}
+    .listen-button{display:flex;align-items:center;justify-content:center;gap:12px;min-height:56px;width:100%;padding:15px 16px;border:1px solid var(--paper);border-radius:8px;background:var(--paper);color:var(--ink);cursor:pointer;font:700 17px/1.3 Arial,sans-serif;text-align:center}
+    .listen-button:hover{background:#fff5df;border-color:#fff5df;text-decoration:none}
+    .listen-button:focus-visible,.secondary:focus-visible{outline:3px solid var(--gold);outline-offset:5px}
     .listen-button:disabled{cursor:wait}
-    .listen-icon{font-size:23px;flex-shrink:0}
-    .listen-panel p{margin:12px 0 0;color:var(--paper);font:14px/1.5 Arial,sans-serif}
-    .listen-panel [hidden]{display:none}
-    #action .cta{background:transparent;color:var(--paper);border:1px solid var(--gold);font-size:14px}
-    #action .cta:hover{background:#302b20}
-    @media(max-width:759px){
-      .spread{display:flex;flex-direction:column;gap:28px}
-      .story{order:-1;margin:0;width:100%}
-      .artwork{width:100%}
-      h1{font-size:clamp(32px,8.5vw,50px)}
-      .listen-panel{margin:18px 0;padding:14px}
-      .listen-button{font-size:18px}
+    .listen-icon{flex-shrink:0}
+    .player-note{margin:9px 0 10px;font:12px/1.5 Arial,sans-serif;color:var(--muted)}
+    audio{display:block;width:100%;height:42px;margin:0;color-scheme:dark}
+    .feedback{color:var(--paper);font:13px/1.5 Arial,sans-serif;margin:12px 0 0}
+    .discover-link{display:inline-flex;gap:14px;align-items:center;min-height:48px;font:700 14px/1.4 Arial,sans-serif;color:var(--paper);padding:8px 0;margin-top:5px}
+    .discover-link span{color:var(--gold)}
+    .hero-art{min-width:0}
+    .hero-art figure{width:min(86%,440px)}
+    .release-info{text-align:center;margin:18px auto 0;font:12px/1.6 Arial,sans-serif;color:var(--muted)}
+    .countdown{margin-top:12px}
+    #action{margin:12px auto 0;text-align:center;font:13px/1.6 Arial,sans-serif}
+    #action a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:6px 12px;text-decoration:underline;text-underline-offset:4px;color:var(--muted)}
+    #action a:hover{color:var(--paper)}
+    .discovery-section{margin-top:48px;padding-top:25px;border-top:1px solid var(--line);scroll-margin-top:20px}
+    .section-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:24px}
+    .eyebrow{font:11px/1.5 ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+    .section-heading h2{font:400 clamp(26px,5vw,36px)/1.15 Georgia,serif;letter-spacing:-.03em;margin:0 0 9px}
+    .section-heading .section-note{font:14px/1.5 Arial,sans-serif;max-width:49ch;margin:0;color:var(--muted)}
+    .section-index{font:11px/1.5 ui-monospace,monospace;letter-spacing:.04em;color:var(--muted)}
+    .track-grid{display:grid;gap:24px}
+    .companion{min-width:0;border-bottom:1px solid var(--line);padding:0 0 25px;scroll-margin-top:20px}
+    .companion-top{display:grid;grid-template-columns:100px minmax(0,1fr);gap:18px;align-items:center;margin-bottom:18px}
+    .companion img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border:1px solid var(--line)}
+    .companion h3{font:700 clamp(18px,5vw,24px)/1.25 Arial,sans-serif;letter-spacing:-.03em;margin:0 0 5px;overflow-wrap:anywhere}
+    .companion .facet{font:italic 18px/1.4 Georgia,serif;margin:0;color:var(--gold)}
+    .companion .description{font:15px/1.65 Arial,sans-serif;color:var(--muted);margin:0 0 18px;max-width:46ch}
+    .secondary{background:transparent;color:var(--paper);border:1px solid var(--gold);min-height:50px;font-size:14px;border-radius:6px}
+    .secondary:hover{background:#302b20;border-color:var(--gold)}
+    .companion audio{margin-top:12px}
+    .professional{display:flex;align-items:flex-start;justify-content:space-between;gap:14px 30px;flex-wrap:wrap;margin:12px 0 0;padding:28px 0 25px;border-bottom:1px solid var(--line)}
+    .professional h2{font:400 24px/1.3 Georgia,serif;letter-spacing:-.02em;margin:0 0 8px}
+    .professional p{font:13px/1.6 Arial,sans-serif;color:var(--muted);max-width:47ch;margin:0}
+    .contact-link{display:inline-flex;align-items:center;min-height:44px;gap:12px;font:14px/1.4 Arial,sans-serif;text-decoration:underline;text-underline-offset:5px;overflow-wrap:anywhere}
+    .contact-link span{color:var(--gold)}
+    footer{display:flex;justify-content:space-between;gap:16px;padding:20px 0 28px;color:var(--muted);font:11px/1.5 Arial,sans-serif}
+    @media(min-width:760px){
+      .discovery-hero{grid-template-columns:1.06fr 1fr;gap:7%}
+      .hero-copy h1{font-size:clamp(43px,4.9vw,66px)}
+      .tagline{font-size:22px}
+      .copy{font-size:16px}
+      .hero-art figure{width:100%;max-width:440px}
+      .hero-art{align-self:center}
+      .track-grid{grid-template-columns:1fr 1fr;gap:40px}
+      .companion{display:flex;flex-direction:column}
+      .companion .description{flex:1}
+      .companion-top{grid-template-columns:116px minmax(0,1fr);gap:22px}
+      .discovery-section{margin-top:52px}
     }
+    @media(max-width:359px){header{padding:8px 0}.edition{margin:14px 0;font-size:9px;gap:8px;flex-wrap:nowrap}.hero-copy h1{font-size:30px}.tagline{font-size:16px;line-height:1.35;margin:12px 0 8px}.copy{font-size:13px;line-height:1.5;margin-bottom:14px}.hero-player{padding:12px 0}.track-heading{gap:8px}.track-heading h2{font-size:19px}.badge{font-size:9px;padding:4px 5px}.track-intro{font-size:12px;margin-bottom:10px}.listen-button{min-height:50px;font-size:16px;padding:12px}.secondary{font-size:13px}.player-note{font-size:11px;margin:8px 0}.companion-top{grid-template-columns:76px minmax(0,1fr);gap:14px}.companion h3{font-size:17px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}}
   </style>
-  <script type="module" src="/preview-corrida/page.mjs"></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
   <header><a class="brand" href="/" aria-label="VRTG, accueil">VRTG</a><a class="collection" href="/creatures">Créatures <span aria-hidden="true">↗</span></a></header>
-  <main>
-    <div class="edition"><span>CORRIDA · VRTG</span><time datetime="2026-11-26T06:00:00-05:00">26 novembre 2026 · 6 h HNE</time></div>
-    <div class="spread">
-      <div class="artwork">
-      <figure><img src="/corrida/pochette-960.webp" srcset="/corrida/pochette-480.webp 480w, /corrida/pochette-960.webp 960w" sizes="(min-width: 760px) 45vw, 84vw" width="960" height="960" fetchpriority="high" alt="Pochette de CORRIDA. Une déchirure traverse des bandes de manuscrit ancien sur fond noir, entre des cercles d’or."></figure>
-      <div class="countdown" role="timer" aria-label="Temps avant la sortie de CORRIDA" hidden>
-        <p>Sortie dans</p>
-        <div class="countdown-values"><span><b data-days>00</b> jours</span><span><b data-hours>00</b> heures</span><span><b data-minutes>00</b> minutes</span></div>
-      </div>
-      </div>
-      <section aria-labelledby="title" class="story">
-        <h1 id="title">Fatigué des mêmes flows&nbsp;?<br>Monte le son.</h1>
-        <p class="copy">Si ta playlist passe du rap au métal, t’es des nôtres. Sois parmi les premiers à écouter CORRIDA sur ta plateforme préférée.</p>
-        <div class="listen-panel">
-          <button class="listen-button" id="listen-button" type="button" aria-controls="corrida-audio" aria-describedby="listen-note" hidden><span class="listen-icon" aria-hidden="true">▶</span><span class="listen-label">Écouter CORRIDA</span></button>
-          <noscript><a class="listen-button" href="#corrida-audio">▶ Écouter CORRIDA</a></noscript>
-          <p id="listen-note">Morceau intégral · En avant-première</p>
-          <p id="listen-feedback" role="status" hidden></p>
+  <main id="main">
+    <div class="edition"><span>Découvrir VRTG</span><span>3 morceaux · Écoute intégrale</span></div>
+    <div class="discovery-hero">
+      <section class="hero-copy" aria-labelledby="title">
+        <h1 id="title"><span>VRTG —</span>LE RAP À L’ÉTAT BRUT</h1>
+        <p class="tagline">Trois morceaux.<br>Trois facettes d’un même univers.</p>
+        <p class="copy">Un rap alternatif francophone à la croisée du hip-hop, du métal et des textures industrielles. Une musique viscérale, entre tension, introspection et décharge émotionnelle.</p>
+        <div class="hero-player" id="corrida">
+          <div class="track-heading"><h2>CORRIDA</h2><span class="badge" id="corrida-badge">Nouveauté · Avant-première</span></div>
+          <p class="track-intro">Le morceau à découvrir en premier.</p>
+          <button class="listen-button" id="listen-button" type="button" data-play="corrida-audio" aria-controls="corrida-audio" aria-describedby="listen-note" aria-pressed="false" hidden><span class="listen-icon" aria-hidden="true">▶</span><span class="listen-label">Écouter CORRIDA</span></button>
+          <p class="player-note" id="listen-note">Morceau intégral · En avant-première</p>
+          <audio id="corrida-audio" controls preload="none" controlslist="nodownload" aria-label="Écouter CORRIDA en intégralité" aria-describedby="listen-note">
+            <source src="/preview-corrida/Corrida_final.mp3" type="audio/mpeg">
+            Votre navigateur ne prend pas en charge la lecture audio.
+          </audio>
+          <p class="feedback" id="corrida-feedback" role="status" hidden></p>
         </div>
-        <div id="action"><p class="status">Pré-sauvegarde à venir</p></div>
+        <a class="discover-link" href="#trois-morceaux">Découvrir les 3 morceaux <span aria-hidden="true">↓</span></a>
       </section>
+      <div class="hero-art">
+        <figure><img src="/corrida/pochette-960.webp" srcset="/corrida/pochette-480.webp 480w, /corrida/pochette-960.webp 960w" sizes="(min-width:760px) 42vw, 80vw" width="960" height="960" fetchpriority="high" alt="Pochette de CORRIDA. Une déchirure traverse des bandes de manuscrit ancien sur fond noir, entre des cercles d’or."></figure>
+        <p class="release-info">CORRIDA · Sortie le <time datetime="2026-11-26T06:00:00-05:00">26 novembre 2026 à 6 h HNE</time></p>
+        <div class="countdown" role="timer" aria-label="Temps avant la sortie de CORRIDA" hidden><p>Sortie dans</p><div class="countdown-values"><span><b data-days>00</b> jours</span><span><b data-hours>00</b> heures</span><span><b data-minutes>00</b> minutes</span></div></div>
+        <div id="action"></div>
+      </div>
     </div>
-    <section class="excerpt" aria-labelledby="excerpt-title">
-      <div><h2 id="excerpt-title">Écoute intégrale <span class="duration">· CORRIDA</span></h2><p id="audio-status">Écoute privée — avant-première</p></div>
-      <audio id="corrida-audio" controls preload="none" controlslist="nodownload" aria-label="Écouter CORRIDA en intégralité" aria-describedby="audio-status" style="width:100%">
-        <source src="/preview-corrida/Corrida_final.mp3" type="audio/mpeg">
-        Votre navigateur ne prend pas en charge la lecture audio.
-      </audio>
+    <section class="discovery-section" id="trois-morceaux" aria-labelledby="discovery-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Après CORRIDA, poursuivre l’écoute</p><h2 id="discovery-title">Un même univers. D’autres tensions.</h2><p class="section-note">CORRIDA ouvre la porte. FRAGMENT_02 et FRÉQUENCE_03 en révèlent d’autres dimensions.</p></div>
+        <a class="discover-link" href="#corrida">Revenir à CORRIDA <span aria-hidden="true">↑</span></a>
+      </div>
+      <div class="track-grid">
+        <article class="companion" id="fragment-02" aria-labelledby="fragment-title">
+          <div class="companion-top"><img src="/assets/cover-fragments.webp" width="1600" height="1600" loading="lazy" alt="Pochette officielle de Fragments : un lit défait et une ouverture sur le ciel nocturne."><div><p class="eyebrow">02 / Fragments</p><h3 id="fragment-title">FRAGMENT_02</h3><p class="facet">L’intensité</p></div></div>
+          <p class="description">Une tension à vif, une forme resserrée. FRAGMENT_02 explore le versant intense et expérimental de VRTG, au plus près de la décharge émotionnelle.</p>
+          <button class="listen-button secondary" type="button" data-play="fragment-audio" aria-controls="fragment-audio" aria-pressed="false" hidden><span class="listen-icon" aria-hidden="true">▶</span><span class="listen-label">Écouter FRAGMENT_02</span></button>
+          <audio id="fragment-audio" controls preload="none" controlslist="nodownload" aria-label="Écouter FRAGMENT_02 en intégralité"><source src="/assets/audio/fragment-02-final.mp3" type="audio/mpeg">Votre navigateur ne prend pas en charge la lecture audio.</audio>
+          <p class="feedback" id="fragment-feedback" role="status" hidden></p>
+        </article>
+        <article class="companion" id="frequence-03" aria-labelledby="frequence-title">
+          <div class="companion-top"><img src="/assets/cover-frequence-03.webp" width="1600" height="1600" loading="lazy" alt="Pochette officielle de FRÉQUENCE_03, dans l’univers cosmique de VRTG."><div><p class="eyebrow">03 / Fréquences</p><h3 id="frequence-title">FRÉQUENCE_03</h3><p class="facet">Une autre fréquence</p></div></div>
+          <p class="description">Le regard se tourne vers l’invisible. Un rap introspectif, une écriture symbolique et un imaginaire cosmique dévoilent une autre dimension de VRTG.</p>
+          <button class="listen-button secondary" type="button" data-play="frequence-audio" aria-controls="frequence-audio" aria-pressed="false" hidden><span class="listen-icon" aria-hidden="true">▶</span><span class="listen-label">Écouter FRÉQUENCE_03</span></button>
+          <audio id="frequence-audio" controls preload="none" controlslist="nodownload" aria-label="Écouter FRÉQUENCE_03 en intégralité"><source src="/assets/audio/frequence-03.mp3" type="audio/mpeg">Votre navigateur ne prend pas en charge la lecture audio.</audio>
+          <p class="feedback" id="frequence-feedback" role="status" hidden></p>
+        </article>
+      </div>
+    </section>
+    <section class="professional" aria-labelledby="contact-title">
+      <div><p class="eyebrow">Contact professionnel</p><h2 id="contact-title">Prolongeons l’écoute.</h2><p>Radios, DJs, festivals et professionnels de la musique : pour une diffusion, une programmation ou un échange.</p></div>
+      <a class="contact-link" href="mailto:vertige.vrtg@gmail.com">vertige.vrtg@gmail.com <span aria-hidden="true">↗</span></a>
     </section>
   </main>
+  <footer><a href="/" aria-label="VRTG, retour à l’accueil">VRTG</a><span>Rap alternatif francophone · © 2026 VRTG</span></footer>
+  <script type="module">
+    import { corrida } from '/corrida/config.mjs';
+
+    const tracks = [
+      {id:'corrida-audio',name:'CORRIDA',key:'corrida'},
+      {id:'fragment-audio',name:'FRAGMENT_02',key:'fragment'},
+      {id:'frequence-audio',name:'FRÉQUENCE_03',key:'frequence'}
+    ].map(track => ({...track,audio:document.getElementById(track.id),button:document.querySelector(`[data-play="${track.id}"]`),feedback:document.getElementById(`${track.key}-feedback`)}));
+    function measure(event,track,extra={}) {
+      const detail={event,track,page_path:location.pathname,...extra};
+      window.dispatchEvent(new CustomEvent('vrtg:analytics',{detail}));
+      window.vrtgAnalytics?.(detail);
+    }
+    for (const track of tracks) {
+      const {audio,button,feedback,name}=track;
+      let pending=false;
+      function sync() {
+        const playing=!audio.paused&&!audio.ended;
+        button.querySelector('.listen-label').textContent=playing?`Pause · ${name}`:audio.currentTime>0&&!audio.ended?`Reprendre ${name}`:`Écouter ${name}`;
+        button.querySelector('.listen-icon').textContent=playing?'Ⅱ':'▶';
+        button.setAttribute('aria-pressed',String(playing));
+      }
+      function failure() {
+        pending=false;
+        button.disabled=false;
+        feedback.textContent=`Lecture indisponible. Réessayez avec le bouton Écouter ${name} ou les commandes du lecteur.`;
+        feedback.hidden=false;
+        sync();
+        measure('audio_error',track.key,{code:audio.error?.code??null});
+      }
+      button.hidden=false;
+      button.addEventListener('click',async()=>{
+        measure('play_click',track.key);
+        feedback.hidden=true;
+        if(!audio.paused){audio.pause();return;}
+        if(pending)return;
+        pending=true;
+        button.disabled=true;
+        button.querySelector('.listen-label').textContent='Chargement…';
+        for(const other of tracks)if(other!==track)other.audio.pause();
+        try {if(audio.error)audio.load();await audio.play();}
+        catch(error){if(error.name!=='AbortError')failure();}
+        finally{pending=false;button.disabled=false;sync();}
+      });
+      audio.addEventListener('play',()=>{
+        for(const other of tracks)if(other!==track)other.audio.pause();
+        feedback.hidden=true;
+        sync();
+      });
+      audio.addEventListener('playing',()=>measure('track_started',track.key));
+      for(const event of ['pause','ended','emptied'])audio.addEventListener(event,sync);
+      audio.addEventListener('error',failure);
+    }
+
+    const releaseTime=Date.parse(document.querySelector('time').dateTime);
+    const countdown=document.querySelector('.countdown');
+    const action=document.getElementById('action');
+    let releaseTimer;
+    let previousPhase;
+    function destination(live) {
+      try {
+        const url=new URL(live?corrida.spotifyUrl:corrida.landrUrl);
+        if(url.protocol!=='https:'||url.username||url.password||url.port)return null;
+        if(live)return url.hostname==='open.spotify.com'&&/^\/(?:intl-[a-z]+\/)?track\/[a-zA-Z0-9]{22}\/?$/.test(url.pathname)?url:null;
+        return url.hostname==='release.landr.com'&&url.pathname.length>1?url:null;
+      }catch{return null;}
+    }
+    function refreshRelease() {
+      clearTimeout(releaseTimer);
+      const remaining=releaseTime-Date.now();
+      const live=remaining<=0;
+      countdown.hidden=live;
+      if(!live){
+        const minutes=Math.ceil(remaining/60000);
+        countdown.querySelector('[data-days]').textContent=String(Math.floor(minutes/1440)).padStart(2,'0');
+        countdown.querySelector('[data-hours]').textContent=String(Math.floor(minutes/60)%24).padStart(2,'0');
+        countdown.querySelector('[data-minutes]').textContent=String(minutes%60).padStart(2,'0');
+        releaseTimer=setTimeout(refreshRelease,Math.min(remaining,remaining%60000||60000));
+      }
+      if(previousPhase===live)return;
+      previousPhase=live;
+      document.getElementById('corrida-badge').textContent=live?'Nouveauté':'Nouveauté · Avant-première';
+      document.getElementById('listen-note').textContent=live?'Morceau intégral · CORRIDA':'Morceau intégral · En avant-première';
+      const url=destination(live);
+      action.replaceChildren();
+      if(url){
+        const link=document.createElement('a');
+        link.href=url.href;
+        link.textContent=live?'Écouter aussi sur Spotify ↗':'Pré-sauvegarder CORRIDA ↗';
+        link.addEventListener('click',()=>measure(live?'spotify_outbound_click':'presave_click','corrida',{platform:live?'spotify':'landr'}));
+        action.append(link);
+      }
+    }
+    refreshRelease();
+    window.addEventListener('pageshow',refreshRelease);
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshRelease();});
+  </script>
 </body>
 </html>
