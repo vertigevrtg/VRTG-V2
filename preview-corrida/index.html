@@ -193,11 +193,11 @@
       player.className='audio-player';
       player.setAttribute('role','group');
       player.setAttribute('aria-label',`Lecteur ${name}`);
-      player.innerHTML=`<button class="play-toggle" type="button" aria-controls="${track.id}">${playIcon}</button><div class="player-timeline"><input class="audio-seek" type="range" min="0" max="${track.duration}" step="0.1" value="0" aria-label="Position dans ${name}" aria-controls="${track.id}" disabled><div class="player-time" aria-hidden="true"><span class="elapsed">0:00</span><span class="duration">${formatTime(track.duration)}</span></div></div>`;
+      player.innerHTML=`<button class="play-toggle" type="button" aria-controls="${track.id}">${playIcon}</button><div class="player-timeline"><input class="audio-seek" type="range" min="0" max="${track.duration}" step="0.1" value="0" aria-label="Position dans ${name}" aria-controls="${track.id}" disabled><div class="player-time" aria-hidden="true"><span class="elapsed">0:00</span><span class="total-time">${formatTime(track.duration)}</span></div></div>`;
       const button=player.querySelector('button');
       const seek=player.querySelector('input');
       const elapsed=player.querySelector('.elapsed');
-      const duration=player.querySelector('.duration');
+      const duration=player.querySelector('.total-time');
       let pending=false;
       function sync() {
         const playing=!audio.paused&&!audio.ended;
