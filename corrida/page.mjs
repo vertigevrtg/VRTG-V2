@@ -32,7 +32,7 @@ function refreshRelease() {
     const control = document.createElement(url ? 'a' : 'button');
     control.className = 'cta';
     control.setAttribute('aria-describedby', 'presave-help');
-    control.textContent = live ? 'Écouter sur Spotify' : 'Pré-sauvegarder CORRIDA';
+    control.textContent = live ? 'Écouter sur Spotify' : 'Pré-sauvegarde CORRIDA maintenant';
     if (url) {
       control.href = url.href;
       control.addEventListener('click', () => measure(live ? 'spotify_outbound_click' : 'presave_click', {
@@ -44,7 +44,6 @@ function refreshRelease() {
       document.querySelector('#listen-title').textContent = 'Écoute intégrale';
       document.querySelector('#replay-invitation').textContent = 'CORRIDA est disponible.';
       document.querySelector('#presave-help').textContent = url ? 'Retrouve le morceau sur Spotify.' : 'Lien Spotify à venir.';
-      document.querySelector('#platform-status').hidden = true;
     }
   }
   if (live) return;
