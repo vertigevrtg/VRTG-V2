@@ -6,6 +6,16 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/RACINE",
+      "destination": "/racine",
+      "statusCode": 301
+    },
+    {
+      "source": "/RACINE/",
+      "destination": "/racine",
+      "statusCode": 301
+    },
+    {
       "source": "/frequence",
       "destination": "/frequences",
       "statusCode": 301

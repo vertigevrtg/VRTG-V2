@@ -1,110 +1,121 @@
 import { racine } from './config.mjs';
 
-const releaseTime = Date.parse(racine.releaseAt);
-if (Number.isFinite(releaseTime)) {
-  document.querySelector('#release-date').textContent = new Intl.DateTimeFormat('fr-CA', {dateStyle:'long', timeStyle:'short', timeZone:'America/Toronto'}).format(releaseTime);
+function measure(event, extra = {}) {
+  const detail = {event, track: 'racine', page_path: location.pathname, ...extra};
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(detail);
+  window.dispatchEvent(new CustomEvent('vrtg:analytics', {detail}));
+  if (typeof window.vrtgAnalytics === 'function') window.vrtgAnalytics(detail);
 }
-const action = document.querySelector('#action');
-let timer;
 
-function destination(live) {
+function landrDestination() {
   try {
-    const url = new URL(live ? racine.spotifyUrl : racine.landrUrl);
-    if (url.protocol !== 'https:' || url.username || url.password || url.port) return null;
-    if (live) return url.hostname === 'open.spotify.com' && /^\/(?:intl-[a-z]+\/)?track\/[a-zA-Z0-9]{22}\/?$/.test(url.pathname) ? url : null;
-    return url.hostname === 'release.landr.com' && url.pathname.length > 1 ? url : null;
-  } catch {
-    return null;
+    const url = new URL(racine.landrUrl);
+    if (racine.landrVerifiedTrack !== 'racine' || url.protocol !== 'https:' ||
+        url.hostname !== 'release.landr.com' || url.username || url.password || url.port ||
+        !/^\/[A-Za-z0-9_-]+\/?$/.test(url.pathname) || url.pathname.replaceAll('/', '') === '059442004688') return null;
+    return url;
+  } catch { return null; }
+}
+const destination = landrDestination();
+if (destination) {
+  const link = document.createElement('a');
+  link.className = 'cta';
+  link.href = destination.href;
+  link.textContent = 'Pré-sauvegarder RACINE';
+  link.setAttribute('aria-describedby', 'presave-help');
+  link.addEventListener('click', () => measure('racine_landr_click', {platform: 'landr', link_url: destination.href}));
+  document.querySelector('#action').replaceChildren(link);
+  document.querySelector('#presave-help').textContent = racine.librarySaveVerified
+    ? 'Retrouve RACINE dans ta bibliothèque dès sa sortie.'
+    : 'Choisis ta plateforme et confirme ta pré-sauvegarde sur LANDR.';
+  const names = {'spotify':'Spotify', 'apple-music':'Apple Music', 'deezer':'Deezer', 'youtube-music':'YouTube Music'};
+  const list = document.querySelector('#platforms');
+  for (const platform of racine.presavePlatforms || []) {
+    if (!names[platform.id] || !/^[\w-]+\.svg$/.test(platform.logoFile) || !/^https:\/\//.test(platform.officialSource || '')) continue;
+    const item = document.createElement('li');
+    const logo = document.createElement('img');
+    logo.src = '/racine/' + platform.logoFile;
+    logo.alt = names[platform.id];
+    logo.addEventListener('error', () => item.remove());
+    item.append(logo);
+    list.append(item);
   }
+  list.hidden = !list.children.length;
 }
 
-function refresh() {
-  clearTimeout(timer);
-  const remaining = releaseTime - Date.now();
-  const live = remaining <= 0;
-  if (live) document.querySelector('.copy').textContent = 'VRTG mêle rap et métal sur RACINE. Découvre le single sur Spotify.';
-  const url = destination(live);
-  if (url) {
-    const link = document.createElement('a');
-    link.href = url.href;
-    link.className = 'cta';
-    link.textContent = live ? 'Écouter sur Spotify' : 'Pré-sauvegarde RACINE maintenant';
-    link.addEventListener('click', () => {
-      const detail = {event: live ? 'spotify_outbound_click' : 'presave_click',
-        track: 'racine', platform: live ? 'spotify' : 'landr', page_path: location.pathname};
-      window.dispatchEvent(new CustomEvent('vrtg:analytics', {detail}));
-      window.vrtgAnalytics?.(detail);
-    });
-    action.replaceChildren(link);
-  } else {
-    const status = document.createElement('button');
-    status.className = 'cta';
-    status.disabled = true;
-    status.textContent = live ? 'Lien d’écoute à venir' : 'Pré-sauvegarde RACINE bientôt';
-    action.replaceChildren(status);
-  }
-  if (Number.isFinite(remaining) && !live) timer = setTimeout(refresh, Math.min(remaining, 2147483647));
-}
-refresh();
-window.addEventListener('pageshow', refresh);
-document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
-
-const countdown = document.querySelector('.countdown');
-let countdownTimer;
-function refreshCountdown() {
-  clearTimeout(countdownTimer);
-  const remaining = releaseTime - Date.now();
-  countdown.hidden = !Number.isFinite(remaining) || remaining <= 0;
-  if (!Number.isFinite(remaining) || remaining <= 0) return;
-  const minutes = Math.ceil(remaining / 60000);
-  countdown.querySelector('[data-days]').textContent = String(Math.floor(minutes / 1440)).padStart(2, '0');
-  countdown.querySelector('[data-hours]').textContent = String(Math.floor(minutes / 60) % 24).padStart(2, '0');
-  countdown.querySelector('[data-minutes]').textContent = String(minutes % 60).padStart(2, '0');
-  countdownTimer = setTimeout(refreshCountdown, Math.min(remaining, remaining % 60000 || 60000));
-}
-refreshCountdown();
-window.addEventListener('pageshow', refreshCountdown);
-document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshCountdown(); });
-
-if (racine.excerptFile) {
+if (racine.fullTrackFile && /^[\w-]+\.mp3$/.test(racine.fullTrackFile)) {
   const audio = document.createElement('audio');
+  audio.controls = true; // Accessible native fallback until custom controls are installed.
+  audio.preload = 'metadata';
+  audio.src = '/racine/' + encodeURIComponent(racine.fullTrackFile);
+  audio.setAttribute('aria-label', 'RACINE, écoute intégrale');
+  const player = document.querySelector('.player');
   const play = document.querySelector('.play');
-  const status = document.querySelector('#audio-status');
   const progress = document.querySelector('#audio-progress');
-  function syncProgress() {
-    if (Number.isFinite(audio.duration) && audio.duration > 0) {
-      progress.value = audio.ended ? 1 : audio.currentTime / audio.duration;
-    }
-  }
-  audio.addEventListener('playing', () => {
-    progress.hidden = false;
-    syncProgress();
-  });
-  for (const event of ['timeupdate', 'ended', 'seeked']) audio.addEventListener(event, syncProgress);
-  audio.addEventListener('loadedmetadata', () => {
-    document.querySelector('.duration').textContent = '· ' + Math.round(audio.duration) + ' secondes';
-  });
-  audio.preload = 'none';
-  audio.src = '/racine/' + encodeURIComponent(racine.excerptFile);
-  document.querySelector('.excerpt').append(audio);
-  play.disabled = false;
-  function syncPlayer() {
+  const status = document.querySelector('#audio-status');
+  const elapsed = document.querySelector('#elapsed');
+  const duration = document.querySelector('#duration');
+  const milestones = new Set();
+  let started = false;
+  let failed = false;
+  const time = seconds => Number.isFinite(seconds) ? `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}` : '—:—';
+  function sync() {
+    const valid = Number.isFinite(audio.duration) && audio.duration > 0;
+    progress.disabled = !valid;
+    progress.max = valid ? audio.duration : 100;
+    progress.value = audio.currentTime;
+    elapsed.textContent = time(audio.currentTime);
+    duration.textContent = time(audio.duration);
+    progress.setAttribute('aria-valuetext', `${time(audio.currentTime)} sur ${time(audio.duration)}`);
     const playing = !audio.paused && !audio.ended;
     play.classList.toggle('playing', playing);
-    play.setAttribute('aria-label', playing ? 'Mettre en pause' : 'Lire l’extrait de RACINE');
-    status.textContent = playing ? 'Lecture en cours' : 'Écouter l’aperçu';
+    play.setAttribute('aria-label', failed ? 'Réessayer l’écoute de RACINE' : playing ? 'Mettre RACINE en pause' : 'Écouter RACINE en intégralité');
+    if (!valid) return;
+    // Actual unique media ranges heard: seeking forward never earns skipped milestones.
+    let heard = 0;
+    for (let i = 0; i < audio.played.length; i++) heard += audio.played.end(i) - audio.played.start(i);
+    for (const percent of [25, 50, 75, 100]) {
+      const reached = percent === 100 ? audio.ended && heard >= audio.duration - 0.5 : heard / audio.duration >= percent / 100;
+      if (started && reached && !milestones.has(percent)) {
+        milestones.add(percent);
+        measure('racine_listen_progress', {listen_percent: percent, duration_seconds: Math.round(audio.duration)});
+      }
+    }
   }
-  function unavailable() {
-    progress.hidden = true;
-    play.disabled = true;
-    play.classList.remove('playing');
-    status.textContent = 'Extrait momentanément indisponible';
+  function error() {
+    failed = true;
+    status.textContent = 'Impossible de charger le morceau. Appuie sur lecture pour réessayer.';
+    sync();
   }
   play.addEventListener('click', () => {
-    if (audio.paused) audio.play().catch(error => { if (error.name !== 'AbortError') unavailable(); });
-    else audio.pause();
+    if (audio.paused || failed) {
+      if (failed) { audio.load(); failed = false; }
+      status.textContent = 'Chargement du morceau…';
+      audio.play().catch(e => { if (e.name !== 'AbortError') error(); });
+    } else audio.pause();
   });
-  for (const event of ['play', 'pause', 'ended']) audio.addEventListener(event, syncPlayer);
-  audio.addEventListener('error', unavailable);
-  syncPlayer();
+  progress.addEventListener('input', () => { audio.currentTime = Number(progress.value); sync(); });
+  audio.addEventListener('playing', () => {
+    failed = false;
+    status.textContent = 'Lecture en cours · RACINE';
+    if (!started) { started = true; measure('racine_listen_start'); }
+    sync();
+  });
+  audio.addEventListener('pause', () => { if (!failed && !audio.ended) status.textContent = 'En pause · Reprends quand tu veux.'; sync(); });
+  for (const event of ['loadstart', 'waiting', 'stalled']) audio.addEventListener(event, () => { if (!audio.paused) status.textContent = 'Chargement du morceau…'; });
+  for (const event of ['loadedmetadata', 'durationchange', 'timeupdate', 'seeked']) audio.addEventListener(event, sync);
+  audio.addEventListener('ended', () => {
+    status.textContent = 'Écoute terminée · Tu peux relancer le morceau.';
+    document.querySelector('#replay-invitation').hidden = false;
+    document.querySelector('#presave').classList.add('highlight');
+    sync();
+  });
+  audio.addEventListener('error', error);
+  document.querySelector('#native-player').append(audio);
+  audio.controls = false;
+  audio.hidden = true;
+  player.hidden = false;
+  status.textContent = 'Le morceau complet. À ton rythme.';
+  sync();
 }
