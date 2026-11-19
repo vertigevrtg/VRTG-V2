@@ -2,14 +2,19 @@
 <html lang="fr-CA">
 <head>
   <meta charset="utf-8">
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({'gtm.start': Date.now(), event: 'gtm.js'});
+  </script>
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P9FQ5WV2"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#151511">
-  <title>CORRIDA — VRTG</title>
-  <meta name="description" content="CORRIDA, un single de VRTG. La colère prend corps, l’écriture l’apaise. Sortie le 26 novembre 2026.">
+  <meta name="theme-color" content="#171612">
+  <title>CORRIDA — Écoute en avant-première · VRTG</title>
+  <meta name="description" content="Si ta playlist passe du rap au métal, t’es des nôtres. Sois parmi les premiers à écouter CORRIDA sur ta plateforme préférée.">
   <link rel="canonical" href="https://www.vrtgmusic.ca/corrida">
   <meta property="og:type" content="music.song">
   <meta property="og:title" content="CORRIDA — VRTG">
-  <meta property="og:description" content="Fatigué des mêmes flows ? Découvre CORRIDA, le single rap-métal de VRTG.">
+  <meta property="og:description" content="Fatigué des mêmes flows ? Monte le son.">
   <meta property="og:url" content="https://www.vrtgmusic.ca/corrida">
   <meta property="og:image" content="https://www.vrtgmusic.ca/corrida/pochette-960.webp">
   <meta name="twitter:card" content="summary_large_image">
@@ -18,28 +23,49 @@
   <script type="module" src="/corrida/page.mjs"></script>
 </head>
 <body>
-  <header><a class="brand" href="/" aria-label="VRTG, accueil">VRTG</a><a class="collection" href="/creatures">Créatures <span aria-hidden="true">↗</span></a></header>
-  <main>
-    <div class="edition"><span>CORRIDA · VRTG</span><time datetime="2026-11-26T06:00:00-05:00">26 novembre 2026 · 6 h HNE</time></div>
-    <div class="spread">
-      <div class="artwork">
-      <figure><img src="/corrida/pochette-960.webp" srcset="/corrida/pochette-480.webp 480w, /corrida/pochette-960.webp 960w" sizes="(min-width: 760px) 45vw, 84vw" width="960" height="960" fetchpriority="high" alt="Pochette de CORRIDA. Une déchirure traverse des bandes de manuscrit ancien sur fond noir, entre des cercles d’or."></figure>
-      <div class="countdown" role="timer" aria-label="Temps avant la sortie de CORRIDA" hidden>
+  <a class="skip" href="#main">Aller au contenu</a>
+  <header><a class="brand" href="/" aria-label="VRTG, accueil">VRTG</a><a class="collection" href="/creatures">Créatures ↗</a></header>
+  <main id="main" class="spread" aria-labelledby="title">
+    <div class="intro">
+      <p class="identity">CORRIDA · VRTG</p>
+      <h1 id="title" class="campaign-title">Fatigué des mêmes flows&nbsp;?<br>Monte le son.</h1>
+      <p class="hook campaign-copy">Si ta playlist passe du rap au métal, t’es des nôtres. Sois parmi les premiers à écouter CORRIDA sur ta plateforme préférée.</p>
+    </div>
+    <div class="artwork"><figure><img src="/corrida/pochette-960.webp" srcset="/corrida/pochette-480.webp 480w, /corrida/pochette-960.webp 960w" sizes="(min-width: 800px) 42vw, 200px" width="960" height="960" fetchpriority="high" alt="Pochette de CORRIDA. Une déchirure traverse des bandes de manuscrit ancien sur fond noir, entre des cercles d’or."></figure>
+      <p class="release-date"><time datetime="2026-11-26T06:00:00-05:00">26 novembre 2026 · 6 h HNE</time></p>
+<div class="countdown" role="timer" aria-label="Temps avant la sortie de CORRIDA" hidden>
         <p>Sortie dans</p>
         <div class="countdown-values"><span><b data-days>00</b> jours</span><span><b data-hours>00</b> heures</span><span><b data-minutes>00</b> minutes</span></div>
       </div>
-      </div>
-      <section aria-labelledby="title" class="story">
-        <h1 id="title">Fatigué des mêmes flows&nbsp;?<br>Monte le son.</h1>
-        <p class="copy">Si ta playlist passe du rap au métal, t’es des nôtres. Sois parmi les premiers à écouter CORRIDA sur ta plateforme préférée.</p>
-        <div id="action"><p class="status">Pré-sauvegarde à venir</p></div>
+</div>
+    <div class="actions">
+      <section class="listening" aria-labelledby="listen-title">
+        <h2 id="listen-title">Écoute intégrale en avant-première</h2>
+        <p id="audio-status" class="status" role="status">L’écoute intégrale sera bientôt disponible ici.</p>
+        <div class="player" hidden>
+          <button class="play" type="button" aria-label="Écouter CORRIDA en intégralité" aria-describedby="audio-status"><span aria-hidden="true" class="play-icon"></span></button>
+          <div class="timeline">
+            <label class="sr-only" for="audio-progress">Position dans CORRIDA</label>
+            <input id="audio-progress" type="range" min="0" max="100" step="0.1" value="0" disabled aria-valuetext="Durée en cours de chargement">
+            <div class="times"><span id="elapsed">0:00</span><span id="duration">—:—</span></div>
+          </div>
+        </div>
+        <div id="native-player"></div>
       </section>
+      
+      <div class="presave" id="presave">
+        <p id="replay-invitation" class="invitation" role="status">Sois là dès la sortie.</p>
+        <div id="action"><a class="cta" href="https://release.landr.com/059442004688" aria-describedby="presave-help">Pré-sauvegarde CORRIDA maintenant</a></div>
+        <p id="presave-help" class="help">Choisis ta plateforme et confirme sur LANDR.</p>
+        <ul id="platforms" class="platforms" aria-label="Plateformes musicales">
+          <li data-platform="spotify"><img src="/corrida/logos/spotify.svg" alt="" width="24" height="24"><span>Spotify</span></li>
+          <li data-platform="deezer"><img src="/corrida/logos/deezer.svg" alt="" width="24" height="24"><span>Deezer</span></li>
+          <li data-platform="youtube-music"><img src="/corrida/logos/youtubemusic.svg" alt="" width="24" height="24"><span>YouTube Music</span></li>
+          <li data-platform="apple-music"><img src="/corrida/logos/applemusic.svg" alt="" width="24" height="24"><span>Apple Music</span></li>
+        </ul>
+        <p id="platform-status" class="platform-status">Pré-sauvegarde actuellement sur Spotify et Apple Music.</p>
+      </div>
     </div>
-    <section class="excerpt" aria-labelledby="excerpt-title">
-      <button class="play" type="button" disabled aria-label="Lire l’extrait de CORRIDA" aria-describedby="audio-status"><span aria-hidden="true"></span></button>
-      <div><h2 id="excerpt-title">Extrait du morceau <span class="duration">· 27 secondes</span></h2><p id="audio-status">Écouter l’aperçu</p></div>
-      <progress id="audio-progress" aria-label="Progression de l’extrait" max="1" value="0" hidden></progress>
-    </section>
   </main>
 </body>
 </html>
