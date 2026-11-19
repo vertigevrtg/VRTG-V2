@@ -129,6 +129,6 @@ if (corrida.fullTrackFile && /^[\w-]+\.mp3$/.test(corrida.fullTrackFile)) {
   audio.controls = false;
   audio.hidden = true;
   player.hidden = false;
-  status.textContent = 'Le morceau complet. À ton rythme.';
+  status.textContent = '';
   sync();
 }
