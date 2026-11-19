@@ -32,7 +32,7 @@ function refreshRelease() {
     const control = document.createElement(url ? 'a' : 'button');
     control.className = 'cta';
     control.setAttribute('aria-describedby', 'presave-help');
-    control.textContent = live ? 'Écouter sur Spotify' : 'Pré-sauvegarde CORRIDA maintenant';
+    control.textContent = live ? 'Écouter sur Spotify' : 'Pré-sauvegarder CORRIDA';
     if (url) {
       control.href = url.href;
       control.addEventListener('click', () => measure(live ? 'spotify_outbound_click' : 'presave_click', {
