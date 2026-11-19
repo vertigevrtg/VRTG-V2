@@ -10,7 +10,7 @@ if (corrida.excerptFile) {
   if (!/^[\w-]+\.mp3$/i.test(corrida.excerptFile)) throw Error('Nom de fichier MP3 CORRIDA invalide');
   corridaFiles.push(corrida.excerptFile);
 }
-const racineFiles = ['index.html', 'page.css', 'page.mjs', 'config.mjs', 'pochette-480.webp', 'pochette-960.webp'];
+const racineFiles = ['logos/spotify.svg', 'logos/deezer.svg', 'logos/youtubemusic.svg', 'logos/applemusic.svg', 'index.html', 'page.css', 'page.mjs', 'config.mjs', 'pochette-480.webp', 'pochette-960.webp'];
 if (racine.fullTrackFile) {
   if (!/^[\w-]+\.mp3$/i.test(racine.fullTrackFile)) throw Error('Nom de fichier MP3 RACINE invalide');
   racineFiles.push(racine.fullTrackFile);

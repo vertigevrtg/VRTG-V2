@@ -22,26 +22,27 @@ if (destination) {
   const link = document.createElement('a');
   link.className = 'cta';
   link.href = destination.href;
-  link.textContent = 'Pré-sauvegarder RACINE';
+  const label = document.createElement('span');
+  label.textContent = 'Pré-sauvegarde RACINE';
+  const subtitle = document.createElement('span');
+  subtitle.className = 'cta-subtitle';
+  subtitle.textContent = 'sur ta plateforme préférée';
+  link.append(label, subtitle);
   link.setAttribute('aria-describedby', 'presave-help');
   link.addEventListener('click', () => measure('racine_landr_click', {platform: 'landr', link_url: destination.href}));
   document.querySelector('#action').replaceChildren(link);
   document.querySelector('#presave-help').textContent = racine.librarySaveVerified
     ? 'Retrouve RACINE dans ta bibliothèque dès sa sortie.'
     : 'Choisis ta plateforme et confirme ta pré-sauvegarde sur LANDR.';
-  const names = {'spotify':'Spotify', 'apple-music':'Apple Music', 'deezer':'Deezer', 'youtube-music':'YouTube Music'};
-  const list = document.querySelector('#platforms');
-  for (const platform of racine.presavePlatforms || []) {
-    if (!names[platform.id] || !/^[\w-]+\.svg$/.test(platform.logoFile) || !/^https:\/\//.test(platform.officialSource || '')) continue;
-    const item = document.createElement('li');
-    const logo = document.createElement('img');
-    logo.src = '/racine/' + platform.logoFile;
-    logo.alt = names[platform.id];
-    logo.addEventListener('error', () => item.remove());
-    item.append(logo);
-    list.append(item);
+  const platforms = racine.presavePlatforms || [];
+  if (platforms.length) {
+    const list = document.querySelector('#platforms');
+    for (const item of list.children) {
+      item.hidden = !platforms.some(platform => platform.id === item.dataset.platform);
+    }
+    list.setAttribute('aria-label', 'Plateformes disponibles sur LANDR');
+    document.querySelector('#platform-status').hidden = true;
   }
-  list.hidden = !list.children.length;
 }
 
 if (racine.fullTrackFile && /^[\w-]+\.mp3$/.test(racine.fullTrackFile)) {
@@ -107,7 +108,7 @@ if (racine.fullTrackFile && /^[\w-]+\.mp3$/.test(racine.fullTrackFile)) {
   for (const event of ['loadedmetadata', 'durationchange', 'timeupdate', 'seeked']) audio.addEventListener(event, sync);
   audio.addEventListener('ended', () => {
     status.textContent = 'Écoute terminée · Tu peux relancer le morceau.';
-    document.querySelector('#replay-invitation').hidden = false;
+    document.querySelector('#replay-invitation').textContent = 'Tu l’as découvert. Retrouve-le dès sa sortie.';
     document.querySelector('#presave').classList.add('highlight');
     sync();
   });

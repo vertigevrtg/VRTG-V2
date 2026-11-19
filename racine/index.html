@@ -8,7 +8,7 @@
   </script>
   <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P9FQ5WV2"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#171612">
   <title>RACINE — Écoute en avant-première · VRTG</title>
   <meta name="description" content="L’impact du métal. Le flow du rap. VRTG fait sauter les frontières du rap francophone. Rejoins le mouvement dès le premier jour.">
   <link rel="canonical" href="https://www.vrtgmusic.ca/racine">
@@ -46,11 +46,18 @@
         </div>
         <div id="native-player"></div>
       </section>
-      <p id="replay-invitation" class="invitation" role="status" hidden>Envie de le réécouter à sa sortie ?</p>
+      
       <div class="presave" id="presave">
-        <div id="action"><button class="cta" type="button" disabled aria-describedby="presave-help">Pré-sauvegarder RACINE</button></div>
-        <p id="presave-help" class="help">La pré-sauvegarde sera bientôt disponible.</p>
-        <ul id="platforms" class="platforms" aria-label="Plateformes compatibles avec la pré-sauvegarde" hidden></ul>
+        <p id="replay-invitation" class="invitation" role="status">Sois là dès la sortie.</p>
+        <div id="action"><button class="cta" type="button" disabled aria-describedby="presave-help"><span>Pré-sauvegarde RACINE</span><span class="cta-subtitle">sur ta plateforme préférée</span></button></div>
+        <p id="presave-help" class="help">Ouverture de la pré-sauvegarde bientôt.</p>
+        <ul id="platforms" class="platforms" aria-label="Plateformes, disponibilité à confirmer">
+          <li data-platform="spotify"><img src="/racine/logos/spotify.svg" alt="" width="24" height="24"><span>Spotify</span></li>
+          <li data-platform="deezer"><img src="/racine/logos/deezer.svg" alt="" width="24" height="24"><span>Deezer</span></li>
+          <li data-platform="youtube-music"><img src="/racine/logos/youtubemusic.svg" alt="" width="24" height="24"><span>YouTube Music</span></li>
+          <li data-platform="apple-music"><img src="/racine/logos/applemusic.svg" alt="" width="24" height="24"><span>Apple Music</span></li>
+        </ul>
+        <p id="platform-status" class="platform-status">Plateformes disponibles à confirmer.</p>
       </div>
     </div>
   </main>
