@@ -58,3 +58,7 @@ a.cta:hover{background:var(--soft);text-decoration:none}
  .platforms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:290px;margin-inline:auto}
 }
 @media(prefers-reduced-motion:no-preference){a,button{transition:background .15s ease}}
+
+.campaign-title{font-size:clamp(32px,3.5vw,50px);line-height:1.06;letter-spacing:-.045em}
+.campaign-copy{font:400 16px/1.55 Arial,Helvetica,sans-serif;letter-spacing:normal;color:var(--muted);margin:20px 0 24px}
+@media(max-width:799px){.campaign-title{font-size:clamp(30px,8vw,42px)}}
