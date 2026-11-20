@@ -5,7 +5,7 @@ import { racine } from '../racine/config.mjs';
 import { corrida } from '../corrida/config.mjs';
 import { mediaFiles } from './build_creatures.mjs';
 const root = resolve(import.meta.dirname, '..');
-const corridaFiles = ['logos/spotify.svg', 'logos/deezer.svg', 'logos/youtubemusic.svg', 'logos/applemusic.svg', 'index.html', 'page.css', 'page.mjs', 'config.mjs', 'pochette-480.webp', 'pochette-960.webp'];
+const corridaFiles = ['portrait.jpg', 'logos/spotify.svg', 'logos/deezer.svg', 'logos/youtubemusic.svg', 'logos/applemusic.svg', 'index.html', 'page.css', 'page.mjs', 'config.mjs', 'pochette-480.webp', 'pochette-960.webp'];
 if (corrida.fullTrackFile) {
   if (!/^[\w-]+\.mp3$/i.test(corrida.fullTrackFile)) throw Error('Nom de fichier MP3 CORRIDA invalide');
   corridaFiles.push(corrida.fullTrackFile);
