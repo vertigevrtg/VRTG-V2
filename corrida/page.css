@@ -94,7 +94,18 @@ audio { width: 100%; margin-top: 16px; min-height: 54px; }
 
 header{display:flex;align-items:center;justify-content:space-between}
 .collection img { filter: invert(90%); }
-.collection{display:inline-flex;gap:6px;align-items:center;min-height:44px;font-size:14px;color:var(--muted)}
+.collection {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 12px;
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: 999px;
+  background: rgb(0 0 0 / 72%);
+  font-size: 14px;
+  color: var(--ink);
+}
 .countdown { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 9px; margin-bottom: 8px; color: var(--muted); font-size: 14px; }
 .countdown b { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
 .countdown abbr { text-decoration: none; }
