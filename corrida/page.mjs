@@ -8,6 +8,16 @@ function measure(event, extra = {}) {
   if (typeof window.vrtgAnalytics === 'function') window.vrtgAnalytics(detail);
 }
 
+const artistLink = document.querySelector('#artist-link');
+artistLink?.addEventListener('click', () => {
+  window.gtag('event', 'click_spotify_artist', {
+    send_to: 'G-J7VT42778D',
+    track: 'corrida',
+    platform: 'spotify',
+    link_url: artistLink.href
+  });
+});
+
 const releaseTime = Date.parse(document.querySelector('time').dateTime);
 const countdown = document.querySelector('.countdown');
 const action = document.querySelector('#action');

@@ -12,7 +12,7 @@
 body {
   margin: 0;
   min-height: 100svh;
-  background: radial-gradient(ellipse at 75% 35%, #29271e, transparent 60%), var(--background);
+  background: #100f0e;
   color: var(--ink);
   font: 16px/1.5 Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,16 +34,12 @@ header { padding: 12px 0; border-bottom: 1px solid var(--line); }
 }
 .intro { grid-column: 1; grid-row: 1; align-self: end; }
 .identity { margin: 0 0 14px; color: #d8af7c; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
-.campaign-title { font-size: clamp(32px, min(3.6vw, 6.8vh), 50px); font-weight: 900; line-height: 1.06; letter-spacing: -.045em; margin: 0; }
-.campaign-copy { font-size: 16px; line-height: 1.5; color: var(--muted); margin: 18px 0 22px; }
-.artwork { grid-column: 2; grid-row: 1 / 3; align-self: center; margin: 0; width: 100%; max-width: 540px; }
-.artwork img { display: block; width: 100%; height: auto; box-shadow: 0 22px 50px #0005; }
+.campaign-title { font-size: clamp(40px, 4.5vw, 66px); font-weight: 900; line-height: 1.06; letter-spacing: -.045em; margin: 0; }
 .actions { grid-column: 1; grid-row: 2; align-self: start; min-width: 0; }
-.listening { padding: 16px 0; border-block: 1px solid var(--line); }
 h2 { font-size: 16px; font-weight: 600; line-height: 1.45; margin: 0; }
 .status { font-size: 13px; color: var(--muted); margin: 4px 0 0; }
-.player { display: flex; align-items: center; gap: 18px; margin-top: 12px; }
-.play { width: 52px; height: 52px; min-width: 52px; border: 0; border-radius: 50%; background: var(--ink); color: var(--background); display: grid; place-items: center; cursor: pointer; }
+.player { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+.play { width: 44px; height: 44px; min-width: 44px; border: 0; border-radius: 50%; background: white; color: var(--background); display: grid; place-items: center; cursor: pointer; }
 .play:hover { background: #fff6e8; }
 .play-icon { width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 12px; border-color: transparent transparent transparent currentColor; margin-left: 3px; }
 .play.playing .play-icon { width: 14px; height: 17px; border: solid currentColor; border-width: 0 4px; margin: 0; }
@@ -57,30 +53,28 @@ audio { width: 100%; margin-top: 16px; min-height: 54px; }
 .cta {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 12px;
   align-items: center;
   justify-content: center;
-  min-height: 68px;
+  min-height: 54px;
   padding: 12px 18px;
   border: 0;
   border-radius: 999px;
-  background: var(--accent);
-  color: #171612;
+  background: #b92c2f;
+  color: white;
   font-size: 19px;
   font-weight: 800;
   text-align: center;
   line-height: 1.3;
   cursor: pointer;
 }
-.cta-subtitle { font-size: 14px; font-weight: 500; margin-top: 2px; }
-a.cta:hover { background: #e8c681; text-decoration: none; }
 .cta:disabled { cursor: default; }
 .help { margin: 8px 0 0; color: var(--muted); font-size: 12px; text-align: center; }
 .presave.highlight .cta { outline: 2px solid var(--ink); outline-offset: 4px; }
 .platforms { list-style: none; padding: 0; margin: 18px 0 0; display: flex; justify-content: center; gap: 12px 20px; flex-wrap: wrap; }
 .platforms li { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 11px; white-space: nowrap; }
 .platforms img { display: block; width: 20px; height: 20px; filter: invert(90%); }
-.platform-status { color: var(--muted); text-align: center; font-size: 11px; margin: 8px 0 0; }
 .skip { position: absolute; left: 1rem; top: -100px; background: var(--background); padding: 12px; z-index: 2; }
 .skip:focus { top: 8px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
@@ -89,8 +83,6 @@ a.cta:hover { background: #e8c681; text-decoration: none; }
   header, main { width: min(88%, 540px); }
   .spread { display: flex; flex-direction: column; min-height: 0; padding: 14px 0 36px; }
   .intro { align-self: stretch; }
-  .campaign-title { font-size: clamp(30px, 8vw, 42px); }
-  .artwork { width: clamp(140px, 43vw, 200px); align-self: center; margin-bottom: 24px; }
   .actions { width: 100%; }
   .platforms { gap: 12px 16px; }
 }
@@ -100,12 +92,56 @@ a.cta:hover { background: #e8c681; text-decoration: none; }
 
 header{display:flex;align-items:center;justify-content:space-between}
 .collection{display:inline-flex;align-items:center;min-height:44px;font-size:14px;color:var(--muted)}
-.artwork{max-width:min(540px,max(260px,calc(100svh - 225px)));justify-self:end}
-.artwork figure{margin:0}
 .release-date{text-align:center;color:var(--muted);font-size:12px;margin:14px 0 8px}
 .countdown{text-align:center}
 .countdown p{margin:0 0 5px;font-size:12px;color:var(--muted)}
 .countdown-values{display:flex;justify-content:center;gap:18px;color:var(--muted);font-size:12px}
 .countdown b{display:block;color:var(--accent);font-size:24px;font-weight:500;line-height:1.2;font-variant-numeric:tabular-nums}
-.cta{font-size:17px;min-height:56px}
-@media(max-width:799px){.artwork{width:clamp(180px,53vw,240px)}}
+
+/* Fade the original artwork into the page, with a darker field behind the copy. */
+body { position: relative; isolation: isolate; }
+body::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  inset: 0 0 auto; height: min(88vw, 820px);
+  background: linear-gradient(to top, #100f0e, transparent 42%),
+    linear-gradient(90deg, #100f0e 18%, rgba(16,15,14,.97) 37%, rgba(16,15,14,.18) 70%),
+    url("/corrida/pochette-960.webp") right 35% / 70% auto no-repeat;
+}
+.campaign-title::after {
+  content: ""; display: block; width: 116px; height: 5px; margin-top: 15px;
+  background: #f04741; transform: rotate(-1deg);
+  clip-path: polygon(0 32%, 24% 8%, 78% 18%, 100% 41%, 93% 64%, 98% 77%, 35% 88%, 3% 100%);
+}
+.campaign-copy { font-size: clamp(21px, 1.6vw, 24px); line-height: 1.45; color: #eee8df; margin: 17px 0 5px; }
+.signature { margin: 0 0 20px; color: #ff6259; font: italic 750 clamp(28px, 2.2vw, 32px)/1.2 Arial,sans-serif; }
+.release-info { grid-column: 2; grid-row: 1 / 3; align-self: end; justify-self: center; padding: 12px 20px; text-shadow: 0 1px 5px #000; background: #151310dd; border-radius: 10px; }
+.release-date { margin-top: 0; color: var(--ink); }
+.listening { display: grid; grid-template-columns: clamp(86px, 8vw, 118px) minmax(0,1fr); align-items: center; gap: 16px; padding: 14px; background: #191714ec; border: 1px solid #544a42; border-radius: 12px; }
+.record-cover { width: 100%; height: auto; display: block; border-radius: 4px; }
+.record-name { margin: 0; color: #fff; font-size: 19px; font-weight: 800; }
+.record-name span { margin-left: 4px; font-size: 12px; color: var(--muted); letter-spacing: .08em; }
+.listening h2 { color: #d9d2c8; font-size: 13px; font-weight: 500; }
+.status:empty { display: none; }
+.cta[href^="https://release.landr.com/"]::before { content: ""; flex: none; width: 17px; height: 17px; border-radius: 50%; border: 1.5px solid currentColor; background: linear-gradient(currentColor,currentColor) center/9px 1.5px no-repeat, linear-gradient(currentColor,currentColor) center/1.5px 9px no-repeat; }
+a.cta:hover { background: #cf383b; text-decoration: none; }
+.discovery { grid-column: 1 / -1; margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.discovery h2 { font-size: 20px; }
+.discovery p { color: var(--muted); font-size: 15px; margin: 4px 0 0; }
+.discovery a { display: inline-flex; align-items: center; gap: 9px; padding: 11px 17px; border: 1px solid #72695e; border-radius: 999px; font-size: 14px; }
+.discovery img { filter: invert(95%); }
+@media(max-width:799px) {
+  body::before { height: 370px; background: linear-gradient(to top, #100f0e, transparent 62%), linear-gradient(90deg, #100f0ef5 5%, #100f0eba 55%, #100f0e4d), url("/corrida/pochette-480.webp") right top / auto 370px no-repeat; }
+  .campaign-title { font-size: clamp(34px, 9vw, 46px); }
+  .campaign-copy { font-size: 19px; }
+  .signature { font-size: 25px; margin-bottom: 12px; }
+  .release-info { order: 2; align-self: center; margin-top: 16px; }
+  .listening { grid-template-columns: 72px minmax(0,1fr); padding: 12px; gap: 10px; }
+  .discovery { order: 3; flex-direction: column; align-items: flex-start; width: 100%; margin-top: 20px; }
+}
+@media (max-width: 430px) {
+  .platforms {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 8px 20px;
+  }
+}
