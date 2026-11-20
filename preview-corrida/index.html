@@ -13,13 +13,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#151511">
   <title>VRTG — Le rap à l’état brut | Trois morceaux à découvrir</title>
-  <meta name="description" content="Découvrez VRTG : un rap alternatif francophone entre hip-hop, métal et textures industrielles. Écoutez CORRIDA, FRAGMENT_02 et FRÉQUENCE_03 en intégralité.">
+  <meta name="description" content="Découvrez VRTG : un rap alternatif francophone entre hip-hop, métal et textures industrielles. Écoutez CORRIDA, RACINE et FRÉQUENCE_03 en intégralité.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://www.vrtgmusic.ca/preview-corrida">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_CA">
   <meta property="og:title" content="VRTG — Le rap à l’état brut">
-  <meta property="og:description" content="Trois morceaux. Trois facettes d’un même univers. Découvrez CORRIDA, FRAGMENT_02 et FRÉQUENCE_03.">
+  <meta property="og:description" content="Trois morceaux. Trois facettes d’un même univers. Découvrez CORRIDA, RACINE et FRÉQUENCE_03.">
   <meta property="og:url" content="https://www.vrtgmusic.ca/preview-corrida">
   <meta property="og:image" content="https://www.vrtgmusic.ca/corrida/pochette-960.webp">
   <meta property="og:image:alt" content="Pochette officielle de CORRIDA, par VRTG">
@@ -204,7 +204,7 @@ h1{font:700 clamp(34px,6vw,68px)/1.04 Arial,sans-serif;letter-spacing:-.055em;ma
         <p class="tagline">Trois morceaux.<br>Trois facettes d’un même univers.</p>
         <nav class="track-shortcuts" aria-label="Accès aux deux autres morceaux">
           <span class="track-shortcuts-label">À écouter aussi :</span>
-          <a href="#fragment-02">FRAGMENT_02 <span aria-hidden="true">↓</span></a>
+          <a href="#racine">RACINE <span aria-hidden="true">↓</span></a>
           <a href="#frequence-03">FRÉQUENCE_03 <span aria-hidden="true">↓</span></a>
         </nav>
         <p class="copy">Un rap alternatif francophone à la croisée du hip-hop, du métal et de l'invisible.</p>
@@ -232,10 +232,10 @@ h1{font:700 clamp(34px,6vw,68px)/1.04 Arial,sans-serif;letter-spacing:-.055em;ma
         <a class="discover-link" href="#corrida">Revenir à CORRIDA <span aria-hidden="true">↑</span></a>
       </div>
       <div class="track-grid">
-        <article class="companion" id="fragment-02" aria-labelledby="fragment-title">
-          <div class="companion-top"><img src="/assets/cover-fragments.webp" width="1600" height="1600" loading="lazy" alt="Pochette officielle de Fragments : un lit défait et une ouverture sur le ciel nocturne."><div><p class="eyebrow">02 / Fragments</p><h3 id="fragment-title">FRAGMENT_02</h3><p class="facet">L’intensité</p></div></div>
-          <p class="description">Une insomnie brute, intense et connectée au subtil.</p>
-          <audio id="fragment-audio" controls preload="metadata" controlslist="nodownload" aria-label="Écouter FRAGMENT_02 en intégralité"><source src="/assets/audio/fragment-02-final.mp3" type="audio/mpeg">Votre navigateur ne prend pas en charge la lecture audio.</audio>
+        <article class="companion" id="racine" aria-labelledby="racine-title">
+          <div class="companion-top"><img src="/racine/pochette-480.webp" width="1600" height="1600" loading="lazy" alt="Pochette de RACINE : une composition végétale et minérale."><div><p class="eyebrow">02 / RACINE</p><h3 id="racine-title">RACINE</h3><p class="facet">L’intensité</p></div></div>
+          <p class="description">Une tempête créée par la perte d’un père.</p>
+          <audio id="fragment-audio" controls preload="metadata" controlslist="nodownload" aria-label="Écouter RACINE en intégralité"><source src="/racine/RACINE.mp3" type="audio/mpeg">Votre navigateur ne prend pas en charge la lecture audio.</audio>
           <p class="feedback" id="fragment-feedback" role="status" hidden></p>
         </article>
         <article class="companion" id="frequence-03" aria-labelledby="frequence-title">
@@ -262,7 +262,7 @@ h1{font:700 clamp(34px,6vw,68px)/1.04 Arial,sans-serif;letter-spacing:-.055em;ma
 
     const tracks = [
       {id:'corrida-audio',name:'CORRIDA',key:'corrida',duration:161.23},
-      {id:'fragment-audio',name:'FRAGMENT_02',key:'fragment',duration:69.30},
+      {id:'fragment-audio',name:'RACINE',key:'fragment',duration:0},
       {id:'frequence-audio',name:'FRÉQUENCE_03',key:'frequence',duration:145.63}
     ].map(track => ({...track,audio:document.getElementById(track.id),feedback:document.getElementById(`${track.key}-feedback`)}));
     function measure(event,track,extra={}) {
