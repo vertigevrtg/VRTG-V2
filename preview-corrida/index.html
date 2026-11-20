@@ -21,7 +21,7 @@
   <meta property="og:title" content="VRTG — Le rap à l’état brut">
   <meta property="og:description" content="Trois morceaux. Trois facettes d’un même univers. Découvrez CORRIDA, RACINE et FRÉQUENCE_03.">
   <meta property="og:url" content="https://www.vrtgmusic.ca/preview-corrida">
-  <meta property="og:image" content="https://www.vrtgmusic.ca/corrida/pochette-960.webp">
+  <meta property="og:image" content="https://www.vrtgmusic.ca/preview-corrida/corrida-cover-960.webp">
   <meta property="og:image:alt" content="Pochette officielle de CORRIDA, par VRTG">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg">
@@ -220,7 +220,7 @@ h1{font:700 clamp(34px,6vw,68px)/1.04 Arial,sans-serif;letter-spacing:-.055em;ma
         <a class="discover-link" href="#trois-morceaux">Poursuivre avec les 2 autres morceaux <span aria-hidden="true">↓</span></a>
       </section>
       <div class="hero-art">
-        <figure><img src="/corrida/pochette-960.webp" srcset="/corrida/pochette-480.webp 480w, /corrida/pochette-960.webp 960w" sizes="(min-width:760px) 42vw, 80vw" width="960" height="960" fetchpriority="high" alt="Pochette de CORRIDA. Une déchirure traverse des bandes de manuscrit ancien sur fond noir, entre des cercles d’or."></figure>
+        <figure><img src="/preview-corrida/corrida-cover-960.webp" srcset="/preview-corrida/corrida-cover-480.webp 480w, /preview-corrida/corrida-cover-960.webp 960w" sizes="(min-width:760px) 42vw, 80vw" width="960" height="960" fetchpriority="high" alt="Pochette de CORRIDA. Une déchirure traverse des bandes de manuscrit ancien sur fond noir, entre des cercles d’or."></figure>
         <p class="release-info">CORRIDA · Sortie le <time datetime="2026-11-26T06:00:00-05:00">26 novembre 2026 à 6 h HNE</time></p>
         <div class="countdown" role="timer" aria-label="Temps avant la sortie de CORRIDA" hidden><p>Sortie dans</p><div class="countdown-values"><span><b data-days>00</b> jours</span><span><b data-hours>00</b> heures</span><span><b data-minutes>00</b> minutes</span></div></div>
         <div id="action"></div>
@@ -233,9 +233,9 @@ h1{font:700 clamp(34px,6vw,68px)/1.04 Arial,sans-serif;letter-spacing:-.055em;ma
       </div>
       <div class="track-grid">
         <article class="companion" id="racine" aria-labelledby="racine-title">
-          <div class="companion-top"><img src="/racine/pochette-480.webp" width="1600" height="1600" loading="lazy" alt="Pochette de RACINE : une composition végétale et minérale."><div><p class="eyebrow">02 / RACINE</p><h3 id="racine-title">RACINE</h3><p class="facet">L’intensité</p></div></div>
+          <div class="companion-top"><img src="/preview-corrida/racine-cover.webp" width="1600" height="1600" loading="lazy" alt="Pochette de RACINE : une composition végétale et minérale."><div><p class="eyebrow">02 / RACINE</p><h3 id="racine-title">RACINE</h3><p class="facet">L’intensité</p></div></div>
           <p class="description">Une tempête créée par la perte d’un père.</p>
-          <audio id="fragment-audio" controls preload="metadata" controlslist="nodownload" aria-label="Écouter RACINE en intégralité"><source src="/racine/RACINE.mp3" type="audio/mpeg">Votre navigateur ne prend pas en charge la lecture audio.</audio>
+          <audio id="fragment-audio" controls preload="metadata" controlslist="nodownload" aria-label="Écouter RACINE en intégralité"><source src="/preview-corrida/racine-audio.mp3" type="audio/mpeg">Votre navigateur ne prend pas en charge la lecture audio.</audio>
           <p class="feedback" id="fragment-feedback" role="status" hidden></p>
         </article>
         <article class="companion" id="frequence-03" aria-labelledby="frequence-title">
@@ -258,7 +258,7 @@ h1{font:700 clamp(34px,6vw,68px)/1.04 Arial,sans-serif;letter-spacing:-.055em;ma
   </main>
   <footer><a href="/" aria-label="VRTG, retour à l’accueil">VRTG</a><span>Rap alternatif francophone · © 2026 VRTG</span></footer>
   <script type="module">
-    import { corrida } from '/corrida/config.mjs';
+    import { corrida } from '/preview-corrida/config.mjs';
 
     const tracks = [
       {id:'corrida-audio',name:'CORRIDA',key:'corrida',duration:161.23},

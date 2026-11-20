@@ -29,4 +29,5 @@ for (const file of files) {
   await mkdir(dirname(resolve(root, 'dist', file)), { recursive: true });
   await copyFile(resolve(root, file), resolve(root, 'dist', file));
 }
+for (const [source, target] of [['racine/RACINE.mp3','racine-audio.mp3'],['racine/pochette-480.webp','racine-cover.webp'],['corrida/pochette-480.webp','corrida-cover-480.webp'],['corrida/pochette-960.webp','corrida-cover-960.webp'],['corrida/config.mjs','config.mjs']]) await copyFile(resolve(root, source), resolve(root, 'dist/preview-corrida', target));
 console.log(`Exported ${files.length} public files to dist.`);
