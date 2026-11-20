@@ -93,7 +93,8 @@ audio { width: 100%; margin-top: 16px; min-height: 54px; }
 }
 
 header{display:flex;align-items:center;justify-content:space-between}
-.collection{display:inline-flex;align-items:center;min-height:44px;font-size:14px;color:var(--muted)}
+.collection img { filter: invert(90%); }
+.collection{display:inline-flex;gap:6px;align-items:center;min-height:44px;font-size:14px;color:var(--muted)}
 .countdown { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 9px; margin-bottom: 8px; color: var(--muted); font-size: 14px; }
 .countdown b { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
 .countdown abbr { text-decoration: none; }
@@ -112,7 +113,7 @@ body::before {
   background: #f04741; transform: rotate(-1deg);
   clip-path: polygon(0 32%, 24% 8%, 78% 18%, 100% 41%, 93% 64%, 98% 77%, 35% 88%, 3% 100%);
 }
-.campaign-copy { font-size: clamp(21px, 1.6vw, 24px); line-height: 1.45; color: #eee8df; margin: 14px 0 clamp(22px, 3.5vh, 32px); }
+.campaign-copy { font-size: clamp(17px, 1.3vw, 19px); line-height: 1.45; color: #eee8df; margin: 14px 0 clamp(22px, 3.5vh, 32px); }
 .listening { display: grid; grid-template-columns: clamp(86px, 8vw, 118px) minmax(0,1fr); align-items: center; gap: 16px; padding: 14px; background: #191714ec; border: 1px solid #544a42; border-radius: 12px; }
 .record-cover { width: 100%; height: auto; display: block; border-radius: 4px; }
 .record-name { margin: 0; color: #fff; font-size: 19px; font-weight: 800; }
@@ -121,26 +122,19 @@ body::before {
 .status:empty { display: none; }
 .cta[href^="https://release.landr.com/"]::before { content: ""; flex: none; width: 17px; height: 17px; border-radius: 50%; border: 1.5px solid currentColor; background: linear-gradient(currentColor,currentColor) center/9px 1.5px no-repeat, linear-gradient(currentColor,currentColor) center/1.5px 9px no-repeat; }
 a.cta:hover { background: #cf383b; text-decoration: none; }
-.discovery { grid-column: 1 / -1; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.discovery h2 { font-size: 20px; }
-.discovery p { color: var(--muted); font-size: 15px; margin: 4px 0 0; }
-.discovery a { display: inline-flex; align-items: center; gap: 9px; padding: 11px 17px; border: 1px solid #72695e; border-radius: 999px; font-size: 14px; }
-.discovery img { filter: invert(95%); }
 @media(max-width:799px) {
   body::before { height: 370px; background: linear-gradient(to top, #100f0e, transparent 62%), linear-gradient(90deg, #100f0ef5 5%, #100f0eba 55%, #100f0e4d), url("/corrida/pochette-480.webp") right top / auto 370px no-repeat; }
   .campaign-title { font-size: clamp(34px, 9vw, 46px); }
-  .campaign-copy { font-size: 19px; }
+  .campaign-copy { font-size: 16px; }
   .listening { grid-template-columns: 72px minmax(0,1fr); padding: 12px; gap: 10px; }
-  .discovery { flex-direction: column; align-items: flex-start; gap: 8px; width: 100%; margin-top: 16px; }
 }
 @media (min-width: 800px) and (max-height: 740px),
        (min-width: 800px) and (max-width: 1100px) and (max-height: 800px) {
   .spread { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); padding-block: 8px; }
   .campaign-title { font-size: clamp(36px, 3.6vw, 52px); }
   .campaign-title::after { margin-top: 10px; }
-  .campaign-copy { font-size: 21px; margin: 10px 0 22px; }
+  .campaign-copy { font-size: 17px; margin: 10px 0 22px; }
   .listening { grid-template-columns: 82px minmax(0, 1fr); padding: 10px 14px; }
-  .discovery { margin-top: 14px; padding-top: 10px; }
 }
 @media (max-width: 799px) and (max-height: 800px) {
   header { padding-block: 0; }
@@ -148,7 +142,7 @@ a.cta:hover { background: #cf383b; text-decoration: none; }
   .identity { margin-bottom: 5px; }
   .campaign-title { font-size: clamp(30px, 8.4vw, 38px); }
   .campaign-title::after { height: 4px; margin-top: 8px; }
-  .campaign-copy { margin: 10px 0 20px; font-size: 18px; line-height: 1.35; }
+  .campaign-copy { margin: 10px 0 20px; font-size: 16px; line-height: 1.35; }
   .listening { padding: 10px; grid-template-columns: 56px minmax(0, 1fr); }
   .record-controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 8px; align-items: center; }
   .record-name { font-size: 17px; line-height: 1.2; }
@@ -161,9 +155,6 @@ a.cta:hover { background: #cf383b; text-decoration: none; }
   .countdown { margin-bottom: 5px; }
   .cta { min-height: 48px; padding: 10px 12px; font-size: 17px; gap: 8px; }
   .platforms { gap: 4px 7px; margin-top: 6px; }
-  .discovery { margin-top: 12px; padding-top: 8px; gap: 4px; }
-  .discovery h2 { font-size: 16px; }
-  .discovery p { margin: 0; font-size: 14px; }
 }
 @media (max-width: 799px) and (max-height: 660px) {
   header, main { width: min(94%, 540px); }
@@ -175,6 +166,4 @@ a.cta:hover { background: #cf383b; text-decoration: none; }
   .countdown { margin-bottom: 3px; }
   .cta { min-height: 44px; }
   .help { margin-top: 5px; }
-  .discovery { padding-top: 5px; margin-top: 8px; }
-  .discovery > div { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 }
