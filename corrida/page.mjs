@@ -51,6 +51,7 @@ function refreshRelease() {
     } else control.disabled = true;
     action.replaceChildren(control);
     if (live) {
+      document.querySelector('.identity').textContent = 'VRTG · CORRIDA';
       document.querySelector('#listen-title').textContent = 'Écoute intégrale';
       document.querySelector('#replay-invitation').textContent = 'CORRIDA est disponible.';
       document.querySelector('#presave-help').textContent = url ? 'Retrouve le morceau sur Spotify.' : 'Lien Spotify à venir.';
