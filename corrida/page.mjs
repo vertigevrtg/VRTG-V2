@@ -1,145 +1,121 @@
-import { corrida } from './config.mjs';
+// CORRIDA-only settings: config.mjs is also used by /preview-corrida; leave it intact.
+export const settings = { adStartSeconds: 55, ga4Id: 'G-J7VT42778D', metaPixelId: '' };
 
-function measure(event, extra = {}) {
-  const detail = {event, track: 'corrida', page_path: location.pathname, ...extra};
+const audio = document.querySelector('#audio');
+const play = document.querySelector('#play');
+const controls = document.querySelector('#controls');
+const progress = document.querySelector('#progress');
+const status = document.querySelector('#status');
+const params = new URLSearchParams(location.search);
+const fromAd = params.has('utm_source');
+const requested = params.get('t');
+const seconds = requested !== null && requested.trim() !== '' ? Number(requested) : settings.adStartSeconds;
+let initialOffset = fromAd && Number.isFinite(seconds) && seconds >= 0 ? seconds : (fromAd ? settings.adStartSeconds : 0);
+let pendingOffset = initialOffset;
+let started = false;
+let failed = false;
+let active = false;
+let heard = 0;
+let previousTime = 0;
+let previousClock = 0;
+const sent = new Set();
+
+// Direct GA4 delivery avoids duplicating the legacy GTM listen-start trigger.
+// Local QA never sends production analytics.
+const production = /^(www\.)?vrtgmusic\.ca$/.test(location.hostname);
+if (production) {
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(detail);
-  window.dispatchEvent(new CustomEvent('vrtg:analytics', {detail}));
-  if (typeof window.vrtgAnalytics === 'function') window.vrtgAnalytics(detail);
-}
-
-const artistLink = document.querySelector('#artist-link');
-artistLink?.addEventListener('click', () => {
-  window.gtag('event', 'click_spotify_artist', {
-    send_to: 'G-J7VT42778D',
-    track: 'corrida',
-    platform: 'spotify',
-    link_url: artistLink.href
-  });
-});
-
-const releaseTime = Date.parse(document.querySelector('time').dateTime);
-const countdown = document.querySelector('.countdown');
-const action = document.querySelector('#action');
-let timer;
-let renderedLive;
-function destination(live) {
-  try {
-    const url = new URL(live ? corrida.spotifyUrl : corrida.landrUrl);
-    if (url.protocol !== 'https:' || url.username || url.password || url.port) return null;
-    if (live) return url.hostname === 'open.spotify.com' && /^\/(?:intl-[a-z]+\/)?track\/[a-zA-Z0-9]{22}\/?$/.test(url.pathname) ? url : null;
-    return url.hostname === 'release.landr.com' && url.pathname.length > 1 ? url : null;
-  } catch { return null; }
-}
-function refreshRelease() {
-  clearTimeout(timer);
-  const remaining = releaseTime - Date.now();
-  const live = remaining <= 0;
-  countdown.hidden = live;
-  if (renderedLive !== live) {
-    renderedLive = live;
-    const url = destination(live);
-    const control = document.createElement(url ? 'a' : 'button');
-    control.className = 'cta';
-    control.setAttribute('aria-describedby', 'presave-help');
-    control.textContent = live ? 'Écouter sur Spotify' : 'Pré-sauvegarder CORRIDA';
-    if (url) {
-      control.href = url.href;
-      control.addEventListener('click', () => measure(live ? 'spotify_outbound_click' : 'presave_click', {
-        platform: live ? 'spotify' : 'landr', link_url: url.href
-      }));
-    } else control.disabled = true;
-    action.replaceChildren(control);
-    if (live) {
-      document.querySelector('.identity').textContent = 'VRTG · CORRIDA';
-      document.querySelector('#listen-title').textContent = 'Écoute intégrale';
-      document.querySelector('#replay-invitation').textContent = 'CORRIDA est disponible.';
-      document.querySelector('#presave-help').textContent = url ? 'Retrouve le morceau sur Spotify.' : 'Lien Spotify à venir.';
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', settings.ga4Id);
+  const google = document.createElement('script');
+  google.async = true;
+  google.src = 'https://www.googletagmanager.com/gtag/js?id=' + settings.ga4Id;
+  document.head.append(google);
+  if (settings.metaPixelId) {
+    if (!window.fbq) {
+      const fbq = window.fbq = function () { fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments); };
+      window._fbq = fbq; fbq.push = fbq; fbq.loaded = true; fbq.version = '2.0'; fbq.queue = [];
+      const meta = document.createElement('script'); meta.async = true;
+      meta.src = 'https://connect.facebook.net/en_US/fbevents.js'; document.head.append(meta);
     }
+    window.fbq('init', settings.metaPixelId);
+    window.fbq('track', 'PageView');
   }
-  if (live) return;
-  const minutes = Math.ceil(remaining / 60000);
-  countdown.querySelector('[data-days]').textContent = String(Math.floor(minutes / 1440)).padStart(2, '0');
-  countdown.querySelector('[data-hours]').textContent = String(Math.floor(minutes / 60) % 24).padStart(2, '0');
-  countdown.querySelector('[data-minutes]').textContent = String(minutes % 60).padStart(2, '0');
-  timer = setTimeout(refreshRelease, Math.min(remaining, remaining % 60000 || 60000));
 }
-refreshRelease();
-window.addEventListener('pageshow', refreshRelease);
-document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshRelease(); });
-
-if (corrida.fullTrackFile && /^[\w-]+\.mp3$/.test(corrida.fullTrackFile)) {
-  const audio = document.createElement('audio');
-  audio.controls = true; // Accessible native fallback until custom controls are installed.
-  audio.preload = 'metadata';
-  audio.src = '/corrida/' + encodeURIComponent(corrida.fullTrackFile);
-  audio.setAttribute('aria-label', 'CORRIDA, écoute intégrale');
-  const player = document.querySelector('.player');
-  const play = document.querySelector('.play');
-  const progress = document.querySelector('#audio-progress');
-  const status = document.querySelector('#audio-status');
-  const elapsed = document.querySelector('#elapsed');
-  const duration = document.querySelector('#duration');
-  const milestones = new Set();
-  let started = false;
-  let failed = false;
-  const time = seconds => Number.isFinite(seconds) ? `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}` : '—:—';
-  function sync() {
-    const valid = Number.isFinite(audio.duration) && audio.duration > 0;
-    progress.disabled = !valid;
-    progress.max = valid ? audio.duration : 100;
-    progress.value = audio.currentTime;
-    elapsed.textContent = time(audio.currentTime);
-    duration.textContent = time(audio.duration);
-    progress.setAttribute('aria-valuetext', `${time(audio.currentTime)} sur ${time(audio.duration)}`);
-    const playing = !audio.paused && !audio.ended;
-    play.classList.toggle('playing', playing);
-    play.setAttribute('aria-label', failed ? 'Réessayer l’écoute de CORRIDA' : playing ? 'Mettre CORRIDA en pause' : 'Écouter CORRIDA en intégralité');
-    if (!valid) return;
-    // Actual unique media ranges heard: seeking forward never earns skipped milestones.
-    let heard = 0;
-    for (let i = 0; i < audio.played.length; i++) heard += audio.played.end(i) - audio.played.start(i);
-    for (const percent of [25, 50, 75, 100]) {
-      const reached = percent === 100 ? audio.ended && heard >= audio.duration - 0.5 : heard / audio.duration >= percent / 100;
-      if (started && reached && !milestones.has(percent)) {
-        milestones.add(percent);
-        measure('corrida_listen_progress', {listen_percent: percent, duration_seconds: Math.round(audio.duration)});
-      }
-    }
+function measure(event) {
+  if (sent.has(event)) return;
+  sent.add(event);
+  const detail = { track:'corrida', page_path:location.pathname, start_seconds:initialOffset, listened_seconds:Math.round(heard) };
+  window.dispatchEvent(new CustomEvent('vrtg:analytics', {detail:{event, ...detail}}));
+  if (!production) return;
+  window.gtag?.('event', event, {send_to:settings.ga4Id, ...detail});
+  if (settings.metaPixelId) window.fbq?.('trackSingleCustom', settings.metaPixelId, event, detail);
+}
+const time = n => `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2,'0')}`;
+function sample() {
+  const now = performance.now();
+  const delta = audio.currentTime - previousTime;
+  // Count actual playback, including replayed sections; ignore seeks, stalls and pauses.
+  if (active && !audio.seeking && delta > 0 && delta <= (now - previousClock) / 1000 * audio.playbackRate + 0.5) {
+    heard += delta / audio.playbackRate;
+    if (heard >= 30) measure('corrida_listen_30s');
   }
-  function error() {
-    failed = true;
-    status.textContent = 'Impossible de charger le morceau. Appuie sur lecture pour réessayer.';
-    sync();
-  }
-  play.addEventListener('click', () => {
-    if (audio.paused || failed) {
-      if (failed) { audio.load(); failed = false; }
-      status.textContent = 'Chargement du morceau…';
-      audio.play().catch(e => { if (e.name !== 'AbortError') error(); });
-    } else audio.pause();
-  });
-  progress.addEventListener('input', () => { audio.currentTime = Number(progress.value); sync(); });
-  audio.addEventListener('playing', () => {
-    failed = false;
-    status.textContent = 'Lecture en cours · CORRIDA';
-    if (!started) { started = true; measure('corrida_listen_start'); }
-    sync();
-  });
-  audio.addEventListener('pause', () => { if (!failed && !audio.ended) status.textContent = 'En pause · Reprends quand tu veux.'; sync(); });
-  for (const event of ['loadstart', 'waiting', 'stalled']) audio.addEventListener(event, () => { if (!audio.paused) status.textContent = 'Chargement du morceau…'; });
-  for (const event of ['loadedmetadata', 'durationchange', 'timeupdate', 'seeked']) audio.addEventListener(event, sync);
-  audio.addEventListener('ended', () => {
-    status.textContent = 'Écoute terminée · Tu peux relancer le morceau.';
-    document.querySelector('#replay-invitation').textContent = Date.now() < releaseTime ? 'Tu l’as découvert. Retrouve-le dès sa sortie.' : 'Tu veux le réécouter ? Retrouve-le sur Spotify.';
-    document.querySelector('#presave').classList.add('highlight');
-    sync();
-  });
-  audio.addEventListener('error', error);
-  document.querySelector('#native-player').append(audio);
-  audio.controls = false;
-  audio.hidden = true;
-  player.hidden = false;
-  status.textContent = '';
+  previousTime = audio.currentTime; previousClock = now;
+}
+function sync() {
+  const valid = Number.isFinite(audio.duration) && audio.duration > 0;
+  progress.disabled = !valid;
+  progress.max = valid ? audio.duration : 161;
+  progress.value = audio.currentTime;
+  document.querySelector('#elapsed').textContent = time(audio.currentTime);
+  document.querySelector('#duration').textContent = time(valid ? audio.duration : 161);
+  progress.setAttribute('aria-valuetext', `${time(audio.currentTime)} sur ${time(valid ? audio.duration : 161)}`);
+  const playing = !audio.paused && !audio.ended;
+  play.classList.toggle('playing', playing);
+  play.setAttribute('aria-label', playing ? 'Mettre CORRIDA en pause' : failed ? 'Réessayer l’écoute de CORRIDA' : 'Écouter CORRIDA');
+}
+function applyOffset() {
+  if (pendingOffset === null || !Number.isFinite(audio.duration)) return;
+  const target = pendingOffset < audio.duration ? pendingOffset : 0;
+  audio.currentTime = target;
+  initialOffset = target;
+  pendingOffset = null;
+  document.querySelector('#listening-context').textContent = fromAd && target > 0 ? 'Tu écoutes l’extrait de la pub' : 'Tu écoutes CORRIDA';
+}
+function error() { active = false; failed = true; status.textContent = 'Impossible de lancer le son. Appuie sur lecture pour réessayer.'; sync(); }
+function start() {
+  if (failed) { failed = false; audio.load(); }
+  if (audio.ended) audio.currentTime = 0;
+  applyOffset();
+  // Must remain synchronous inside the tap, with no await/network before play (iOS/in-app).
+  const promise = audio.play();
+  status.textContent = 'Chargement du morceau…';
+  promise?.catch(e => { if (e.name !== 'AbortError') error(); });
   sync();
 }
+play.addEventListener('click', () => { if (audio.paused || failed) start(); else audio.pause(); });
+document.querySelector('#restart').addEventListener('click', () => {
+  pendingOffset = null; active = false; audio.currentTime = 0;
+  document.querySelector('#listening-context').textContent = 'Tu écoutes CORRIDA';
+  start();
+});
+progress.addEventListener('input', () => { pendingOffset = null; active = false; audio.currentTime = Number(progress.value); sync(); });
+audio.addEventListener('loadedmetadata', () => { applyOffset(); sync(); });
+audio.addEventListener('playing', () => {
+  failed = false; active = true; previousTime = audio.currentTime; previousClock = performance.now();
+  if (!started) { started = true; measure('corrida_listen_start'); }
+  controls.classList.add('started'); document.querySelector('.timeline').hidden = false;
+  document.querySelector('#help').hidden = true; document.querySelector('#listening-help').hidden = false;
+  status.textContent = ''; sync();
+});
+audio.addEventListener('timeupdate', () => { sample(); sync(); });
+audio.addEventListener('pause', () => { sample(); active = false; sync(); });
+audio.addEventListener('seeking', () => { active = false; previousTime = audio.currentTime; });
+audio.addEventListener('seeked', () => { active = !audio.paused; previousTime = audio.currentTime; previousClock = performance.now(); sync(); });
+for (const event of ['waiting','stalled']) audio.addEventListener(event, () => { sample(); active = false; if (!audio.paused) status.textContent = 'Chargement du morceau…'; });
+audio.addEventListener('ended', () => { sample(); active = false; if (started) measure('corrida_listen_complete'); status.textContent = 'Écoute terminée. Tu peux relancer le morceau.'; sync(); });
+audio.addEventListener('error', error);
+audio.controls = false; audio.hidden = true; controls.hidden = false;
+if (initialOffset > 0) audio.src = '/corrida/Corrida_final.mp3#t=' + initialOffset;
+applyOffset(); sync();

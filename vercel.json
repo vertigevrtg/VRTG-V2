@@ -11,11 +11,6 @@
       "statusCode": 307
     },
     {
-      "source": "/corrida/:path*",
-      "destination": "/",
-      "statusCode": 307
-    },
-    {
       "source": "/RACINE",
       "destination": "/racine",
       "statusCode": 301
